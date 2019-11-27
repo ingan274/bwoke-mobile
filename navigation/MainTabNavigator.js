@@ -1,6 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { createStackNavigator, createBottomTabNavigator, BottomTabBar } from 'react-navigation';
+import Colors from '../constants/Colors'
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
@@ -12,67 +13,93 @@ const config = Platform.select({
   default: {},
 });
 
-const HomeStack = createStackNavigator(
+const SearchStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Search: HomeScreen, // change to search screen
   },
   config
 );
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+SearchStack.navigationOptions = {
+  tabBarLabel: 'Search',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? `ios-search`
+          : 'md-search'
       }
     />
-  ),
+  )
 };
 
-HomeStack.path = '';
+SearchStack.path = '';
 
-const LinksStack = createStackNavigator(
+const MapStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Map: LinksScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+MapStack.navigationOptions = {
+  tabBarLabel: 'Map',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-map' : 'md-map'} />
   ),
 };
 
-LinksStack.path = '';
+MapStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const FeedStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Feed: SettingsScreen, // CHANGE THIS TO FEED SCREEN 
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+FeedStack.navigationOptions = {
+  tabBarLabel: 'Event Feed',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? `ios-list${focused ? '-box' : ''}` : `md-list${focused ? '-box' : ''}`} />
   ),
 };
 
-SettingsStack.path = '';
+FeedStack.path = '';
 
-const tabNavigator = createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
-});
+const ChatStack = createStackNavigator(
+  {
+    Chat: SettingsScreen, // CHANGE THIS TO CHAT AND MAYBE CHAT ROOM?
+  },
+  config
+);
+
+ChatStack.navigationOptions = {
+  tabBarLabel: 'Chat',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-chatbubbles' : 'md-chatbubbles'} />
+  ),
+};
+
+ChatStack.path = '';
+
+const TabBarComponent = props => <BottomTabBar {...props} />;
+
+const tabNavigator = createBottomTabNavigator(
+  {
+    SearchStack,
+    MapStack,
+    FeedStack,
+    ChatStack
+  },
+  {
+    tabBarComponent: props => (
+      <TabBarComponent {...props} style={{ backgroundColor: 'black', paddingVertical: '10' }} />
+    ),
+  });
 
 tabNavigator.path = '';
+
 
 export default tabNavigator;
