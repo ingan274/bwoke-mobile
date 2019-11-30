@@ -4,7 +4,8 @@ import { createStackNavigator, createBottomTabNavigator, BottomTabBar } from 're
 import Colors from '../constants/Colors'
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+// import HomeScreen from '../screens/HomeScreen';
+import LoginScreen from '../screens/LoginScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -15,7 +16,7 @@ const config = Platform.select({
 
 const SearchStack = createStackNavigator(
   {
-    Search: HomeScreen, // change to search screen
+    Search: LoginScreen, // change to search screen
   },
   config
 );

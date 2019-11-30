@@ -1,75 +1,56 @@
 import * as WebBrowser from 'expo-web-browser';
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   Image,
+  ImageBackground,
+  // Logo,
   Platform,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
+  // Title,
+  // TextDescription,
+  // TouchableOpacity,
+  // Wrapper,
   View,
+  // Dimensions,
+  // TouchableHighlight
 } from 'react-native';
 
+import styled from "styled-components/native";
 import { MonoText } from '../components/StyledText';
+import Background from "../assets/images/Background.gif"
 
-export default function HomeScreen() {
+export default function LoginScreen() {
   return (
     <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
+      <ImageBackground source={Background} style={{ width: '100%', height: '100%' }}>
         <View style={styles.welcomeContainer}>
           <Image
             source={
               __DEV__
-                ? require('../assets/images/loading.gif')
+                ? require('../assets/images/bWokeLogoFavicon.png')
                 : require('../assets/images/robot-prod.png')
             }
             style={styles.welcomeImage}
           />
         </View>
-
-        <View style={styles.getStartedContainer}>
-          {/* <DevelopmentModeNotice /> */}
-
-          <Text style={styles.getStartedText}>Get started by opening</Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
-
-          <Text style={styles.getStartedText}>
-            Changed
-          </Text>
-        </View>
-
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
-
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </MonoText>
-        </View>
-      </View>
+        <Title>Join Here for Live Updates</Title>
+        <TextDescription>
+          With bWoke you can Stay Woke
+          </TextDescription>
+        <ButtonWrapper>
+          <Fragment>
+            <Button title="Create Account" />
+            <Button transparent title="Login" />
+          </Fragment>
+        </ButtonWrapper>
+      </ImageBackground>
     </View>
   );
 }
 
-HomeScreen.navigationOptions = {
+LoginScreen.navigationOptions = {
   header: null,
 };
 
@@ -111,7 +92,7 @@ function handleHelpPress() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#000',
   },
   developmentModeText: {
     marginBottom: 20,
@@ -125,7 +106,7 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 50,
     marginBottom: 20,
   },
   welcomeImage: {
@@ -139,7 +120,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 50,
   },
-  homeScreenFilename: {
+  loginScreenFilename: {
     marginVertical: 7,
   },
   codeHighlightText: {
@@ -196,3 +177,61 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
   },
 });
+
+// export const Wrapper = styled.View`
+//   justify-content: space-between;
+//   padding: 20px;
+//   align-items: center;
+//   flex-direction: column;
+// `;
+export const Logo = styled.Image`
+  max-width: 100px;
+  width: 100px;
+  height: 100px;
+`;
+export const TextDescription = styled.Text`
+  letter-spacing: 3;
+  color: #f4f4f4;
+  text-align: center;
+  text-transform: uppercase;
+`;
+export const ButtonWrapper = styled.View`
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+`;
+export const Title = styled.Text`
+  color: #f4f4f4;
+  margin: 50% 0px 20px;
+  font-size: 30;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3;
+`;
+const StyledButton = styled.TouchableHighlight`
+ width:250px;
+ background-color:${props => (props.transparent ? "transparent" : "#f3f8ff")};
+ padding:15px;
+border:${props => (props.transparent ? "1px solid #f3f8ff " : 0)}
+ justify-content:center;
+ margin-bottom:20px;
+ border-radius:24px
+`;
+StyledTitle = styled.Text`
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 3;
+  color: ${props => (props.transparent ? "#f3f8ff " : "#666")};
+`;
+
+export const Button = ({ onPress, color, ...props }) => {
+  return (
+    <StyledButton {...props}>
+      <StyledTitle {...props}>{props.title}</StyledTitle>
+    </StyledButton>
+  );
+};
+
