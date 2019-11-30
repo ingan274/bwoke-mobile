@@ -3,16 +3,28 @@ import React, { Fragment } from 'react';
 import {
     Image,
     ImageBackground,
+    // Logo,
     Platform,
+    ScrollView,
     StyleSheet,
+    // TextInput,
+    // Title,
+    // TextDescription,
+    // TouchableOpacity,
+    // Wrapper,
     View,
+    // Dimensions,
 } from 'react-native';
 
 import styled from "styled-components/native";
+// import { MonoText } from '../components/StyledText';
 import Background from "../assets/images/Background.gif";
-import LoginText from '../components/LoginText'
+import SignUpText from '../components/SignUpText'
 
-export default function LoginScreen() {    
+export default function LoginScreen() {
+
+    const state = {text: ''};
+    
     return (
         <View style={styles.container}>
             <ImageBackground source={Background} style={{ width: '100%', height: '100%' }}>
@@ -26,12 +38,12 @@ export default function LoginScreen() {
                         style={styles.welcomeImage}
                     />
                 </View>
-                <Title>Login</Title>
-                <LoginText />
+                <Title>Sign Up</Title>
+                <SignUpText />
                 <ButtonWrapper>
                     <Fragment>
-                        {/* <Button title="Create Account" /> */}
-                        <Button transparent title="Login" />
+                        <Button title="Create Account" />
+                        {/* <Button transparent title="Login" /> */}
                     </Fragment>
                 </ButtonWrapper>
             </ImageBackground>
@@ -61,7 +73,7 @@ const styles = StyleSheet.create({
     welcomeContainer: {
         alignItems: 'center',
         marginTop: 50,
-        marginBottom: 20,
+        // marginBottom: 10,
     },
     welcomeImage: {
         width: 120,
@@ -153,11 +165,11 @@ export const ButtonWrapper = styled.View`
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 50px;
   `;
 export const Title = styled.Text`
     color: #f4f4f4;
-    margin: 30% 0px 20px;
+    margin: 30% 0px 0px;
     font-size: 30;
     text-align: center;
     font-weight: bold;
@@ -170,7 +182,7 @@ const StyledButton = styled.TouchableOpacity`
    padding:15px;
   border:${props => (props.transparent ? "1px solid #f3f8ff " : 0)}
    justify-content:center;
-   margin-bottom:20px;
+   margin-bottom:0px;
    border-radius:24px
   `;
 StyledTitle = styled.Text`

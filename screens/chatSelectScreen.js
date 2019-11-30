@@ -1,37 +1,49 @@
 import React, { PureComponent, Component } from 'react';
-import { Platform, StyleSheet, Dimensions, AsyncStorage, View, Text, Navigator, PropTypes, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, Dimensions, AsyncStorage, View, Text, Navigator, PropTypes, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import style from "./style"
+import formInput from '../components/formInput';
+import buttonFrom from '../components/buttonForm';
 window.navigator.userAgent = 'ReactNative';
 
-const SOCKET_URL = "http://localhost:8000/talk"
 
 class ChatRoom extends Component {
- 
-
-  render() {
-    return (
-      <View style={style.container}>
-       
-      </View >
-    );
-  }
-
-  handleBackPress = () => {
-    // console.log ('volunteer', this.state.volunteer)
-    // console.log ('user', this.state.user)
-    if (this.state.volunteer === "true") {
-      const {
-        navigation: { navigate },
-      } = this.props;
-      navigate('Account');
-    } else if (this.state.user === "true") {
-      const {
-        navigation: { navigate },
-      } = this.props;
-      navigate('Jobs');
+    state = {
+        rooms: [],
+        newRoom:''
     }
-  }
+
+    saveRoom = async () => {
+        // save room in local storage
+    }
+
+    setUpRoom = () => {
+        this.rooms.map((room) => {
+            return <TouchableOpacity style={styles.roomButton}>
+                <Text style={styles.buttonText}>{room}</Text>
+            </TouchableOpacity>
+        }
+    }
+
+
+    render() {
+        return (
+            <View style={style.container}>
+            {this.setUpRoom()}
+
+
+
+            </View >
+        );
+    }
+
+    handleBackPress = () => {
+
+        const {
+            navigation: { navigate },
+        } = this.props;
+        navigate('Rooms');
+
+    }
 
 }
 

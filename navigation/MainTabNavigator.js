@@ -6,7 +6,7 @@ import Colors from '../constants/Colors'
 import TabBarIcon from '../components/TabBarIcon';
 import feedScreen from '../screens/feedScreen';
 import mapScreen from '../screens/mapScreen';
-import chatScreen from '../screens/chatSelectScreen';
+import chatScreen from './ChatNavigator';
 import searchScreen from '../screens/searchScreen';
 
 // import Icon from '../assets/images/bWokeLogoFavicon';
