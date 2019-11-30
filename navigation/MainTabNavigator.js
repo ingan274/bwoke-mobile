@@ -4,10 +4,12 @@ import { createStackNavigator, createBottomTabNavigator, BottomTabBar } from 're
 import Colors from '../constants/Colors'
 
 import TabBarIcon from '../components/TabBarIcon';
-// import HomeScreen from '../screens/HomeScreen';
+import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import SignUpScreen from '../screens/SignUpScreen';
+// import WelcomeScreen from '../screens/WelcomeScreen';
 
 // import Icon from '../assets/images/bWokeLogoFavicon';
 
@@ -18,7 +20,7 @@ const config = Platform.select({
 
 const SearchStack = createStackNavigator(
   {
-    Search: LoginScreen, // change to search screen
+    Search: SignUpScreen, // change to search screen
   },
   config
 );
