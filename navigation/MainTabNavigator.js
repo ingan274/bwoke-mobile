@@ -3,10 +3,11 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator, BottomTabBar } from 'react-navigation';
 import Colors from '../constants/Colors'
 
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import TabBarComponent from '../components/TabBarIcon';
+import feedScreen from '../screens/feedScreen';
+import mapScreen from '../screens/mapScreen';
+import chatScreen from '../screens/chatScreen';
+import searchScreen from '../screens/searchScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -15,7 +16,7 @@ const config = Platform.select({
 
 const SearchStack = createStackNavigator(
   {
-    Search: HomeScreen, // change to search screen
+    Search: searchScreen, // change to search screen
   },
   config
 );
@@ -38,7 +39,7 @@ SearchStack.path = '';
 
 const MapStack = createStackNavigator(
   {
-    Map: LinksScreen,
+    Map: mapScreen,
   },
   config
 );
@@ -54,7 +55,7 @@ MapStack.path = '';
 
 const FeedStack = createStackNavigator(
   {
-    Feed: SettingsScreen, // CHANGE THIS TO FEED SCREEN 
+    Feed: feedScreen, // CHANGE THIS TO FEED SCREEN 
   },
   config
 );
@@ -70,7 +71,7 @@ FeedStack.path = '';
 
 const ChatStack = createStackNavigator(
   {
-    Chat: SettingsScreen, // CHANGE THIS TO CHAT AND MAYBE CHAT ROOM?
+    Chat: chatScreen, // CHANGE THIS TO CHAT AND MAYBE CHAT ROOM?
   },
   config
 );
