@@ -1,4 +1,4 @@
-const tintColor = '#fff200';
+const tintColor = '#ccc';
 
 export default {
   // tab colors
@@ -10,12 +10,14 @@ export default {
   errorText: '#fff',
   warningBackground: '#EAEB5E',
   warningText: '#666804',
-  noticeBackground: tintColor,
+  noticeBackground: '#fff200',
   noticeText: '#fff',
 
   // general colors
   black: 'black',
   charcoal: '#1A1A1A',
+  background: '#5E5E5E',
+  text: "#616161",
   yellow: '#fff200',
   green: '#69bd45',
   blue: '#00aeef',
