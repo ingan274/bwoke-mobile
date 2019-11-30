@@ -4,13 +4,10 @@ import { createStackNavigator, createBottomTabNavigator, BottomTabBar } from 're
 import Colors from '../constants/Colors'
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LoginScreen from '../screens/LoginScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import SignUpScreen from '../screens/SignUpScreen';
-import SearchScreen from '../screens/SearchScreen';
-// import WelcomeScreen from '../screens/WelcomeScreen';
+import feedScreen from '../screens/feedScreen';
+import mapScreen from '../screens/mapScreen';
+import chatScreen from './ChatNavigator';
+import searchScreen from '../screens/searchScreen';
 
 // import Icon from '../assets/images/bWokeLogoFavicon';
 
@@ -21,7 +18,7 @@ const config = Platform.select({
 
 const SearchStack = createStackNavigator(
   {
-    Search: SearchScreen, // change to search screen
+    Search: searchScreen, // change to search screen
   },
   config
 );
@@ -44,7 +41,7 @@ SearchStack.path = '';
 
 const MapStack = createStackNavigator(
   {
-    Map: LinksScreen,
+    Map: mapScreen,
   },
   config
 );
@@ -60,7 +57,7 @@ MapStack.path = '';
 
 const FeedStack = createStackNavigator(
   {
-    Feed: SettingsScreen, // CHANGE THIS TO FEED SCREEN 
+    Feed: feedScreen, // CHANGE THIS TO FEED SCREEN 
   },
   config
 );
@@ -76,7 +73,7 @@ FeedStack.path = '';
 
 const ChatStack = createStackNavigator(
   {
-    Chat: SettingsScreen, // CHANGE THIS TO CHAT AND MAYBE CHAT ROOM?
+    Chat: chatScreen, // CHANGE THIS TO CHAT AND MAYBE CHAT ROOM?
   },
   config
 );
