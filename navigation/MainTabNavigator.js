@@ -9,6 +9,7 @@ import LoginScreen from '../screens/LoginScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import SignUpScreen from '../screens/SignUpScreen';
+import SearchScreen from '../screens/SearchScreen';
 // import WelcomeScreen from '../screens/WelcomeScreen';
 
 // import Icon from '../assets/images/bWokeLogoFavicon';
@@ -20,7 +21,7 @@ const config = Platform.select({
 
 const SearchStack = createStackNavigator(
   {
-    Search: SignUpScreen, // change to search screen
+    Search: SearchScreen, // change to search screen
   },
   config
 );
