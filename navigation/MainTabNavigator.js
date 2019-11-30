@@ -9,6 +9,8 @@ import LoginScreen from '../screens/LoginScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
+// import Icon from '../assets/images/bWokeLogoFavicon';
+
 const config = Platform.select({
   web: { headerMode: 'screen' },
   default: {},
@@ -47,7 +49,7 @@ const MapStack = createStackNavigator(
 MapStack.navigationOptions = {
   tabBarLabel: 'Map',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-map' : 'md-map'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios-globe' ? 'ios-globe-outline' : 'md-globe'} />
   ),
 };
 

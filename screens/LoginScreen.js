@@ -35,9 +35,9 @@ export default function LoginScreen() {
             style={styles.welcomeImage}
           />
         </View>
-        <Title>Join Here for Live Updates</Title>
+        <Title>Stay Woke With bWoke</Title>
         <TextDescription>
-          With bWoke you can Stay Woke
+          Sign up for updates on your favorite charities
           </TextDescription>
         <ButtonWrapper>
           <Fragment>
@@ -110,10 +110,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   welcomeImage: {
-    width: 100,
-    height: 80,
+    width: 120,
+    height: 100,
     resizeMode: 'contain',
-    marginTop: 3,
+    marginTop: 50,
     marginLeft: -10,
   },
   getStartedContainer: {
@@ -203,7 +203,7 @@ export const ButtonWrapper = styled.View`
 `;
 export const Title = styled.Text`
   color: #f4f4f4;
-  margin: 50% 0px 20px;
+  margin: 30% 0px 20px;
   font-size: 30;
   text-align: center;
   font-weight: bold;
