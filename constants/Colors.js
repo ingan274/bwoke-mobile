@@ -16,6 +16,8 @@ export default {
   // general colors
   black: 'black',
   charcoal: '#1A1A1A',
+  background: '#5E5E5E',
+  text: "#616161",
   yellow: '#fff200',
   green: '#69bd45',
   blue: '#00aeef',
