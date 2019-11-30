@@ -1,73 +1,57 @@
 import React, { PureComponent, Component } from 'react';
 import { Platform, StyleSheet, Dimensions, ViewScroll, View, Text, Navigator, PropTypes, StyleSheet } from 'react-native';
+import addEventModal from '../components/addEventModal'
 import { Ionicons } from '@expo/vector-icons';
 import color from '../constants/Colors'
 window.navigator.userAgent = 'ReactNative';
 
-const SOCKET_URL = "http://localhost:8000/talk"
 
-class ChatRoom extends Component {
+class EventFeed extends Component {
     state = {
         modalVisible: false,
-      };
+    };
 
     componentDidMount = () => {
         this.getEvents()
     }
 
-    postEvent = () => {
-        fetch(`URLHERE`, {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(event)
-        }).then(res => res.json())
-            .then(async (data) => {
-                const response = data[0]
-                // SAVE RESPONSE IN LOCAL STORAGE
-                const language1 = response.language1;
-                const language2 = response.language2;
-                const language3 = response.language3;
-                const socket = response.socket;
-
-                this.handleLocalStorageLanguage(language1, language2, language3, socket)
-
-                //NAVIGATE
-                const {
-                    navigation: { navigate },
-                } = this.props;
-                navigate('Account');
-            })
-            .catch(err => console.warn(err))
+    setModalVisible = (visible) => {
+        this.setState({ modalVisible: visible });
     }
 
     getEvents = () => {
-        fetch(`URLHERE`, {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-        }).then(res => res.json())
-            .then((data) => {
+        return  <View style={styles.eventscontainer}>
+                            <Text style={styles.eventTitle}>Title</Text>
+                            <Text style={styles.eventNmae}>Charity Name</Text>
+                            <Text style={styles.eventDate}>Date</Text>
+                            <Text style={styles.eventDescription}>description</Text>
+                        </View>
 
-                data.map((event) => {
-                    let title = event.title;
-                    let description = event.description;
-                    let name = event.title;
-                    let date = event.date;
+        // fetch(`URLHERE`, {
+        //     method: 'GET',
+        //     headers: {
+        //         Accept: 'application/json',
+        //         'Content-Type': 'application/json',
+        //     },
+        // }).then(res => res.json())
+        //     .then((data) => {
 
-                    return <View style={styles.eventscontainer}>
-                        <Text style={styles.eventTitle}>{title}</Text>
-                        <Text style={styles.eventNmae}>{name}</Text>
-                        <Text style={styles.eventDate}>{date}</Text>
-                        <Text style={styles.eventDescription}>{description}</Text>
-                    </View>
-                })
-            })
-            .catch(err => console.warn(err))
+        //         data.map((event) => {
+        //             let title = event.title;
+        //             let description = event.description;
+        //             let name = event.title;
+        //             let date = event.date;
+
+        //             return <View style={styles.eventscontainer}>
+        //                 <Text style={styles.eventTitle}>{title}</Text>
+        //                 <Text style={styles.eventNmae}>{name}</Text>
+        //                 <Text style={styles.eventDate}>{date}</Text>
+        //                 <Text style={styles.eventDescription}>{description}</Text>
+        //             </View>
+
+        //         })
+        //     })
+        //     .catch(err => console.warn(err))
     }
 
 
@@ -76,13 +60,22 @@ class ChatRoom extends Component {
             <View style={styles.container}>
                 <View style={styles.addEvent}>
                     <Ionicons
-                        name={Platform.OS === 'ios' ? 'ios-settings' : 'md-settings'}
+                        name={Platform.OS === 'ios' ? 'ios-add-circle' : 'md-add-circle'}
                         size={30}
                         color={color.green}
+                        onPress={() => {
+                            this.setModalVisible(true);
+                        }}
                     />
                     <Text style={styles.addEventText}>Add Event</Text>
                 </View >
                 <ViewScroll>
+                    <addEventModal
+                        onPressOut={() => {
+                            this.setModalVisible(!this.state.modalVisible);
+                        }}
+                        visible={this.state.modalVisible}
+                    />
                     {this.getEvents()}
                 </ViewScroll>
             </View >
@@ -91,4 +84,4 @@ class ChatRoom extends Component {
 
 }
 
-module.exports = ChatRoom;
+module.exports = EventFeed;
