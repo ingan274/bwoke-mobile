@@ -1,47 +1,118 @@
 import * as WebBrowser from 'expo-web-browser';
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 import {
     Image,
     ImageBackground,
     Platform,
     StyleSheet,
     View,
+    TouchableWithoutFeedback,
+    Keyboard,
 } from 'react-native';
 
 import styled from "styled-components/native";
 import Background from "../assets/images/Background.gif";
-import LoginText from '../components/LoginText'
+import LoginText from '../components/LoginSignUpText'
 
-export default function LoginScreen() {    
-    return (
-        <View style={styles.container}>
-            <ImageBackground source={Background} style={{ width: '100%', height: '100%' }}>
-                <View style={styles.welcomeContainer}>
-                    <Image
-                        source={
-                            __DEV__
-                                ? require('../assets/images/bWokeLogoFavicon.png')
-                                : require('../assets/images/robot-prod.png')
-                        }
-                        style={styles.welcomeImage}
-                    />
+export default class LoginScreen extends Component {
+
+    state = {
+        username: '',
+        password: '',
+        error: false,
+    }
+
+    handleUsername = (text) => {
+        this.setState({ username: text })
+    }
+    handlePassword = (text) => {
+        this.setState({ password: text })
+    }
+
+    enterApp = () => {
+        const login = {
+            username: this.state.username,
+            password: this.state.password
+        }
+
+        fetch('URLLINKHERE', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(login)
+        }).then(res => res.json())
+            .then((response) => {
+                if (response.mysqlID === "none") {
+                    this.setState({ error: true });
+                } else {
+                    let username = this.state.username
+                    this.handleLocalStorageUsername(username)
+
+                    //NAVIGATE
+                    const {
+                        navigation: { navigate },
+                    } = this.props;
+                    navigate('Tabs');
+                }
+            })
+            .catch(err => console.warn(err))
+
+    }
+
+    handleLocalStorageUsername = async (username) => {
+        try {
+          await AsyncStorage.setItem('username', `${username}`);
+          console.log('username', username);
+        } catch (error) {
+          // Error retrieving data
+          console.log(error.message);
+        }
+      }
+
+    showError = () => {
+        if (this.state.error) {
+            return <Text style={style.error}>The username and password you entered do not match.</Text>
+        }
+    };
+
+
+    render() {
+        return (
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
+                <View style={styles.container}>
+                    <ImageBackground source={Background} style={{ width: '100%', height: '100%' }}>
+                        <View style={styles.welcomeContainer}>
+                            <Image
+                                source={
+                                    __DEV__
+                                        ? require('../assets/images/bWokeLogoFavicon.png')
+                                        : require('../assets/images/robot-prod.png')
+                                }
+                                style={styles.welcomeImage}
+                            />
+                        </View>
+                        <Title>Login</Title>
+                        {this.showError()}
+                        <LoginText placeholder="Username" secureTextEntry={false} handle={this.handleUsername}/>
+                        <LoginText placeholder="Password" secureTextEntry={true} handle={this.handlePassword}/>
+                        <ButtonWrapper>
+                            <Fragment>
+                                {/* <Button title="Create Account" /> */}
+                                <Button transparent title="Login" />
+                            </Fragment>
+                        </ButtonWrapper>
+                    </ImageBackground>
                 </View>
-                <Title>Login</Title>
-                <LoginText />
-                <ButtonWrapper>
-                    <Fragment>
-                        {/* <Button title="Create Account" /> */}
-                        <Button transparent title="Login" />
-                    </Fragment>
-                </ButtonWrapper>
-            </ImageBackground>
-        </View>
-    );
+            </TouchableWithoutFeedback>
+        );
+    }
 }
 
 LoginScreen.navigationOptions = {
     header: null,
-  };
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -60,7 +131,7 @@ const styles = StyleSheet.create({
     },
     welcomeContainer: {
         alignItems: 'center',
-        marginTop: 50,
+        marginTop: 30,
         marginBottom: 20,
     },
     welcomeImage: {
