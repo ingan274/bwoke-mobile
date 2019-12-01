@@ -29,7 +29,11 @@
     "react-native-video": "^5.0.2",
     "react-native-web": "^0.11.7",
     "react-navigation": "^3.13.0",
+<<<<<<< HEAD
     "socket.io": "^2.3.0",
+=======
+    "socket.io-client": "^2.3.0",
+>>>>>>> d22c989e85ea6e0f5edd8b98bd1eb10a95b3c758
     "styled-components": "^4.4.1"
   },
   "devDependencies": {

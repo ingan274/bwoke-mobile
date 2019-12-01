@@ -3,6 +3,10 @@
   "lanType": "ip",
   "dev": true,
   "minify": false,
+<<<<<<< HEAD
   "urlRandomness": "kb-sws",
+=======
+  "urlRandomness": "ru-4t3",
+>>>>>>> d22c989e85ea6e0f5edd8b98bd1eb10a95b3c758
   "https": false
 }

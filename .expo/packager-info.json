@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
@@ -6,4 +7,14 @@
   "expoServerNgrokUrl": "https://kb-sws.anonymous.bwoke-mobile.exp.direct",
   "packagerNgrokUrl": "https://packager.kb-sws.anonymous.bwoke-mobile.exp.direct",
   "ngrokPid": 19072
+=======
+  "devToolsPort": 19003,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "webpackServerPort": null
+>>>>>>> d22c989e85ea6e0f5edd8b98bd1eb10a95b3c758
 }
