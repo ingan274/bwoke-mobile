@@ -3,6 +3,6 @@
   "lanType": "ip",
   "dev": true,
   "minify": false,
-  "urlRandomness": "s9-9bb",
+  "urlRandomness": "k8-gpt",
   "https": false
 }

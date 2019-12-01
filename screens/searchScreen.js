@@ -1,5 +1,6 @@
 import React, { PureComponent, Component } from 'react';
-import { Platform, StyleSheet, Dimensions, ScrollView, View, Text, Navigator, PropTypes, Image, ImageBackground,
+import {
+    Platform, StyleSheet, Dimensions, ScrollView, View, Text, Navigator, PropTypes, Image, ImageBackground,
 } from 'react-native';
 import addEventModal from '../components/addEventModal'
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
@@ -7,16 +8,59 @@ import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import { Ionicons } from '@expo/vector-icons';
 import color from '../constants/Colors'
 import Forminput from "../components/formInput";
-import SearchBar from "../components/SearchBar.js";
+// import SearchBar from "../components/SearchBar.js";
 window.navigator.userAgent = 'ReactNative';
 import Background from "../assets/images/Background.gif";
+import SearchBar from 'react-native-searchbar';
+
 
 export default function searchScreen() {
     return (
         <View style={styles.container}>
             <SearchBar />
+            <ScrollView
+                horizontal={true}
+                decelerationRate={0}
+                snapToInterval={200} //your element width
+                snapToAlignment={"center"}
+                marginTop={10}
+                marginBottom={10}
+            >
+                <Button
+                    // icon={<Icon name='search' color='#ffffff' />}
+                    buttonStyle={{ borderRadius: 3, marginLeft: 10, marginRight: 10, marginBottom: 0 }}
+                    title='VIEW NOW' />
+                <Button
+                    // icon={<Icon name='search' color='#ffffff' />}
+                    buttonStyle={{ borderRadius: 3, marginLeft: 10, marginRight: 10, marginBottom: 0 }}
+                    title='VIEW NOW' />
+                <Button
+                    // icon={<Icon name='search' color='#ffffff' />}
+                    buttonStyle={{ borderRadius: 3, marginLeft: 10, marginRight: 10, marginBottom: 0 }}
+                    title='VIEW NOW' />
+                <Button
+                    // icon={<Icon name='search' color='#ffffff' />}
+                    buttonStyle={{ borderRadius: 3, marginLeft: 10, marginRight: 10, marginBottom: 0 }}
+                    title='VIEW NOW' />
+                <Button
+                    // icon={<Icon name='search' color='#ffffff' />}
+                    buttonStyle={{ borderRadius: 3, marginLeft: 10, marginRight: 10, marginBottom: 0 }}
+                    title='VIEW NOW' />
+                <Button
+                    // icon={<Icon name='search' color='#ffffff' />}
+                    buttonStyle={{ borderRadius: 3, marginLeft: 10, marginRight: 10, marginBottom: 0 }}
+                    title='VIEW NOW' />
+                <Button
+                    // icon={<Icon name='search' color='#ffffff' />}
+                    buttonStyle={{ borderRadius: 3, marginLeft: 10, marginRight: 10, marginBottom: 0 }}
+                    title='VIEW NOW' />
+                <Button
+                    // icon={<Icon name='search' color='#ffffff' />}
+                    buttonStyle={{ borderRadius: 3, marginLeft: 10, marginRight: 10, marginBottom: 0 }}
+                    title='VIEW NOW' />
+            </ScrollView>
             <ScrollView>
-            {/* <ImageBackground source={Background} style={{ width: '100%', height: '100%' }}> */}
+                {/* <ImageBackground source={Background} style={{ width: '100%', height: '100%' }}> */}
                 <Card
                     title='HELLO WORLD'
                     image={require('../assets/images/bWokeLogoFavicon.png')}>
@@ -94,7 +138,7 @@ export default function searchScreen() {
                         buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
                         title='VIEW NOW' />
                 </Card>
-            {/* </ImageBackground> */}
+                {/* </ImageBackground> */}
             </ScrollView>
         </View>
     );
@@ -104,9 +148,10 @@ export default function searchScreen() {
 const styles = StyleSheet.create({
     container: {
         width: "100%",
+        height: "100%",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: color.black,
+        // backgroundColor: color.black,
         // paddingVertical: 12,
         borderRadius: 4,
         borderWidth: StyleSheet.hairlineWidth,
