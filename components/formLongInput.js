@@ -3,7 +3,7 @@ import Colors from '../constants/Colors';
 import { StyleSheet, TextInput } from 'react-native';
 
 
-function formInput(props) {
+function formInputLong (props) {
     return (
         <TextInput
             selectionColor={Colors.blue3}
@@ -18,7 +18,7 @@ function formInput(props) {
             onChangeText={props.onChangeText}
             returnKeyType={props.returnKeyType}
             onSubmitEditing={props.onSubmitEditing}
-            multiline={props.multiline || false}
+            multiline
         />
     );
 }
@@ -26,11 +26,11 @@ function formInput(props) {
 
 const styles = StyleSheet.create({
     textInput: {
-        height: 40,
+        height: 200,
         borderColor: Colors.green,
         borderBottomWidth: StyleSheet.hairlineWidth,
         marginBottom: 20
     }
 });
 
-export default formInput;
+export default formInputLong;

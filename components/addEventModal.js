@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Colors from '../constants/Colors';
 import Forminput from "../components/formInput";
+import ForminputLong from "../components/formLongInput";
 import FormButton from "../components/formButton";
 import {
     Image,
@@ -18,11 +19,42 @@ import { Ionicons } from '@expo/vector-icons';
 
 class eventAddModal extends Component {
     state = {
-        title: '',
+        nametitle: '',
         date: '',
         name: '',
         description: '',
         error: false,
+    }
+
+    handleSubmit = () => {
+        let title = this.state.title;
+        let date = this.state.date;
+        let name = this.state.name;
+        let description = this.state.description;
+
+        let event = {
+            title: title,
+            date: date,
+            name: name,
+            description: description
+        }
+
+        if (title && date && name && description) {
+            fetch(`URLHERE`, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(event)
+            }).then( (data) => {
+                    console.log("Posted")
+                })
+                .catch(err => console.warn(err))
+        } else {
+            this.setState({error: true})
+        }
+        
     }
 
     showError = () => {
@@ -52,6 +84,8 @@ class eventAddModal extends Component {
                                     style={styles.exit}
                                 />
                             </TouchableHighlight>
+
+                            
                             {this.showError()}
 
                             <Forminput
@@ -81,7 +115,7 @@ class eventAddModal extends Component {
                                 returnKeyType="next"
                             />
 
-                            <Forminput
+                            <ForminputLong
                                 value={this.state.title}
                                 onChangeText={(event) => this.setState({ description: event })}
                                 placeholder="Event Description"
