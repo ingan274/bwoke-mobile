@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Colors from '../../constants/Colors';
+import Colors from '../constants/Colors';
 import { StyleSheet, TextInput } from 'react-native';
 
 
@@ -26,7 +26,7 @@ function formInput(props) {
 
 const styles = StyleSheet.create({
     textInput: {
-        height: {props.height},
+        height: 40,
         borderColor: Colors.green,
         borderBottomWidth: StyleSheet.hairlineWidth,
         marginBottom: 20

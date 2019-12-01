@@ -1,8 +1,9 @@
 import React, { PureComponent, Component } from 'react';
-import { Platform, StyleSheet, Dimensions, AsyncStorage, View, Text, Navigator, PropTypes, StyleSheet, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, Dimensions, AsyncStorage, View, Text, Navigator, PropTypes, TouchableOpacity } from 'react-native';
+import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import Forminput from '../components/formInput';
-import ButtonFrom from '../components/buttonForm';
+import FormButton from '../components/formButton';
 window.navigator.userAgent = 'ReactNative';
 
 
@@ -28,11 +29,11 @@ class ChatRoom extends Component {
 
     setUpRoom = () => {
         this.rooms.map((room) => {
-            return <TouchableOpacity 
-            style={styles.roomButton} 
-            onClick = {
-                this.goToRoom({room})
-            }>
+            return <TouchableOpacity
+                style={styles.roomButton}
+                onClick={
+                    this.goToRoom({ room })
+                }>
                 <Text style={styles.buttonText}>{room}</Text>
             </TouchableOpacity>
         })
@@ -61,7 +62,28 @@ class ChatRoom extends Component {
 
             </View >
         );
-        }
+    }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: Colors.blue,
+        marginBottom: 12,
+        paddingVertical: 12,
+        borderRadius: 4,
+        borderWidth: StyleSheet.hairlineWidth,
+        borderColor: Colors.blue4,
+        marginBottom: 250,
+        marginTop: 30,
+    },
+    text: {
+        color: 'white',
+        textAlign: "center",
+        height: 20
+    }
+});
 
 module.exports = ChatRoom;

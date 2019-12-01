@@ -1,5 +1,5 @@
 import React, { PureComponent, Component } from 'react';
-import { Platform, StyleSheet, Dimensions, ViewScroll, View, Text, Navigator, PropTypes, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, Dimensions, ViewScroll, View, Text, Navigator, PropTypes } from 'react-native';
 import addEventModal from '../components/addEventModal'
 import { Ionicons } from '@expo/vector-icons';
 import color from '../constants/Colors'

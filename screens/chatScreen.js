@@ -1,8 +1,8 @@
 import React, { PureComponent, Component } from 'react';
-import { Platform, StyleSheet, Dimensions, AsyncStorage, View, Text, Navigator, PropTypes, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, Dimensions, AsyncStorage, View, Text, Navigator, PropTypes } from 'react-native';
 import { Bubble, GiftedChat } from 'react-native-gifted-chat'
+import color from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
-import style from "./style"
 import io from 'socket.io-client';
 window.navigator.userAgent = 'ReactNative';
 
@@ -112,14 +112,14 @@ class ChatRoom extends Component {
 
     render() {
         return (
-            <View style={style.container}>
-                <View style={style.header}>
+            <View style={styles.container}>
+                <View style={styles.header}>
                     <Ionicons
                         name={
                             Platform.OS === 'ios' ? 'ios-arrow-dropleft' : 'md-arrow-dropleft'
                         }
                         size={30}
-                        style={style.back}
+                        style={styles.back}
                         onPress={this.handleBackPress}
                     />
                     <Ionicons
@@ -127,7 +127,7 @@ class ChatRoom extends Component {
                             Platform.OS === 'ios' ? 'ios-exit' : 'md-exit'
                         }
                         size={40}
-                        style={style.back}
+                        style={styles.back}
                         onPress={this.handleBackPress}
                     />
                 </View>
@@ -161,5 +161,35 @@ class ChatRoom extends Component {
     }
 
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      // justifyContent: "center",
+      // alignItems: "center"
+      backgroundColor: color.white,
+    },
+    textContainer: {
+      backgroundColor: color.white,
+      // justifyContent: "center",
+       alignItems: "center"
+    },
+    header: {
+      flexDirection: 'row',
+      paddingHorizontal: 25,
+      justifyContent: 'space-between',
+      marginTop: 55,
+    },
+    back: {
+      color: color.blue4,
+       marginBottom: 0,
+      paddingVertical: 0,
+    },
+    unavail: {
+      textAlign: 'center',
+      paddingVertical: 30,
+      paddingHorizontal: 30,
+    },
+  });
 
 module.exports = ChatRoom;
