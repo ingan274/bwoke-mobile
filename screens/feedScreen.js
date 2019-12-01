@@ -1,10 +1,6 @@
 import React, { PureComponent, Component } from 'react';
-<<<<<<< HEAD
-import { Platform, StyleSheet, Dimensions, ViewScroll, View, Text, Navigator, PropTypes, } from 'react-native';
-=======
 import { Platform, StyleSheet, Dimensions, ViewScroll, View, Text, Navigator, PropTypes } from 'react-native';
 import addEventModal from '../components/addEventModal'
->>>>>>> d22c989e85ea6e0f5edd8b98bd1eb10a95b3c758
 import { Ionicons } from '@expo/vector-icons';
 import color from '../constants/Colors'
 window.navigator.userAgent = 'ReactNative';

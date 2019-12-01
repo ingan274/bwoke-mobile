@@ -1,27 +1,3 @@
-<<<<<<< HEAD
-import { View, Text, Image } from 'react-native'
-import { Card, ListItem, Button, Icon, StyleSheet } from 'react-native-elements'
-
-export default function SearchScreen() {
-    return (
-        <View>
-
-            <Card
-                title='HELLO WORLD'
-                image={require('../assets/images/city.gif')}>
-                <Text style={{ marginBottom: 10 }}>
-                    The idea with React Native Elements is more about component structure than actual design.
-                </Text>
-                <Button
-                    icon={<Icon name='code' color='#ffffff' />}
-                    buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-                    title='VIEW NOW' />
-            </Card>
-
-        </View>
-    )
-}
-=======
 import React, { PureComponent, Component } from 'react';
 import { Platform, StyleSheet, Dimensions, ViewScroll, View, Text, Navigator, PropTypes } from 'react-native';
 import addEventModal from '../components/addEventModal'
@@ -91,4 +67,3 @@ const styles = StyleSheet.create({
 });
 
 module.exports = EventFeed;
->>>>>>> d22c989e85ea6e0f5edd8b98bd1eb10a95b3c758
