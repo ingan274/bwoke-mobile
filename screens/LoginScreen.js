@@ -32,7 +32,7 @@ export default class LoginScreen extends Component {
     enterApp = () => {
         const login = {
             username: this.state.username,
-            password: this.state.password
+            password: this.state.password,
         }
 
         fetch('URLLINKHERE', {
@@ -76,7 +76,6 @@ export default class LoginScreen extends Component {
             return <Text style={style.error}>The username and password you entered do not match.</Text>
         }
     };
-
 
     render() {
         return (

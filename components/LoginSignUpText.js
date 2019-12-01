@@ -31,5 +31,6 @@ const styles = StyleSheet.create({
         width: "80%",
         borderBottomColor: '#fff',
         borderBottomWidth: 2,
+        color: '#fff'
     },
 })
