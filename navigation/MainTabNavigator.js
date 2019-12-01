@@ -1,7 +1,6 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator, BottomTabBar, Stylesheet } from 'react-navigation';
-import Colors from '../constants/Colors'
 
 import TabBarIcon from '../components/TabBarIcon';
 import feedScreen from '../screens/feedScreen';
@@ -49,7 +48,7 @@ const MapStack = createStackNavigator(
 MapStack.navigationOptions = {
   tabBarLabel: 'Map',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios-globe' ? 'ios-globe-outline' : 'md-globe'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-map' : 'md-map'} />
   ),
 };
 
