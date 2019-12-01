@@ -21,10 +21,7 @@ import styled from "styled-components/native";
 import Background from "../assets/images/Background.gif";
 import SignUpText from '../components/SignUpText'
 
-export default function LoginScreen() {
-
-    const state = {text: ''};
-    
+export default function LoginScreen() {    
     return (
         <View style={styles.container}>
             <ImageBackground source={Background} style={{ width: '100%', height: '100%' }}>

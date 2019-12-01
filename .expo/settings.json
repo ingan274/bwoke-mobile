@@ -1,18 +1,8 @@
 {
-  "hostType": "lan",
+  "hostType": "tunnel",
   "lanType": "ip",
-<<<<<<< HEAD
-  "dev": false,
-  "minify": true,
-  "urlRandomness": "m3-237",
-=======
   "dev": true,
   "minify": false,
-<<<<<<< HEAD
-  "urlRandomness": "75-sat",
-=======
-  "urlRandomness": "3q-qje",
->>>>>>> c8e36ea26e05071683d16f2dcb60f90017ef234e
->>>>>>> 869e5ec2d9b48f177c9b8da1b8ad4caac3a5c182
+  "urlRandomness": "kb-sws",
   "https": false
 }
