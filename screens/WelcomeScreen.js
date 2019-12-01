@@ -1,5 +1,4 @@
-import * as WebBrowser from 'expo-web-browser';
-import React, { Fragment } from 'react';
+import React, { Fragment, Component, PureComponent } from 'react';
 import {
   Image,
   ImageBackground,
@@ -14,80 +13,64 @@ import {
   // Wrapper,
   View,
   // Dimensions,
-  // TouchableHighlight
+  KeyboardAvoidingView,
 } from 'react-native';
 
 import styled from "styled-components/native";
 // import { MonoText } from '../components/StyledText';
 import Background from "../assets/images/Background.gif"
 
-export default function WelcomeScreen() {
-  return (
-    <View style={styles.container}>
-      <ImageBackground source={Background} style={{ width: '100%', height: '100%' }}>
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../assets/images/bWokeLogoFavicon.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
-        <Title>Stay Woke With bWoke</Title>
-        <TextDescription>
-          Sign up for updates on your favorite charities
+class WelcomeScreen extends Component {
+
+  goToSignUp = () => {
+    const {
+      navigation: { navigate },
+    } = this.props;
+    navigate('SignUp');
+  }
+
+  goToLogin = () => {
+    const {
+      navigation: { navigate },
+    } = this.props;
+    navigate('Login');
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <ImageBackground source={Background} style={{ width: '100%', height: '100%' }}>
+          <View style={styles.welcomeContainer}>
+            <Image
+              source={require('../assets/images/bWokeLogoFavicon.png')}
+              style={styles.welcomeImage}
+            />
+          </View>
+          <Title>Stay Woke With bWoke</Title>
+          <TextDescription>
+            Sign up for updates on your favorite charities
           </TextDescription>
-        <ButtonWrapper>
-          <Fragment>
-            <Button title="Create Account" />
-            <Button transparent title="Login" />
-          </Fragment>
-        </ButtonWrapper>
-      </ImageBackground>
-    </View>
-  );
-}
-
-WelcomeScreen.navigationOptions = {
-  header: null,
-};
-
-function DevelopmentModeNotice() {
-  if (__DEV__) {
-    const learnMoreButton = (
-      <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-        Learn more
-      </Text>
-    );
-
-    return (
-      <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use
-        useful development tools. {learnMoreButton}
-      </Text>
-    );
-  } else {
-    return (
-      <Text style={styles.developmentModeText}>
-        You are not in development mode: your app will run at full speed.
-      </Text>
+          <ButtonWrapper>
+            <Fragment>
+              <Button title="Create Account" onClick={this.goToSignUp} />
+              <Button transparent title="Login" onClick={this.goToLogin} />
+            </Fragment>
+          </ButtonWrapper>
+        </ImageBackground>
+      </View>
     );
   }
+
+
+
+
+  static navigationOptions = {
+    header: null,
+  };
 }
 
-function handleLearnMorePress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/development-mode/'
-  );
-}
+export default WelcomeScreen
 
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/up-and-running/#cant-see-your-changes'
-  );
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -106,7 +89,7 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 30,
     marginBottom: 20,
   },
   welcomeImage: {
@@ -228,9 +211,10 @@ StyledTitle = styled.Text`
 `;
 
 export const Button = ({ onPress, color, ...props }) => {
+
   return (
-    <StyledButton {...props}>
-      <StyledTitle {...props}>{props.title}</StyledTitle>
+    <StyledButton transparent={props.transparent} onPress={props.onClick}>
+      <StyledTitle>{props.title}</StyledTitle>
     </StyledButton>
   );
 };
