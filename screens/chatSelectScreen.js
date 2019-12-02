@@ -4,6 +4,7 @@ import color from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import Forminput from '../components/formInput';
 import FormButton from '../components/formButton';
+import { ScrollView } from 'react-native-gesture-handler';
 window.navigator.userAgent = 'ReactNative';
 
 
@@ -17,7 +18,7 @@ export default class ChatRoom extends Component {
         // save room in local storage
         try {
             await AsyncStorage.setItem('room', `${room}`);
-            console.loe("room entering now: ", room)
+            console.log("room entering now: ", room)
             const {
                 navigation: { navigate },
             } = this.props;
@@ -41,7 +42,7 @@ export default class ChatRoom extends Component {
     }
 
     handleSubmit = () => {
-        rooms.push(this.state.newRoom)
+        this.state.rooms.push(this.state.newRoom)
         this.setUpRoom()
     }
 
@@ -61,8 +62,9 @@ export default class ChatRoom extends Component {
                 />
 
                 <FormButton label="Create Chatroom" onPress={this.handleSubmit} />
-
+                <ScrollView>
                 {this.setUpRoom()}
+                </ScrollView>
 
             </View >
         );

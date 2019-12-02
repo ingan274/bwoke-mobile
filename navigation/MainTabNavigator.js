@@ -23,14 +23,14 @@ const SearchStack = createStackNavigator(
 );
 
 SearchStack.navigationOptions = {
-  tabBarLabel: 'Search',
+  tabBarLabel: 'Home',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-search`
-          : 'md-search'
+          ? `ios-home`
+          : 'md-home'
       }
     />
   )
