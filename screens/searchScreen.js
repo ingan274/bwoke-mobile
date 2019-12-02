@@ -8,13 +8,14 @@ import {
     Text,
     Navigator,
     PropTypes,
+    Image,
     ImageBackground,
     TouchableOpacity,
     ActivityIndicator,
 
 } from 'react-native';
 import addEventModal from '../components/addEventModal'
-import { Card, ListItem, Icon, Header, Image } from 'react-native-elements'
+import { Card, ListItem, Icon, Header,  } from 'react-native-elements'
 import styled from "styled-components/native";
 import { Ionicons } from '@expo/vector-icons';
 import color from '../constants/Colors'
@@ -39,7 +40,7 @@ export default function searchScreen() {
                 shadowColor="#282828"
                 cancelIconColor="#c6c6c6"
                 backgroundColor="#353d5e"
-                placeholder="Search here"
+                placeholder="Search for..."
             />
             <ScrollView
                 horizontal={true}
@@ -51,12 +52,12 @@ export default function searchScreen() {
             >
                 <Trending
                     // transparent
-                    title="Beyonce"
+                    title="St. Jude"
                 // onPress={this.onPress}
                 />
                 <Trending
                     // transparent
-                    title="Michael B. Jordan"
+                    title="United Way"
                 // onPress={this.onPress}
                 />
                 <Trending
@@ -71,7 +72,7 @@ export default function searchScreen() {
                 />
                 <Trending
                     // transparent
-                    title="Drake"
+                    title="SOS Children's Villages"
                 // onPress={this.onPress}
                 />
                 <Trending
@@ -87,153 +88,98 @@ export default function searchScreen() {
             </ScrollView>
 
             <ScrollView>
-                {/* <ImageBackground source={Background} style={{ width: '100%', height: '100%' }}> */}
                 <Card
                     image={require('../assets/images/fakeCardImages/rihanna.jpg')}
-                    // title='HELLO WORLD'
-                    // imageStyle={{ flex: 1, resizeMode: 'cover' }}
+                    featuredTitle='Rihanna'
+                    imageStyle={{ flex: 1 }}
                 >
                     {/* <Image
-                        // style={styles.image}
-                        resizeMode="cover"
-                        source={require('../assets/images/bWokeLogoFavicon.png')}
-                        PlaceholderContent={<ActivityIndicator />}
+                        style={{ }}
+                        source={require('../assets/images/fakeCardImages/rihanna.jpg')}
                     /> */}
                     <Text style={{ marginBottom: 10 }}>
                         The idea with React Native Elements is more about component structure than actual design.
                     </Text>
                     <Button
-                        buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
                         title='VIEW NOW' />
                 </Card>
                 <Card
-                    image={require('../assets/images/fakeCardImages/dunes.jpg')}
-                    // title='HELLO WORLD'
-                    // imageStyle={{ flex: 1, resizeMode: 'cover' }}
+                    image={require('../assets/images/fakeCardImages/justin.jpg')}
+                    featuredTitle='Justin Beiber'
+                    imageStyle={{ flex: 1 }}
                 >
-                    {/* <Image
-                        // style={styles.image}
-                        resizeMode="cover"
-                        source={require('../assets/images/bWokeLogoFavicon.png')}
-                        PlaceholderContent={<ActivityIndicator />}
-                    /> */}
                     <Text style={{ marginBottom: 10 }}>
                         The idea with React Native Elements is more about component structure than actual design.
                     </Text>
                     <Button
-                        buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
                         title='VIEW NOW' />
                 </Card>
                 <Card
-                    image={require('../assets/images/fakeCardImages/station.jpg')}
-                    // title='HELLO WORLD'
-                    // imageStyle={{ flex: 1, resizeMode: 'cover' }}
+                    image={require('../assets/images/fakeCardImages/lebron.jpg')}
+                    featuredTitle='Lebron James'
+                    imageStyle={{ flex: 1 }}
                 >
-                    {/* <Image
-                        // style={styles.image}
-                        resizeMode="cover"
-                        source={require('../assets/images/bWokeLogoFavicon.png')}
-                        PlaceholderContent={<ActivityIndicator />}
-                    /> */}
                     <Text style={{ marginBottom: 10 }}>
                         The idea with React Native Elements is more about component structure than actual design.
                     </Text>
                     <Button
-                        buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
                         title='VIEW NOW' />
                 </Card>
                 <Card
-                    image={require('../assets/images/fakeCardImages/snowy.jpg')}
-                    // title='HELLO WORLD'
-                    // imageStyle={{ flex: 1, resizeMode: 'cover' }}
+                    image={require('../assets/images/fakeCardImages/drake.jpg')}
+                    featuredTitle='Drake'
+                    imageStyle={{ flex: 1 }}
                 >
-                    {/* <Image
-                        // style={styles.image}
-                        resizeMode="cover"
-                        source={require('../assets/images/bWokeLogoFavicon.png')}
-                        PlaceholderContent={<ActivityIndicator />}
-                    /> */}
                     <Text style={{ marginBottom: 10 }}>
                         The idea with React Native Elements is more about component structure than actual design.
                     </Text>
                     <Button
-                        buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
                         title='VIEW NOW' />
                 </Card>
                 <Card
-                    image={require('../assets/images/fakeCardImages/map.jpg')}
-                    // title='HELLO WORLD'
-                    // imageStyle={{ flex: 1, resizeMode: 'cover' }}
+                    image={require('../assets/images/fakeCardImages/serena.jpg')}
+                    featuredTitle='Serena Williams'
+                    imageStyle={{ flex: 1 }}
                 >
-                    {/* <Image
-                        // style={styles.image}
-                        resizeMode="cover"
-                        source={require('../assets/images/bWokeLogoFavicon.png')}
-                        PlaceholderContent={<ActivityIndicator />}
-                    /> */}
                     <Text style={{ marginBottom: 10 }}>
                         The idea with React Native Elements is more about component structure than actual design.
                     </Text>
                     <Button
-                        buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
                         title='VIEW NOW' />
                 </Card>
                 <Card
-                    image={require('../assets/images/fakeCardImages/swim.jpg')}
-                    // title='HELLO WORLD'
-                    // imageStyle={{ flex: 1, resizeMode: 'cover' }}
+                    image={require('../assets/images/fakeCardImages/andrew.jpeg')}
+                    featuredTitle='Andrew Yang'
+                    imageStyle={{ flex: 1 }}
                 >
-                    {/* <Image
-                        // style={styles.image}
-                        resizeMode="cover"
-                        source={require('../assets/images/bWokeLogoFavicon.png')}
-                        PlaceholderContent={<ActivityIndicator />}
-                    /> */}
                     <Text style={{ marginBottom: 10 }}>
                         The idea with React Native Elements is more about component structure than actual design.
                     </Text>
                     <Button
-                        buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
                         title='VIEW NOW' />
                 </Card>
                 <Card
-                    image={require('../assets/images/fakeCardImages/blackandwhite.jpg')}
-                    // title='HELLO WORLD'
-                    // imageStyle={{ flex: 1, resizeMode: 'cover' }}
+                    image={require('../assets/images/fakeCardImages/michael.jpg')}
+                    featuredTitle='Michael B. Jordan'
+                    imageStyle={{ flex: 1 }}
                 >
-                    {/* <Image
-                        // style={styles.image}
-                        resizeMode="cover"
-                        source={require('../assets/images/bWokeLogoFavicon.png')}
-                        PlaceholderContent={<ActivityIndicator />}
-                    /> */}
                     <Text style={{ marginBottom: 10 }}>
                         The idea with React Native Elements is more about component structure than actual design.
                     </Text>
                     <Button
-                        buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
                         title='VIEW NOW' />
                 </Card>
                 <Card
-                    image={require('../assets/images/fakeCardImages/forest.jpg')}
-                    // title='HELLO WORLD'
-                    // imageStyle={{ flex: 1, resizeMode: 'cover' }}
+                    image={require('../assets/images/fakeCardImages/taylor.jpg')}
+                    featuredTitle='Taylor Swift'
+                    imageStyle={{ flex: 1 }}
                 >
-                    {/* <Image
-                        // style={styles.image}
-                        resizeMode="cover"
-                        source={require('../assets/images/bWokeLogoFavicon.png')}
-                        PlaceholderContent={<ActivityIndicator />}
-                    /> */}
                     <Text style={{ marginBottom: 10 }}>
                         The idea with React Native Elements is more about component structure than actual design.
                     </Text>
                     <Button
-                        buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
                         title='VIEW NOW' />
                 </Card>
-                
-                {/* </ImageBackground> */}
             </ScrollView>
         </View>
     );
