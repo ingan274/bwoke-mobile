@@ -21,7 +21,6 @@ class ChatRoom extends Component {
 
     componentDidMount() {
         this.handleUser()
-        this.socketEvents()
     }
 
     handleUser = async () => {
@@ -119,14 +118,6 @@ class ChatRoom extends Component {
                             Platform.OS === 'ios' ? 'ios-arrow-dropleft' : 'md-arrow-dropleft'
                         }
                         size={30}
-                        style={styles.back}
-                        onPress={this.handleBackPress}
-                    />
-                    <Ionicons
-                        name={
-                            Platform.OS === 'ios' ? 'ios-exit' : 'md-exit'
-                        }
-                        size={40}
                         style={styles.back}
                         onPress={this.handleBackPress}
                     />

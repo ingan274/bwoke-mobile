@@ -25,6 +25,7 @@
     "nodemon": "^2.0.1",
     "react": "16.8.3",
     "react-dom": "16.8.3",
+    "react-google-maps": "^9.4.5",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
     "react-native-dynamic-search-bar": "^0.2.1",
     "react-native-dynamic-vector-icons": "github:WrathChaos/react-native-dynamic-vector-icons#expo",

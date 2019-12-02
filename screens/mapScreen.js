@@ -15,8 +15,10 @@ export default class Maps extends Component {
           />
         ));
       }
+
     render() {
         const { region } = this.props
+
         return (
             <MapView
                 style={styles.mapStyle}
