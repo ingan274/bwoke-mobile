@@ -35,7 +35,51 @@ export default class searchScreen extends Component {
 
     SearchBar = () => {
         let search = this.state.search
+        let results = []
 
+        if (this.state.results) {
+
+            // search charities
+            fetch(`URLLINKHEREFROM-CHARITIES/${search}`, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+            }).then(res => res.json())
+                .then((response) => {
+                    results.push(response)
+                })
+                .catch(err => console.warn(err))
+
+            // search Celebrities
+            fetch(`URLLINKHEREFROM-OUR-DATABASE/${search}`, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+            }).then(res => res.json())
+                .then((response) => {
+                    results.push(response)
+                })
+                .catch(err => console.warn(err))
+
+                results.map((result) => {
+                    return (
+                        // THIS DESIGN SHOULD CHANGE
+                        <Card
+                            image={result.imageURL} // check response
+                        >
+                            <Text style={{ marginBottom: 10 }}>
+                                {/* this is where the response text goes */}
+                                {result.text}
+                            </Text>
+                        </Card>
+                    )
+
+                })
+        }
     }
 
     SearchTrendingCharities = (charity) => {
@@ -333,6 +377,7 @@ export default class searchScreen extends Component {
                         {this.topCelebsList()}
                         {this.SearchTrendingCharities()}
                         {this.SearchListCelebs()}
+                        {this.SearchBar()}
                     </ScrollView>
                 </View>
             </TouchableWithoutFeedback>
