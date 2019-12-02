@@ -1,8 +1,11 @@
 {
-  "devToolsPort": 19003,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 1804,
+  "expoServerNgrokUrl": "https://xq-kmj.anonymous.bwoke-mobile.exp.direct",
+  "packagerNgrokUrl": "https://packager.xq-kmj.anonymous.bwoke-mobile.exp.direct",
+  "ngrokPid": 19144,
+  "devToolsPort": 19002,
   "expoServerNgrokUrl": "https://7j-2vq.anonymous.bwoke-mobile.exp.direct",
   "packagerNgrokUrl": "https://packager.7j-2vq.anonymous.bwoke-mobile.exp.direct",
   "ngrokPid": 52997
