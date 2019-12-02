@@ -1,44 +1,49 @@
 import React, { PureComponent, Component } from 'react';
 import { Platform, StyleSheet, Dimensions, ViewScroll, View, Text, Navigator, PropTypes } from 'react-native';
-import addEventModal from '../components/addEventModal'
 import { Ionicons } from '@expo/vector-icons';
+import MapView, { Marker } from 'react-native-maps';
 import color from '../constants/Colors'
+import markers from "./map.json"
 window.navigator.userAgent = 'ReactNative';
-
-
-class Maps extends Component {
-  
-
-
+export default class Maps extends Component {
+    renderMarkers() {
+        return markers.map((place, i) => (
+          <Marker 
+            key={i}
+            title={place.title}
+            coordinate={place.coordinates}
+          />
+        ));
+      }
     render() {
+        const { region } = this.props
         return (
-            <View style={styles.container}>
-
-            </View >
+            <MapView
+                style={styles.mapStyle}
+                initialRegion={{
+                    latitude: 34.0522,
+                    longitude: -118.2437,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                }}
+            >
+                {this.renderMarkers()}
+            </MapView >
         );
     }
-
 }
-
 const styles = StyleSheet.create({
     container: {
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: color.blue,
-        marginBottom: 12,
-        paddingVertical: 12,
-        borderRadius: 4,
-        borderWidth: StyleSheet.hairlineWidth,
-        borderColor: color.green,
-        marginBottom: 250,
-        marginTop: 30,
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    text: {
-        color: 'white',
-        textAlign: "center",
-        height: 20
-    }
+    mapStyle: {
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
+    },
 });
-
-module.exports = Maps;
+Maps.navigationOptions = {
+    header: null,
+};
