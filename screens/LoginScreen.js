@@ -253,7 +253,7 @@ StyledTitle = styled.Text`
 
 export const Button = ({ onPress, color, ...props }) => {
     return (
-        <StyledButton {...props}>
+        <StyledButton {...props} onPress={props.onClick}>
             <StyledTitle {...props}>{props.title}</StyledTitle>
         </StyledButton>
     );
