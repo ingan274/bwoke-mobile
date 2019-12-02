@@ -6,7 +6,7 @@ import color from '../constants/Colors'
 window.navigator.userAgent = 'ReactNative';
 
 
-class EventFeed extends Component {
+export default class EventFeed extends Component {
     state = {
         modalVisible: false,
     };
@@ -20,12 +20,12 @@ class EventFeed extends Component {
     }
 
     getEvents = () => {
-        return  <View style={styles.eventscontainer}>
-                            <Text style={styles.eventTitle}>Title</Text>
-                            <Text style={styles.eventNmae}>Charity Name</Text>
-                            <Text style={styles.eventDate}>Date</Text>
-                            <Text style={styles.eventDescription}>description</Text>
-                        </View>
+        return <View style={styles.eventscontainer}>
+            <Text style={styles.eventTitle}>Title</Text>
+            <Text style={styles.eventNmae}>Charity Name</Text>
+            <Text style={styles.eventDate}>Date</Text>
+            <Text style={styles.eventDescription}>description</Text>
+        </View>
 
         // fetch(`URLHERE`, {
         //     method: 'GET',
@@ -84,4 +84,23 @@ class EventFeed extends Component {
 
 }
 
-module.exports = EventFeed;
+const styles = StyleSheet.create({
+    container: {
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: color.blue,
+        marginBottom: 12,
+        paddingVertical: 12,
+        borderRadius: 4,
+        borderWidth: StyleSheet.hairlineWidth,
+        borderColor: color.blue4,
+        marginBottom: 250,
+        marginTop: 30,
+    },
+    text: {
+        color: 'white',
+        textAlign: 'center',
+        height: 20
+    }
+});

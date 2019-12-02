@@ -16,7 +16,8 @@ class ChatRoom extends Component {
     goToRoom = async (room) => {
         // save room in local storage
         try {
-            await AsyncStorage.setItem('room', room);
+            await AsyncStorage.setItem('room', `${room}`);
+            console.loe("room entering now: ", room)
             const {
                 navigation: { navigate },
             } = this.props;
@@ -28,26 +29,27 @@ class ChatRoom extends Component {
     }
 
     setUpRoom = () => {
-        this.rooms.map((room) => {
-            return <TouchableOpacity
-                style={styles.roomButton}
-                onClick={
-                    this.goToRoom({ room })
-                }>
-                <Text style={styles.buttonText}>{room}</Text>
-            </TouchableOpacity>
+        let roomArray = this.state.rooms
+        return roomArray.map((room, i) => {
+                <TouchableOpacity
+                    // style={styles.roomButton}
+                    key={i}
+                    onClick={this.goToRoom(room)}>
+                    <Text style={styles.buttonText}>{room}</Text>
+                </TouchableOpacity>
         })
     }
 
     handleSubmit = () => {
         rooms.push(this.state.newRoom)
+        this.setUpRoom()
     }
 
 
     render = () => {
         return (
-            <View style={style.container}>
-                {this.setUpRoom()}
+            <View style={styles.container}>
+
 
                 <Forminput
                     value={this.state.newRoom}
@@ -59,6 +61,8 @@ class ChatRoom extends Component {
                 />
 
                 <FormButton label="Create Chatroom" onPress={this.handleSubmit} />
+
+                {this.setUpRoom()}
 
             </View >
         );

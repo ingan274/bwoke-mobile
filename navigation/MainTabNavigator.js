@@ -62,7 +62,7 @@ const FeedStack = createStackNavigator(
 );
 
 FeedStack.navigationOptions = {
-  tabBarLabel: 'Event Feed',
+  tabBarLabel: 'Events',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? `ios-list${focused ? '-box' : ''}` : `md-list${focused ? '-box' : ''}`} />
   ),
