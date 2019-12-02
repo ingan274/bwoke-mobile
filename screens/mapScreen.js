@@ -1,44 +1,40 @@
 import React, { PureComponent, Component } from 'react';
 import { Platform, StyleSheet, Dimensions, ViewScroll, View, Text, Navigator, PropTypes } from 'react-native';
-import addEventModal from '../components/addEventModal'
 import { Ionicons } from '@expo/vector-icons';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import color from '../constants/Colors'
+import makers from "./map.json"
 window.navigator.userAgent = 'ReactNative';
 
+export default class Maps extends Component {
+renderMarkers() {
+    return makers.map((place, i) => (
+      <Marker 
+        key={i}
+        title={place.title}
+        coordinate={place.coordinates}
+      />
+    ));
+  }
 
-class Maps extends Component {
-  
+  render() {
+    const { region } = this.props
 
-
-    render() {
-        return (
-            <View style={styles.container}>
-
-            </View >
-        );
-    }
+    return (
+      <MapView
+      style={styles.container}
+      region={region}
+      showsUserLocation
+      showsMyLocationButton
+      >
+        {this.renderMarkers()}
+      </MapView>
+    );
+  }
 
 }
 
-const styles = StyleSheet.create({
-    container: {
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: color.blue,
-        marginBottom: 12,
-        paddingVertical: 12,
-        borderRadius: 4,
-        borderWidth: StyleSheet.hairlineWidth,
-        borderColor: color.green,
-        marginBottom: 250,
-        marginTop: 30,
-    },
-    text: {
-        color: 'white',
-        textAlign: "center",
-        height: 20
-    }
-});
 
-module.exports = Maps;
+Maps.navigationOptions = {
+    header: null,
+};

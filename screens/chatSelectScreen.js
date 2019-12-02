@@ -1,13 +1,13 @@
 import React, { PureComponent, Component } from 'react';
 import { Platform, StyleSheet, Dimensions, AsyncStorage, View, Text, Navigator, PropTypes, TouchableOpacity } from 'react-native';
-import Colors from '../constants/Colors';
+import color from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import Forminput from '../components/formInput';
 import FormButton from '../components/formButton';
 window.navigator.userAgent = 'ReactNative';
 
 
-class ChatRoom extends Component {
+export default class ChatRoom extends Component {
     state = {
         rooms: ["Immigration", "Women's Rights", "Foster Families", "LGBTQIA", "Civil Rights", "Animals", "Environment", "International", "Community Developement", "Public Policy", "Gun Safety"],
         newRoom: ''
@@ -69,25 +69,28 @@ class ChatRoom extends Component {
     }
 }
 
+
 const styles = StyleSheet.create({
     container: {
         width: "100%",
+        height: "100%",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: Colors.blue,
-        marginBottom: 12,
-        paddingVertical: 12,
+        backgroundColor: color.black,
+        // paddingVertical: 12,
         borderRadius: 4,
         borderWidth: StyleSheet.hairlineWidth,
-        borderColor: Colors.blue4,
-        marginBottom: 250,
-        marginTop: 30,
+        borderColor: color.green,
+        // marginBottom: 250,
+        // marginTop: 30,
     },
     text: {
         color: 'white',
         textAlign: "center",
         height: 20
+    },
+    trendingButton: {
+        borderRadius: 24,
+        marginLeft: 5,
     }
 });
-
-module.exports = ChatRoom;

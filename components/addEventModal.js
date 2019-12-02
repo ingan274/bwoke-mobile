@@ -17,7 +17,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-class eventAddModal extends Component {
+export default class eventAddModal extends Component {
     state = {
         nametitle: '',
         date: '',
@@ -160,5 +160,3 @@ const styles = StyleSheet.create({
         color: Colors.blue2
     }
 });
-
-export default eventAddModal;
