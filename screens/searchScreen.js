@@ -26,9 +26,15 @@ export default class searchScreen extends Component {
 
     state = {
         results: false,
+        search: '',
+    }
+
+    handleSearch = (text) => {
+        this.setState({ search: text })
     }
 
     SearchBar = () => {
+        let search = this.state.search
 
     }
 
@@ -117,10 +123,11 @@ export default class searchScreen extends Component {
         </Text>
                         <Button
                             buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-                            title='VIEW NOW' 
+                            title='VIEW NOW'
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchListCelebs('CELEBRITY')}}/>
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
                     </Card>
                     <Card
                         image={require('../assets/images/fakeCardImages/dunes.jpg')}
@@ -133,7 +140,8 @@ export default class searchScreen extends Component {
                             title='VIEW NOW'
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchListCelebs('CELEBRITY')}} />
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
                     </Card>
                     <Card
                         image={require('../assets/images/fakeCardImages/station.jpg')}
@@ -146,7 +154,8 @@ export default class searchScreen extends Component {
                             title='VIEW NOW'
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchListCelebs('CELEBRITY')}} />
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
                     </Card>
                     <Card
                         image={require('../assets/images/fakeCardImages/snowy.jpg')}
@@ -159,7 +168,8 @@ export default class searchScreen extends Component {
                             title='VIEW NOW'
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchListCelebs('CELEBRITY')}} />
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
                     </Card>
                     <Card
                         image={require('../assets/images/fakeCardImages/map.jpg')}
@@ -172,7 +182,8 @@ export default class searchScreen extends Component {
                             title='VIEW NOW'
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchListCelebs('CELEBRITY')}} />
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
                     </Card>
                     <Card
                         image={require('../assets/images/fakeCardImages/swim.jpg')}
@@ -185,7 +196,8 @@ export default class searchScreen extends Component {
                             title='VIEW NOW'
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchListCelebs('CELEBRITY')}} />
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
                     </Card>
                     <Card
                         image={require('../assets/images/fakeCardImages/blackandwhite.jpg')}
@@ -198,7 +210,8 @@ export default class searchScreen extends Component {
                             title='VIEW NOW'
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchListCelebs('CELEBRITY')}} />
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
                     </Card>
                     <Card
                         image={require('../assets/images/fakeCardImages/forest.jpg')}
@@ -211,7 +224,8 @@ export default class searchScreen extends Component {
                             title='VIEW NOW'
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchListCelebs('CELEBRITY')}} />
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
                     </Card>
                 </View>
 
@@ -235,6 +249,16 @@ export default class searchScreen extends Component {
                         cancelIconColor="#c6c6c6"
                         backgroundColor="#353d5e"
                         placeholder="Search here"
+                        onChangeText={text => {
+                            this.handleSearch(text);
+                        }}
+                        onPressCancel={() => {
+                            this.handleSearch("");
+                        }}
+                        onPress={() => {
+                            this.setState({ results: true })
+                            this.SearchBar()
+                        }}
                     />
                     <ScrollView
                         horizontal={true}
@@ -251,49 +275,56 @@ export default class searchScreen extends Component {
                             title="Feeding America"
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchTrendingCharities('Feeding America')}}
+                                this.SearchTrendingCharities('Feeding America')
+                            }}
                         />
                         <Trending
                             // transparent
                             title="Boys and Girl's Club"
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchTrendingCharities("Boys and Girl's Club")}}
+                                this.SearchTrendingCharities("Boys and Girl's Club")
+                            }}
                         />
                         <Trending
                             // transparent
                             title="American Red Cross"
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchTrendingCharities("American Red Cross")}}
+                                this.SearchTrendingCharities("American Red Cross")
+                            }}
                         />
                         <Trending
                             // transparent
                             title="Americares"
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchTrendingCharities("Americares")}}
+                                this.SearchTrendingCharities("Americares")
+                            }}
                         />
                         <Trending
                             // transparent
                             title="UNICEF USA"
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchTrendingCharities("UNICEF USA")}}
+                                this.SearchTrendingCharities("UNICEF USA")
+                            }}
                         />
                         <Trending
                             // transparent
                             title="Make-A-Wish Foundation"
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchTrendingCharities("Make-A-Wish Foundation")}}
+                                this.SearchTrendingCharities("Make-A-Wish Foundation")
+                            }}
                         />
                         <Trending
                             // transparent
                             title="United Way Worldwide"
                             onClick={() => {
                                 this.setState({ results: true })
-                                this.SearchTrendingCharities("United Way Worldwide")}}
+                                this.SearchTrendingCharities("United Way Worldwide")
+                            }}
                         />
                     </ScrollView>
 
