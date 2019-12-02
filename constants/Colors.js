@@ -1,4 +1,4 @@
-const tintColor = '#ccc';
+const tintColor = '#00aeef';
 
 export default {
   // tab colors
