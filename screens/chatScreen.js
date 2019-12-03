@@ -21,6 +21,7 @@ class ChatRoom extends Component {
 
     componentDidMount() {
         this.handleUser()
+        this.getMessages()
     }
 
     handleUser = async () => {
@@ -81,6 +82,19 @@ class ChatRoom extends Component {
         });
     }
 
+    getMessages = () => {
+
+    }
+
+    saveMessages = (message) => {
+        let save = {
+            message: message,
+            user: this.state.userId,
+            room: this.state.room
+        }
+        
+    }
+
     componentWillUnmount() { }
 
     // message events below ========================================================
@@ -98,6 +112,7 @@ class ChatRoom extends Component {
         });
         this._storeMessages(messages);
         console.log(this.state.messages);
+        this.saveMessages(messages)
     }
 
     // Helper functions
