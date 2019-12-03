@@ -17,14 +17,14 @@
         "title": "Sheltered Partnership",
         "coordinates": {
             "latitude": 34.048921,
-            "longitude":118.254696
+            "longitude": 118.254696
         }
     },
     {
         "title": "The Art of Elysium",
         "coordinates": {
             "latitude": 34.061636,
-            "longitude":-118.293909
+            "longitude": -118.293909
         }
     },
     {
@@ -38,14 +38,14 @@
         "title": "The Life Group LA",
         "coordinates": {
             "latitude": 34.090612,
-            "longitude":-118.367173
+            "longitude": -118.367173
         }
     },
     {
         "title": "Discovery Eye Foundation",
         "coordinates": {
             "latitude": 34.074037,
-            "longitude":-118.380917
+            "longitude": -118.380917
         }
     },
     {
@@ -59,28 +59,28 @@
         "title": "Kitten Rescue",
         "coordinates": {
             "latitude": 34.120698,
-            "longitude":  -118.256303
+            "longitude": -118.256303
         }
     },
     {
         "title": "Heal One World",
         "coordinates": {
             "latitude": 34.047507,
-            "longitude":-118.319231
+            "longitude": -118.319231
         }
     },
     {
         "title": "All Peoples Community Center",
         "coordinates": {
             "latitude": 34.026033,
-            "longitude":-118.256591
+            "longitude": -118.256591
         }
     },
     {
         "title": "Young Storytellers",
         "coordinates": {
             "latitude": 34.046573,
-            "longitude":-118.234069
+            "longitude": -118.234069
         }
     },
     {
@@ -94,73 +94,21 @@
         "title": "Just Detention International",
         "coordinates": {
             "latitude": 34.062425,
-            "longitude":-118.294974
+            "longitude": -118.294974
         }
     },
     {
         "title": "Los Angeles Police Reserve Foundation",
         "coordinates": {
             "latitude": 33.968050,
-            "longitude":-118.398458
+            "longitude": -118.398458
         }
     },
     {
         "title": "Concern Foundation",
         "coordinates": {
             "latitude": 34.040522,
-            "longitude":-118.438514
+            "longitude": -118.438514
         }
     },
-    {
-        "title": "hello",
-        "coordinates": {
-            "latitude": ,
-            "longitude":
-        }
-    },
-    {
-        "title": "hello",
-        "coordinates": {
-            "latitude": ,
-            "longitude":
-        }
-    },
-    {
-        "title": "hello",
-        "coordinates": {
-            "latitude": ,
-            "longitude":
-        }
-    },
-    {
-        "title": "hello",
-        "coordinates": {
-            "latitude": ,
-            "longitude":
-        }
-    },  {
-        "title": "hello",
-        "coordinates": {
-            "latitude": ,
-            "longitude":
-        }
-    },  {
-        "title": "hello",
-        "coordinates": {
-            "latitude": ,
-            "longitude":
-        }
-    },  {
-        "title": "hello",
-        "coordinates": {
-            "latitude": ,
-            "longitude":
-        }
-    },  {
-        "title": "hello",
-        "coordinates": {
-            "latitude": ,
-            "longitude":
-        }
-    }
 ]

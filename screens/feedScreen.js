@@ -1,12 +1,27 @@
-import React, { PureComponent, Component } from 'react';
+import React, { PureComponent, Component, Fragment } from 'react';
 import { Platform, StyleSheet, Dimensions, ViewScroll, View, Text, Navigator, ScrollView, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import { Card, ListItem, Icon, Header, Image } from 'react-native-elements'
+import { ListItem, Icon, Header } from 'react-native-elements'
 import AddEventModal from '../components/addEventModal'
 import { Ionicons } from '@expo/vector-icons';
 import color from '../constants/Colors'
 window.navigator.userAgent = 'ReactNative';
 import styled from "styled-components/native";
 
+import {
+    Card,
+    Caption,
+    ImageBackground,
+    Image,
+    ListView,
+    Columns,
+    Tile,
+    Title,
+    Subtitle,
+    Overlay,
+    Screen,
+    TouchableOpacity,
+    GridRow
+} from '@shoutem/ui';
 
 export default class EventFeed extends Component {
     state = {
@@ -23,23 +38,147 @@ export default class EventFeed extends Component {
 
     getEvents = () => {
         return (
-            <Card>
-                <Text style={{ marginBottom: 10 }}>
-                    Title
-                        </Text>
-                <Text style={{ marginBottom: 10 }}>
-                    Non-profit Charity Name
-                        </Text>
-                <Text style={{ marginBottom: 10 }}>
-                    Date
-                        </Text>
-                <Text style={{ marginBottom: 10 }}>
-                    description
-                        </Text>
-                <Button
-                    buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-                    title='Add to Calander' />
-            </Card>
+            <Fragment>
+                <View styleName="sm-gutter featured">
+                    <ImageBackground
+                        styleName="featured placeholder"
+                        source={require('../assets/images/fakeCardImages/dunes.jpg')}                    >
+                        <Tile>
+                            <Title>Sample</Title>
+                            <View styleName="horizontal md-gutter-top" virtual>
+                                <Caption
+                                    styleName="collapsible"
+                                    numberOfLines={1}>
+                                    Simple address
+                            </Caption>
+                            </View>
+                        </Tile>
+                    </ImageBackground>
+                </View>
+
+
+
+                <GridRow columns={2}>
+                    <TouchableOpacity styleName="flexible">
+                        <Card styleName="flexible">
+                            <Image
+                                styleName="medium-wide"
+                                source={require('../assets/images/fakeCardImages/snowy.jpg')}
+                            />
+                            <View styleName="content">
+                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
+                                <View styleName="horizontal">
+                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
+                                </View>
+                            </View>
+                        </Card>
+                    </TouchableOpacity>
+                    <TouchableOpacity styleName="flexible">
+                        <Card styleName="flexible">
+                            <Image
+                                styleName="medium-wide"
+                                source={require('../assets/images/fakeCardImages/dunes.jpg')}
+                            />
+                            <View styleName="content">
+                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
+                                <View styleName="horizontal">
+                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
+                                </View>
+                            </View>
+                        </Card>
+                    </TouchableOpacity>
+                </GridRow>
+                <GridRow columns={2}>
+                    <TouchableOpacity styleName="flexible">
+                        <Card styleName="flexible">
+                            <Image
+                                styleName="medium-wide"
+                                source={require('../assets/images/fakeCardImages/blackandwhite.jpg')}
+                            />
+                            <View styleName="content">
+                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
+                                <View styleName="horizontal">
+                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
+                                </View>
+                            </View>
+                        </Card>
+                    </TouchableOpacity>
+                    <TouchableOpacity styleName="flexible">
+                        <Card styleName="flexible">
+                            <Image
+                                styleName="medium-wide"
+                                source={require('../assets/images/fakeCardImages/swim.jpg')}
+                            />
+                            <View styleName="content">
+                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
+                                <View styleName="horizontal">
+                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
+                                </View>
+                            </View>
+                        </Card>
+                    </TouchableOpacity>
+                </GridRow>
+                <GridRow columns={2}>
+                    <TouchableOpacity styleName="flexible">
+                        <Card styleName="flexible">
+                            <Image
+                                styleName="medium-wide"
+                                source={require('../assets/images/fakeCardImages/station.jpg')}
+                            />
+                            <View styleName="content">
+                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
+                                <View styleName="horizontal">
+                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
+                                </View>
+                            </View>
+                        </Card>
+                    </TouchableOpacity>
+                    <TouchableOpacity styleName="flexible">
+                        <Card styleName="flexible">
+                            <Image
+                                styleName="medium-wide"
+                                source={require('../assets/images/fakeCardImages/dunes.jpg')}
+                            />
+                            <View styleName="content">
+                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
+                                <View styleName="horizontal">
+                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
+                                </View>
+                            </View>
+                        </Card>
+                    </TouchableOpacity>
+                </GridRow>
+                <GridRow columns={2}>
+                    <TouchableOpacity styleName="flexible">
+                        <Card styleName="flexible">
+                            <Image
+                                styleName="medium-wide"
+                                source={require('../assets/images/fakeCardImages/snowy.jpg')}
+                            />
+                            <View styleName="content">
+                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
+                                <View styleName="horizontal">
+                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
+                                </View>
+                            </View>
+                        </Card>
+                    </TouchableOpacity>
+                    <TouchableOpacity styleName="flexible">
+                        <Card styleName="flexible">
+                            <Image
+                                styleName="medium-wide"
+                                source={require('../assets/images/fakeCardImages/station.jpg')}
+                            />
+                            <View styleName="content">
+                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
+                                <View styleName="horizontal">
+                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
+                                </View>
+                            </View>
+                        </Card>
+                    </TouchableOpacity>
+                </GridRow>
+            </Fragment>
         )
 
 
