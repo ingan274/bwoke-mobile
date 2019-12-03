@@ -111,4 +111,77 @@
             "longitude": -118.438514
         }
     },
+<<<<<<< HEAD
+=======
+    {
+        "title": "The Pacific Heart Lung & Blood Institute",
+        "coordinates": {
+            "latitude": 34.050456,
+            "longitude": -118.433821
+        }
+    },
+    {
+        "title": "Free Arts For Abused Children",
+        "coordinates": {
+            "latitude": 33.935759,
+            "longitude": -118.371039
+        }
+    },
+    {
+        "title": "Animal Defenders International Inc",
+        "coordinates": {
+            "latitude": 34.062984,
+            "longitude": -118.361879
+        }
+    },
+    {
+        "title": "WriteGirl",
+        "coordinates": {
+            "latitude": 34.038620,
+            "longitude": -118.236047
+        }
+    },
+    {
+        "title": "The Dream Builders Project",
+        "coordinates": {
+            "latitude": 34.086552,
+            "longitude": -118.340884
+        }
+    },
+    {
+        "title": "The LEAP Foundation",
+        "coordinates": {
+            "latitude": 34.059643,
+            "longitude": -118.411281
+        }
+    },
+    {
+        "title": "After-School All-Stars",
+        "coordinates": {
+            "latitude": 34.062549,
+            "longitude": -118.358596
+        }
+    },
+    {
+        "title": "Youth Policy Institute | YouthSource Center",
+        "coordinates": {
+            "latitude": 34.285528,
+            "longitude": -118.423330
+        }
+    },
+    {
+        "title": "Jewish Vocational Service",
+        "coordinates": {
+            "latitude": 37.791021,
+            "longitude": -122.401551
+        }
+    },
+    {
+        "title": "Girl Scouts of Greater Los Angeles - Arcadia Service Center",
+        "coordinates": {
+            "latitude": 34.141719,
+            "longitude": -118.028067
+        }
+    }
+>>>>>>> c1c7d98183f0c8aabf8ae06de39f60cb4251a1c9
 ]
