@@ -43,7 +43,7 @@ export default class EventFeed extends Component {
         )
 
 
-        // fetch(`URLHERE`, {
+        // fetch(`https://bwoke.herokuapp.com/events`, {
         //     method: 'GET',
         //     headers: {
         //         Accept: 'application/json',
