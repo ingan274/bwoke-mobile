@@ -1,5 +1,5 @@
 import React, { PureComponent, Component, Fragment } from 'react';
-import { Platform, StyleSheet, Dimensions, ViewScroll, View, Text, Navigator, ScrollView, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { Platform, StyleSheet, Dimensions, ViewScroll, Text, Navigator, ScrollView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { ListItem, Icon, Header } from 'react-native-elements'
 import AddEventModal from '../components/addEventModal'
 import { Ionicons } from '@expo/vector-icons';
@@ -20,7 +20,8 @@ import {
     Overlay,
     Screen,
     TouchableOpacity,
-    GridRow
+    GridRow,
+    View,
 } from '@shoutem/ui';
 
 export default class EventFeed extends Component {
@@ -39,10 +40,11 @@ export default class EventFeed extends Component {
     getEvents = () => {
         return (
             <Fragment>
-                <View styleName="sm-gutter featured">
+                <View styleName="sm-gutter">
                     <ImageBackground
                         styleName="featured placeholder"
-                        source={require('../assets/images/fakeCardImages/dunes.jpg')}                    >
+                        source={require('../assets/images/fakeCardImages/dunes.jpg')}                 
+                        >
                         <Tile>
                             <Title>Sample</Title>
                             <View styleName="horizontal md-gutter-top" virtual>

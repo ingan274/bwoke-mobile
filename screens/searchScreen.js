@@ -342,269 +342,268 @@ export default class searchScreen extends Component {
                             let url = result.url
                             return (
                                 // THIS DESIGN SHOULD CHANGE
-                                <Text style={{ marginBottom: 10 }}>
-                                    {orgName}
-                                </Text>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {tagline}
-                                </Text>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {cause}
-                                </Text>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {mission}
-                                </Text>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {url}
-                                </Text>
-                        )
+                                <Card>
+                                    <Text style={{ marginBottom: 10 }}>
+                                        {orgName}
+                                    </Text>
+                                    <Text style={{ marginBottom: 10 }}>
+                                        {tagline}
+                                    </Text>
+                                    <Text style={{ marginBottom: 10 }}>
+                                        {cause}
+                                    </Text>
+                                    <Text style={{ marginBottom: 10 }}>
+                                        {mission}
+                                    </Text>
+                                    <Text style={{ marginBottom: 10 }}>
+                                        {url}
+                                    </Text>
+                                </Card>
+                            )
 
                         })
-                    })
+                    }
+                })
                 .catch(err => console.warn(err))
         }
-    })
-            .catch(err => console.warn(err))
-                    
+    }
+
+    topCelebsList = () => {
+        if (!this.state.results) {
+            return (
+                <View>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/rihanna.jpg')}
+                        featuredTitle='Rihanna'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/justin.jpg')}
+                        featuredTitle='Justin Beiber'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/lebron.jpg')}
+                        featuredTitle='Lebron James'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/drake.jpg')}
+                        featuredTitle='Drake'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/serena.jpg')}
+                        featuredTitle='Serena Williams'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/andrew.jpeg')}
+                        featuredTitle='Andrew Yang'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/michael.jpg')}
+                        featuredTitle='Michael B. Jordan'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/taylor.jpg')}
+                        featuredTitle='Taylor Swift'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+                        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                </View>
+
+            )
         }
     }
 
-topCelebsList = () => {
-    if (!this.state.results) {
+    render() {
         return (
-            <View>
-                <Card
-                    image={require('../assets/images/fakeCardImages/rihanna.jpg')}
-                    featuredTitle='Rihanna'
-                    imageStyle={{ flex: 1 }}
-                >
-                    <Text style={{ marginBottom: 10 }}>
-                        The idea with React Native Elements is more about component structure than actual design.
-        </Text>
-                    <Button
-                        title='VIEW NOW'
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true })
-                            this.SearchListCelebs('CELEBRITY')
-                        }} />
-                </Card>
-                <Card
-                    image={require('../assets/images/fakeCardImages/justin.jpg')}
-                    featuredTitle='Justin Beiber'
-                    imageStyle={{ flex: 1 }}
-                >
-                    <Text style={{ marginBottom: 10 }}>
-                        The idea with React Native Elements is more about component structure than actual design.
-        </Text>
-                    <Button
-                        title='VIEW NOW'
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true })
-                            this.SearchListCelebs('CELEBRITY')
-                        }} />
-                </Card>
-                <Card
-                    image={require('../assets/images/fakeCardImages/lebron.jpg')}
-                    featuredTitle='Lebron James'
-                    imageStyle={{ flex: 1 }}
-                >
-                    <Text style={{ marginBottom: 10 }}>
-                        The idea with React Native Elements is more about component structure than actual design.
-        </Text>
-                    <Button
-                        title='VIEW NOW'
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
-                            this.SearchListCelebs('CELEBRITY')
-                        }} />
-                </Card>
-                <Card
-                    image={require('../assets/images/fakeCardImages/drake.jpg')}
-                    featuredTitle='Drake'
-                    imageStyle={{ flex: 1 }}
-                >
-                    <Text style={{ marginBottom: 10 }}>
-                        The idea with React Native Elements is more about component structure than actual design.
-        </Text>
-                    <Button
-                        title='VIEW NOW'
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
-                            this.SearchListCelebs('CELEBRITY')
-                        }} />
-                </Card>
-                <Card
-                    image={require('../assets/images/fakeCardImages/serena.jpg')}
-                    featuredTitle='Serena Williams'
-                    imageStyle={{ flex: 1 }}
-                >
-                    <Text style={{ marginBottom: 10 }}>
-                        The idea with React Native Elements is more about component structure than actual design.
-        </Text>
-                    <Button
-                        title='VIEW NOW'
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
-                            this.SearchListCelebs('CELEBRITY')
-                        }} />
-                </Card>
-                <Card
-                    image={require('../assets/images/fakeCardImages/andrew.jpeg')}
-                    featuredTitle='Andrew Yang'
-                    imageStyle={{ flex: 1 }}
-                >
-                    <Text style={{ marginBottom: 10 }}>
-                        The idea with React Native Elements is more about component structure than actual design.
-        </Text>
-                    <Button
-                        title='VIEW NOW'
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
-                            this.SearchListCelebs('CELEBRITY')
-                        }} />
-                </Card>
-                <Card
-                    image={require('../assets/images/fakeCardImages/michael.jpg')}
-                    featuredTitle='Michael B. Jordan'
-                    imageStyle={{ flex: 1 }}
-                >
-                    <Text style={{ marginBottom: 10 }}>
-                        The idea with React Native Elements is more about component structure than actual design.
-        </Text>
-                    <Button
-                        title='VIEW NOW'
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
-                            this.SearchListCelebs('CELEBRITY')
-                        }} />
-                </Card>
-                <Card
-                    image={require('../assets/images/fakeCardImages/taylor.jpg')}
-                    featuredTitle='Taylor Swift'
-                    imageStyle={{ flex: 1 }}
-                >
-                    <Text style={{ marginBottom: 10 }}>
-                        The idea with React Native Elements is more about component structure than actual design.
-                        </Text>
-                    <Button
-                        title='VIEW NOW'
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
-                            this.SearchListCelebs('CELEBRITY')
-                        }} />
-                </Card>
-            </View>
-
-        )
-    }
-}
-
-render() {
-    return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
-            <View style={styles.container}>
-                {/* <Header
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
+                <View style={styles.container}>
+                    {/* <Header
                 // leftComponent={{ icon: 'menu', color: '#fff' }}
                 centerComponent={{ text: 'bWoke', style: { color: '#fff' } }}
                 // rightComponent={{ icon: 'home', color: '#fff' }}
             /> */}
-                <SearchBar
-                    fontColor="#c6c6c6"
-                    iconColor="#c6c6c6"
-                    shadowColor="#282828"
-                    cancelIconColor="#c6c6c6"
-                    backgroundColor="#353d5e"
-                    placeholder="Search here"
-                    onChangeText={text => {
-                        this.handleSearch(text);
-                    }}
-                    onPressCancel={() => {
-                        this.handleSearch("");
-                    }}
-                    onPress={() => {
-                        this.setState({ results: true, resultsCeleb: false, resultsSearch: true, resultsCharity: false })
-                        this.SearchBar()
-                    }}
-                />
-                <ScrollView
-                    horizontal={true}
-                    snapToInterval={200} //your element width
-                    decelerationRate={0.9}
-                    showsHorizontalScrollIndicator={false}
-                    style={{ marginTop: 10, marginBottom: 10, }}
-                // snapToAlignment={"center"}
-                >
-                    {/* should we focus these on charities? */}
+                    <SearchBar
+                        fontColor="#c6c6c6"
+                        iconColor="#c6c6c6"
+                        shadowColor="#282828"
+                        cancelIconColor="#c6c6c6"
+                        backgroundColor="#353d5e"
+                        placeholder="Search here"
+                        onChangeText={text => {
+                            this.handleSearch(text);
+                        }}
+                        onPressCancel={() => {
+                            this.handleSearch("");
+                        }}
+                        onPress={() => {
+                            this.setState({ results: true, resultsCeleb: false, resultsSearch: true, resultsCharity: false })
+                            this.SearchBar()
+                        }}
+                    />
+                    <ScrollView
+                        horizontal={true}
+                        snapToInterval={200} //your element width
+                        decelerationRate={0.9}
+                        showsHorizontalScrollIndicator={false}
+                        style={{ marginTop: 10, marginBottom: 10, }}
+                    // snapToAlignment={"center"}
+                    >
+                        {/* should we focus these on charities? */}
 
-                    <Trending
-                        // transparent
-                        title="Feeding America"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
-                            this.SearchTrendingCharities('Feeding America')
-                        }}
-                    />
-                    <Trending
-                        // transparent
-                        title="Boys and Girl's Club"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
-                            this.SearchTrendingCharities("Boys and Girl's Club")
-                        }}
-                    />
-                    <Trending
-                        // transparent
-                        title="American Red Cross"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
-                            this.SearchTrendingCharities("American Red Cross")
-                        }}
-                    />
-                    <Trending
-                        // transparent
-                        title="Americares"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
-                            this.SearchTrendingCharities("Americares")
-                        }}
-                    />
-                    <Trending
-                        // transparent
-                        title="UNICEF USA"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
-                            this.SearchTrendingCharities("UNICEF USA")
-                        }}
-                    />
-                    <Trending
-                        // transparent
-                        title="Make-A-Wish Foundation"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
-                            this.SearchTrendingCharities("Make-A-Wish Foundation")
-                        }}
-                    />
-                    <Trending
-                        // transparent
-                        title="United Way Worldwide"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
-                            this.SearchTrendingCharities("United Way Worldwide")
-                        }}
-                    />
-                </ScrollView>
+                        <Trending
+                            // transparent
+                            title="Feeding America"
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
+                                this.SearchTrendingCharities('Feeding America')
+                            }}
+                        />
+                        <Trending
+                            // transparent
+                            title="Boys and Girl's Club"
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
+                                this.SearchTrendingCharities("Boys and Girl's Club")
+                            }}
+                        />
+                        <Trending
+                            // transparent
+                            title="American Red Cross"
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
+                                this.SearchTrendingCharities("American Red Cross")
+                            }}
+                        />
+                        <Trending
+                            // transparent
+                            title="Americares"
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
+                                this.SearchTrendingCharities("Americares")
+                            }}
+                        />
+                        <Trending
+                            // transparent
+                            title="UNICEF USA"
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
+                                this.SearchTrendingCharities("UNICEF USA")
+                            }}
+                        />
+                        <Trending
+                            // transparent
+                            title="Make-A-Wish Foundation"
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
+                                this.SearchTrendingCharities("Make-A-Wish Foundation")
+                            }}
+                        />
+                        <Trending
+                            // transparent
+                            title="United Way Worldwide"
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
+                                this.SearchTrendingCharities("United Way Worldwide")
+                            }}
+                        />
+                    </ScrollView>
 
-                {/* should we focus these on celebrities? */}
-                <ScrollView>
-                    {this.topCelebsList()}
-                    {this.SearchTrendingCharities()}
-                    {this.SearchListCelebs()}
-                    {this.SearchBar()}
-                </ScrollView>
-            </View>
-        </TouchableWithoutFeedback>
-    );
-}
+                    {/* should we focus these on celebrities? */}
+                    <ScrollView>
+                        {this.topCelebsList()}
+                        {this.SearchTrendingCharities()}
+                        {this.SearchListCelebs()}
+                        {this.SearchBar()}
+                    </ScrollView>
+                </View>
+            </TouchableWithoutFeedback>
+        );
+    }
 }
 
 searchScreen.navigationOptions = {
@@ -667,6 +666,7 @@ StyledTitleTrend = styled.Text`
     text-align: center;
     font-weight: bold;
     letter-spacing: 2;
+    height: 15px;
     color: ${props => (props.transparent ? "#f3f8ff " : "#666")};
   `;
 

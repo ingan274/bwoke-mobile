@@ -5,6 +5,8 @@ import MapView, { Marker } from 'react-native-maps';
 import color from '../constants/Colors'
 import markers from "./map.json"
 window.navigator.userAgent = 'ReactNative';
+
+
 export default class Maps extends Component {
     renderMarkers() {
         return markers.map((place, i) => (
@@ -42,6 +44,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     mapStyle: {
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        position: "absolute",
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
     },
