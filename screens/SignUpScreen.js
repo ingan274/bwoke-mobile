@@ -40,12 +40,12 @@ export default class SignUpScreen extends Component {
     }
 
     enterApp = () => {
-        let username = this.state.user;
-        let pass = this.state.password;
+        let username = this.state.username;
+        let password = this.state.password;
 
         const newUser = {
             username: username,
-            password: pass
+            password: password
         }
 
         //post call 

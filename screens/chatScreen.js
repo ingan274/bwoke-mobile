@@ -13,7 +13,7 @@ class ChatRoom extends Component {
         super(props);
         this.state = {
             isConnected: false,
-              messages: [],
+            messages: [],
             room: '',
             userId: '',
         };
@@ -41,6 +41,7 @@ class ChatRoom extends Component {
         // GET SOCKET ID AND SET THE STATE in local storage
         try {
             this.setState({ room: room })
+            this.getMessages()
             this.socketEvents()
         } catch (error) {
             // Error retrieving data
@@ -48,7 +49,6 @@ class ChatRoom extends Component {
         }
     }
 
-    //${this.state.socketNum}
     socketEvents = () => {
         console.log("------ CONNECT EVENTS ------")
 
@@ -81,6 +81,31 @@ class ChatRoom extends Component {
         });
     }
 
+    getMessages = () => {
+        fetch(`URLLINKHERE/chat/${this.state.room}`, {
+            method: 'get',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then(res => res.json())
+            .then((response) => {
+                for (let message of response) {
+                    this._storeMessages(message)
+                }
+            })
+            .catch(err => console.warn(err))
+    }
+
+    saveMessages = (message) => {
+        let save = {
+            message: message,
+            user: this.state.userId,
+            room: this.state.room
+        }
+
+    }
+
     componentWillUnmount() { }
 
     // message events below ========================================================
@@ -92,12 +117,33 @@ class ChatRoom extends Component {
      * and store it in this component's state.
      */
     onSend = (messages = []) => {
+        let message = messages[0]
+        let user = this.state.userId
+        let room = this.state.room
         this.socket.emit('chat message', {
-            message: messages[0],
-            room: this.state.socketNum
+            message: message,
+            room: room
         });
         this._storeMessages(messages);
         console.log(this.state.messages);
+        this.saveMessages(messages)
+
+        fetch('URLLINKHERE/chat', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                message: message,
+                user: user,
+                room: room
+            })
+        }).then(res => res.json())
+            .then((response) => {
+                console.log("message posted")
+            })
+            .catch(err => console.warn(err))
     }
 
     // Helper functions
@@ -107,6 +153,7 @@ class ChatRoom extends Component {
                 messages: GiftedChat.append(previousState.messages, messages),
             };
         });
+
     }
 
     render() {
@@ -155,32 +202,32 @@ class ChatRoom extends Component {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      // justifyContent: "center",
-      // alignItems: "center"
-      backgroundColor: color.white,
+        flex: 1,
+        // justifyContent: "center",
+        // alignItems: "center"
+        backgroundColor: color.white,
     },
     textContainer: {
-      backgroundColor: color.white,
-      // justifyContent: "center",
-       alignItems: "center"
+        backgroundColor: color.white,
+        // justifyContent: "center",
+        alignItems: "center"
     },
     header: {
-      flexDirection: 'row',
-      paddingHorizontal: 25,
-      justifyContent: 'space-between',
-      marginTop: 55,
+        flexDirection: 'row',
+        paddingHorizontal: 25,
+        justifyContent: 'space-between',
+        marginTop: 55,
     },
     back: {
-      color: color.blue4,
-       marginBottom: 0,
-      paddingVertical: 0,
+        color: color.blue4,
+        marginBottom: 0,
+        paddingVertical: 0,
     },
     unavail: {
-      textAlign: 'center',
-      paddingVertical: 30,
-      paddingHorizontal: 30,
+        textAlign: 'center',
+        paddingVertical: 30,
+        paddingHorizontal: 30,
     },
-  });
+});
 
 module.exports = ChatRoom;
