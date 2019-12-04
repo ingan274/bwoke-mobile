@@ -82,7 +82,7 @@ class ChatRoom extends Component {
     }
 
     getMessages = () => {
-        fetch(`URLLINKHERE/chat/${this.state.room}`, {
+        fetch(`https://bwoke.herokuapp.com/chat/${this.state.room}`, {
             method: 'get',
             headers: {
                 Accept: 'application/json',
@@ -95,15 +95,6 @@ class ChatRoom extends Component {
                 }
             })
             .catch(err => console.warn(err))
-    }
-
-    saveMessages = (message) => {
-        let save = {
-            message: message,
-            user: this.state.userId,
-            room: this.state.room
-        }
-
     }
 
     componentWillUnmount() { }
@@ -126,9 +117,8 @@ class ChatRoom extends Component {
         });
         this._storeMessages(messages);
         console.log(this.state.messages);
-        this.saveMessages(messages)
 
-        fetch('URLLINKHERE/chat', {
+        fetch('https://bwoke.herokuapp.com/chat', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
