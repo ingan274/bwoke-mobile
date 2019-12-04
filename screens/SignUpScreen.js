@@ -49,7 +49,7 @@ export default class SignUpScreen extends Component {
         }
 
         //post call 
-        fetch('URLGOESHERE', {
+        fetch('https://bwoke.herokuapp.com/signup', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

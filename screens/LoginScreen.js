@@ -35,7 +35,7 @@ export default class LoginScreen extends Component {
             password: this.state.password,
         }
 
-        fetch('URLLINKHERE', {
+        fetch('https://bwoke.herokuapp.com/login', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
