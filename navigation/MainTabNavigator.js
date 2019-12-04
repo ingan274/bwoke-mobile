@@ -6,7 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import feedScreen from '../screens/feedScreen';
 import mapScreen from '../screens/mapScreen';
 import chatScreen from './ChatNavigator';
-// import chatSelect from '../screens/chatSelectScreen';
+// import chatScreen from '../screens/chatSelectScreen';
 import searchScreen from '../screens/searchScreen';
 
 // import Icon from '../assets/images/bWokeLogoFavicon';
@@ -73,7 +73,7 @@ FeedStack.path = '';
 
 const ChatStack = createStackNavigator(
   {
-    Chat: chatScreen, // CHANGE THIS TO CHAT AND MAYBE CHAT ROOM?
+    Chat: chatScreen,
   },
   config
 );
