@@ -603,7 +603,6 @@ StyledTitleTrend = styled.Text`
     text-align: center;
     font-weight: bold;
     letter-spacing: 2;
-    height: 15px;
     color: ${props => (props.transparent ? "#f3f8ff " : "#666")};
   `;
 
