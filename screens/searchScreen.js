@@ -208,7 +208,7 @@ export default class searchScreen extends Component {
         if (this.state.resultsSearch) {
 
             // search charities
-            fetch(`URL/${search}`, {
+            fetch(`https://bwoke.herokuapp.com/search/${search}`, {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json',
@@ -242,7 +242,7 @@ export default class searchScreen extends Component {
 
         if (this.state.resultsCharity) {
 
-            fetch(`URL/charity/${charity}`, {
+            fetch(`https://bwoke.herokuapp.com/search/charity/${charity}`, {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json',
@@ -250,23 +250,43 @@ export default class searchScreen extends Component {
                 },
             }).then(res => res.json())
                 .then((response) => {
-                    response.map((result) => {
+                    if (response.data === "none") {
+                        return (
+                            // THIS DESIGN SHOULD CHANGE FOR NO RESULTS
+                            <Card>
+                                <Text style={{ marginBottom: 10 }}>
+                                    Sorry There are No Results. Please try another search.
+                                </Text>
+                            </Card>
+                        )
+                    } else {
+                        let orgName = response.name
+                        let tagline = responsetagLine
+                        let cause = response.cause
+                        let mission = responsemission
+                        let url = response.url
+
                         return (
                             // THIS DESIGN SHOULD CHANGE
                             <Card>
                                 <Text style={{ marginBottom: 10 }}>
-                                    {result.organization.charityName}
+                                    {orgName}
                                 </Text>
                                 <Text style={{ marginBottom: 10 }}>
-                                    {result.cause.causeName}
+                                    {tagline}
                                 </Text>
                                 <Text style={{ marginBottom: 10 }}>
-                                    {result.mission}
+                                    {cause}
+                                </Text>
+                                <Text style={{ marginBottom: 10 }}>
+                                    {mission}
+                                </Text>
+                                <Text style={{ marginBottom: 10 }}>
+                                    {url}
                                 </Text>
                             </Card>
                         )
-
-                    })
+                    }
                 })
                 .catch(err => console.warn(err))
         }
@@ -275,7 +295,7 @@ export default class searchScreen extends Component {
     SearchListCelebs = (celebrities) => {
         if (this.state.resultsCeleb) {
 
-            fetch(`URLLINKHEREFROM-OUR-DATABASE/celeb/${celebrities}`, {
+            fetch(`https://bwoke.herokuapp.com/search/celeb/${celebrities}`, {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json',
@@ -458,7 +478,7 @@ export default class searchScreen extends Component {
                             this.handleSearch("");
                         }}
                         onPress={() => {
-                            this.setState({ results: true, resultsCeleb: false, resultsSearch: true , resultsCharity: false })
+                            this.setState({ results: true, resultsCeleb: false, resultsSearch: true, resultsCharity: false })
                             this.SearchBar()
                         }}
                     />
@@ -476,7 +496,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="Feeding America"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
                                 this.SearchTrendingCharities('Feeding America')
                             }}
                         />
@@ -484,7 +504,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="Boys and Girl's Club"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
                                 this.SearchTrendingCharities("Boys and Girl's Club")
                             }}
                         />
@@ -492,7 +512,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="American Red Cross"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true})
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
                                 this.SearchTrendingCharities("American Red Cross")
                             }}
                         />
@@ -500,7 +520,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="Americares"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
                                 this.SearchTrendingCharities("Americares")
                             }}
                         />
@@ -508,7 +528,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="UNICEF USA"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true})
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
                                 this.SearchTrendingCharities("UNICEF USA")
                             }}
                         />
@@ -516,7 +536,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="Make-A-Wish Foundation"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
                                 this.SearchTrendingCharities("Make-A-Wish Foundation")
                             }}
                         />
@@ -524,7 +544,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="United Way Worldwide"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
                                 this.SearchTrendingCharities("United Way Worldwide")
                             }}
                         />

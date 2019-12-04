@@ -40,7 +40,7 @@ export default class eventAddModal extends Component {
         }
 
         if (title && date && name && description) {
-            fetch(`URLHERE`, {
+            fetch(`https://bwoke.herokuapp.com/events`, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
