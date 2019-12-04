@@ -307,6 +307,7 @@ export default class searchScreen extends Component {
     topCelebsList = () => {
         if (!this.state.results) {
             return (
+                
                 <View>
                     <Card
                         image={require('../assets/images/fakeCardImages/rihanna.jpg')}
