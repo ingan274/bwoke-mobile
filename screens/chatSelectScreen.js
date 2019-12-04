@@ -1,9 +1,13 @@
-import React, { PureComponent, Component } from 'react';
+import React, { PureComponent, Component, Fragment } from 'react';
 import { Platform, StyleSheet, Dimensions, AsyncStorage, View, Text, Navigator, PropTypes, TouchableOpacity } from 'react-native';
 import color from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import Forminput from '../components/formInput';
 import FormButton from '../components/formButton';
+import {
+    Header,
+    ListItem,
+} from 'react-native-elements';
 import { ScrollView } from 'react-native-gesture-handler';
 window.navigator.userAgent = 'ReactNative';
 
@@ -13,6 +17,89 @@ export default class ChatRoom extends Component {
         rooms: ["Immigration", "Women's Rights", "Foster Families", "LGBTQIA", "Civil Rights", "Animals", "Environment", "International", "Community Developement", "Public Policy", "Gun Safety"],
         newRoom: ''
     }
+
+    avatar = [
+        {
+            name: 'Amy Farha',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+            subtitle: 'Vice President'
+        },
+        {
+            name: 'Chris Jackson',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            subtitle: 'Vice Chairman'
+        },
+        {
+            name: 'Chris Jackson',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            subtitle: 'Vice Chairman'
+        },
+        {
+            name: 'Chris Jackson',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            subtitle: 'Vice Chairman'
+        },
+        {
+            name: 'Chris Jackson',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            subtitle: 'Vice Chairman'
+        },
+        {
+            name: 'Chris Jackson',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            subtitle: 'Vice Chairman'
+        },
+        {
+            name: 'Chris Jackson',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            subtitle: 'Vice Chairman'
+        },
+        {
+            name: 'Chris Jackson',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            subtitle: 'Vice Chairman'
+        },
+        {
+            name: 'Amy Farha',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+            subtitle: 'Vice President'
+        },
+        {
+            name: 'Chris Jackson',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            subtitle: 'Vice Chairman'
+        },
+        {
+            name: 'Chris Jackson',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            subtitle: 'Vice Chairman'
+        },
+        {
+            name: 'Chris Jackson',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            subtitle: 'Vice Chairman'
+        },
+        {
+            name: 'Chris Jackson',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            subtitle: 'Vice Chairman'
+        },
+        {
+            name: 'Chris Jackson',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            subtitle: 'Vice Chairman'
+        },
+        {
+            name: 'Chris Jackson',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            subtitle: 'Vice Chairman'
+        },
+        {
+            name: 'Chris Jackson',
+            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            subtitle: 'Vice Chairman'
+        },
+    ]
 
     goToRoom = async (room) => {
         // save room in local storage
@@ -32,12 +119,12 @@ export default class ChatRoom extends Component {
     setUpRoom = () => {
         let roomArray = this.state.rooms
         return roomArray.map((room, i) => {
-                <TouchableOpacity
-                    // style={styles.roomButton}
-                    key={i}
-                    onClick={this.goToRoom(room)}>
-                    <Text style={styles.buttonText}>{room}</Text>
-                </TouchableOpacity>
+            <TouchableOpacity
+                // style={styles.roomButton}
+                key={i}
+                onClick={this.goToRoom(room)}>
+                <Text style={styles.buttonText}>{room}</Text>
+            </TouchableOpacity>
         })
     }
 
@@ -48,25 +135,49 @@ export default class ChatRoom extends Component {
 
 
     render = () => {
+
         return (
-            <View style={styles.container}>
-
-
-                <Forminput
-                    value={this.state.newRoom}
-                    onChangeText={(event) => this.setState({ newRoom: event })}
-                    placeholder="New Chat Room"
-                    name="newChatroom"
-                    autoCorrect={true}
-                    returnKeyType="done"
+            <Fragment>
+                <Header
+                    statusBarProps={{ barStyle: 'light-content' }}
+                    barStyle="light-content" // or directly
+                    // leftComponent={<MyCustomLeftComponent />}
+                    centerComponent={{ text: 'bWoke', style: { color: '#fff' } }}
+                    containerStyle={{
+                        backgroundColor: '#000',
+                        justifyContent: 'space-around',
+                    }}
                 />
-
-                <FormButton label="Create Chatroom" onPress={this.handleSubmit} />
                 <ScrollView>
-                {this.setUpRoom()}
-                </ScrollView>
+                    <View style={styles.container}>
 
-            </View >
+                        {
+                            this.avatar.map((l, i) => (
+                                <ListItem
+                                    key={i}
+                                    leftAvatar={{ source: { uri: l.avatar_url } }}
+                                    title={l.name}
+                                    subtitle={l.subtitle}
+                                    bottomDivider
+                                    chevron
+                                    width={'100%'}
+                                />
+                            ))
+                        }
+                        {/* <Forminput
+                        value={this.state.newRoom}
+                        // onChangeText={(event) => this.setState({ newRoom: event })}
+                        placeholder="New Chat Room"
+                        name="newChatroom"
+                        autoCorrect={true}
+                        returnKeyType="done"
+                    />
+
+                    <FormButton label="Create Chatroom" onPress={this.handleSubmit} /> */}
+                        {/* {this.setUpRoom()} */}
+                    </View >
+                </ScrollView>
+            </Fragment>
         );
     }
 }
