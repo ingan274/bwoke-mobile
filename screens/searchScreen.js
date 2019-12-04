@@ -27,7 +27,6 @@ window.navigator.userAgent = 'ReactNative';
 import Background from "../assets/images/bWokeLogoFavicon.png";
 import SearchBar from 'react-native-dynamic-search-bar';
 
-
 // export default function searchScreen() {
 //     return (
 //         <View style={styles.container}>
