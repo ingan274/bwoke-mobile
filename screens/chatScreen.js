@@ -175,6 +175,7 @@ class ChatRoom extends Component {
                     onSend={messages => this.onSend(messages)}
                     user={{
                         _id: this.state.userId,
+                        name: this.state.userId,
                     }}
                     shouldUpdateMessage={() => true}
                 />
