@@ -44,7 +44,7 @@ export default class LoginScreen extends Component {
             body: JSON.stringify(login)
         }).then(res => res.json())
             .then((response) => {
-                if (response.mysqlID === "none") {
+                if (response.error === "true") {
                     this.setState({ error: true });
                 } else {
                     let username = this.state.username
