@@ -1,5 +1,5 @@
 import React, { PureComponent, Component, Fragment } from 'react';
-import { Platform, StyleSheet, Dimensions, ViewScroll, View, Text, Navigator, ScrollView, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { Platform, StyleSheet, Dimensions, ViewScroll, Text, Navigator, ScrollView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { ListItem, Icon, Header } from 'react-native-elements'
 import AddEventModal from '../components/addEventModal'
 import { Ionicons } from '@expo/vector-icons';
@@ -20,8 +20,11 @@ import {
     Overlay,
     Screen,
     TouchableOpacity,
-    GridRow
+    GridRow,
+    View,
 } from '@shoutem/ui';
+import Draggable from 'react-native-draggable';
+
 
 export default class EventFeed extends Component {
     state = {
@@ -39,10 +42,19 @@ export default class EventFeed extends Component {
     getEvents = () => {
         return (
             <Fragment>
-                <View styleName="sm-gutter featured">
+                <View >
+                    <Draggable x={75} y={100} renderSize={56} renderColor='black' renderText='A' isCircle shouldReverse onShortPressRelease={() => alert('touched!!')} />
+                    <Draggable x={200} y={300} renderColor='red' renderText='B' />
+                    <Draggable />
+                    <Draggable x={50} y={50}>
+                        {/* <YourComponent /> */}
+                    </Draggable>
+                </View>
+                <View styleName="sm-gutter">
                     <ImageBackground
                         styleName="featured placeholder"
-                        source={require('../assets/images/fakeCardImages/dunes.jpg')}                    >
+                        source={require('../assets/images/fakeCardImages/dunes.jpg')}
+                    >
                         <Tile>
                             <Title>Sample</Title>
                             <View styleName="horizontal md-gutter-top" virtual>

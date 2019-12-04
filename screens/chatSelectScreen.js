@@ -138,7 +138,7 @@ export default class ChatRoom extends Component {
 
         return (
             <Fragment>
-                <Header
+                {/* <Header
                     statusBarProps={{ barStyle: 'light-content' }}
                     barStyle="light-content" // or directly
                     // leftComponent={<MyCustomLeftComponent />}
@@ -147,7 +147,7 @@ export default class ChatRoom extends Component {
                         backgroundColor: '#000',
                         justifyContent: 'space-around',
                     }}
-                />
+                /> */}
                 <ScrollView>
                     <View style={styles.container}>
 
