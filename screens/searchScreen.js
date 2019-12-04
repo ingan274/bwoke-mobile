@@ -28,6 +28,23 @@ import Background from "../assets/images/bWokeLogoFavicon.png";
 import SearchBar from 'react-native-dynamic-search-bar';
 import { FA5Style } from '@expo/vector-icons/build/FontAwesome5';
 
+// import {
+//     Card,
+//     Caption,
+//     ImageBackground,
+//     Image,
+//     ListView,
+//     Columns,
+//     Tile,
+//     Title,
+//     Subtitle,
+//     Overlay,
+//     Screen,
+//     TouchableOpacity,
+//     GridRow,
+//     View,
+// } from '@shoutem/ui';
+
 // ISABEL'S CODE
 export default class searchScreen extends Component {
 
