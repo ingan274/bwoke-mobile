@@ -37,82 +37,82 @@ export default class ChatRoom extends Component {
         {
             name: 'Feeding America',
             avatar_url: 'https://bit.ly/386i8AE',
-            // subtitle: 'Vice President'
+            room: 'feeding-america',
         },
         {
             name: "Boys and Girl's Club",
             avatar_url: 'https://bit.ly/34M9tB7',
-            // subtitle: 'Vice Chairman'
+            room: 'boysandgirlsclub',
         },
         {
             name: 'American Red Cross',
             avatar_url: 'https://bit.ly/34O6MiE',
-            // subtitle: 'Vice Chairman'
+            room: 'americanredcross',
         },
         {
             name: 'Americares',
             avatar_url: 'https://bit.ly/2rbH9cY',
-            // subtitle: 'Vice Chairman'
+            room: 'americares',
         },
         {
             name: 'UNICEF USA',
             avatar_url: 'https://bit.ly/2Lp9X8W',
-            // subtitle: 'Vice Chairman'
+            room: 'unicef-usa',
         },
         {
             name: 'Make-A-Wish Foundation',
             avatar_url: 'https://bit.ly/2RgaXj9',
-            // subtitle: 'Vice Chairman'
+            room: 'make-a-wish-foundation'
         },
         {
             name: 'United Way Worldwide',
             avatar_url: 'https://bit.ly/2rijtUd',
-            // subtitle: 'Vice Chairman'
+            room: 'united-way-worldwide',
         },
         {
             name: 'Task Force for Global Health',
             avatar_url: 'https://bit.ly/34OigCK',
-            // subtitle: 'Vice Chairman'
+            room: 'task-force-for-global-health',
         },
         {
             name: 'The Salvation Army',
             avatar_url: 'https://bit.ly/34O9DrS',
-            // subtitle: 'Vice President'
+            room: 'the-salvation-army'
         },
         {
             name: "St. Jude Children's Research Hospital",
             avatar_url: 'https://bit.ly/2YdoM3i',
-            // subtitle: 'Vice Chairman'
+            room: "st-jude-childrens-research-hospital"
         },
         {
             name: 'Direct Relief',
             avatar_url: 'https://bit.ly/2OTiCma',
-            // subtitle: 'Vice Chairman'
+            room: 'directrelief'
         },
         {
             name: 'Habitat for Humanity',
             avatar_url: 'https://bit.ly/2OKc3SC',
-            // subtitle: 'Vice Chairman'
+             room: 'habitat-for-humanity',
         },
         {
             name: 'YMCA',
             avatar_url: 'https://bit.ly/33PtQMK',
-            // subtitle: 'Vice Chairman'
+            room: 'ymca',
         },
         {
             name: 'Goodwill',
             avatar_url: 'https://bit.ly/34RCXgV',
-            // subtitle: 'Vice Chairman'
+            room: 'goodwill'
         },
         {
             name: 'American Cancer Society',
             avatar_url: 'https://bit.ly/2DLncfP',
-            // subtitle: 'Vice Chairman'
+            room: 'american-cancer-society'
         },
         {
             name: 'Food for the Poor',
             avatar_url: 'https://bit.ly/2LjIGVl',
-            // subtitle: 'Vice Chairman'
+            room: 'food-for-the-poor'
         },
     ];
 
@@ -154,7 +154,7 @@ export default class ChatRoom extends Component {
                 <ScrollView>
                     <View style={styles.container}>
                         {this.avatar.map((l, i) => (
-                            <TouchableOpacity onPress={() => this.goToRoom(l.name)} key={i} style = {styles.list}>
+                            <TouchableOpacity onPress={() => this.goToRoom(l.room)} key={i} style = {styles.list}>
                                 <ListItem
                                     key={i}
                                     leftAvatar={{ source: { uri: l.avatar_url } }}

@@ -30,9 +30,6 @@ export default class searchScreen extends Component {
     handleSearch = text => {
         this.setState({ search: text });
     };
-    // componentDidMount() {
-    //     this.refs.searchBar.focus();
-    // };
     SearchBar = () => {
         let search = this.state.search;
         if (this.state.resultsSearch) {
@@ -71,29 +68,32 @@ export default class searchScreen extends Component {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
                 },
-            })
-                .then(res => res.json())
+            }).then(res => res.json())
                 .then(response => {
-                    response.map(result => {
-                        return (
-                            // THIS DESIGN SHOULD CHANGE
-                            <Card>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {result.organization.charityName}
-                                </Text>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {result.cause.causeName}
-                                </Text>
-                                <Text style={{ marginBottom: 10 }}>{result.mission}</Text>
-                            </Card>
-                        );
-                    });
+                    console.log(response)
+                    return (
+                        // THIS DESIGN SHOULD CHANGE
+                        <Card>
+                            <Text style={{ marginBottom: 10 }}>
+                                {response.name}
+                            </Text>
+                            <Text style={{ marginBottom: 10 }}>
+                                {response.tagline}
+                            </Text>
+                            <Text style={{ marginBottom: 10 }}>
+                                {response.cause}
+                            </Text>
+                            <Text style={{ marginBottom: 10 }}>
+                                {response.url}
+                            </Text>
+                            <Text style={{ marginBottom: 10 }}>{response.mission}</Text>
+                        </Card>
+                    );
                 })
                 .catch(err => console.warn(err));
         }
 
     };
-
     SearchListCelebs = celebrities => {
         if (this.state.resultsCeleb) {
             fetch(`https://bwoke.herokuapp.com/search/celeb/${celebrities}`, {
@@ -105,19 +105,20 @@ export default class searchScreen extends Component {
             })
                 .then(res => res.json())
                 .then(response => {
-                    response.map(result => {
-                        return (
-                            // THIS DESIGN SHOULD CHANGE
-                            <Card
-                                image={result.imageURL} // check response
-                            >
-                                <Text style={{ marginBottom: 10 }}>
-                                    {/* this is where the response text goes */}
-                                    {result.text}
-                                </Text>
-                            </Card>
-                        );
-                    });
+                    console.log(response)
+                    //   response.map(result => {
+                    //     return (
+                    //       // THIS DESIGN SHOULD CHANGE
+                    //       <Card
+                    //         image={result.imageURL} // check response
+                    //       >
+                    //         <Text style={{ marginBottom: 10 }}>
+                    //           {/* this is where the response text goes */}
+                    //           {result.text}
+                    //         </Text>
+                    //       </Card>
+                    //     );
+                    //   });
                 })
                 .catch(err => console.warn(err));
         }
@@ -126,17 +127,20 @@ export default class searchScreen extends Component {
     topCelebsList = () => {
         if (!this.state.results) {
             return (
-                <View>
+                <View  >
                     <Card
                         image={require('../assets/images/fakeCardImages/rihanna.jpg')}
                         featuredTitle="Rihanna"
-                        imageStyle={{ flex: 1 }}>
-                        <Text>Believe Foundation</Text>
+                        imageStyle={{ flex: 1, width: 350 }}
+                    >
+                        <Text style={{ marginBottom: 10, width: '110%' }}>
+                        </Text>
                         <Button
                             title="VIEW NOW"
                             onClick={() => {
                                 this.setState({ results: true, resultsCeleb: true });
                                 this.SearchListCelebs('CELEBRITY');
+                                this.SearchListCelebs('Rihanna');
                             }}
                         />
                     </Card>
@@ -150,6 +154,7 @@ export default class searchScreen extends Component {
                             onClick={() => {
                                 this.setState({ results: true, resultsCeleb: true });
                                 this.SearchListCelebs('CELEBRITY');
+                                this.SearchListCelebs('Justin Beiber');
                             }}
                         />
                     </Card>
@@ -168,6 +173,7 @@ export default class searchScreen extends Component {
                                     resultsCharity: false,
                                 });
                                 this.SearchListCelebs('CELEBRITY');
+                                this.SearchListCelebs('Lebron James');
                             }}
                         />
                     </Card>
@@ -186,6 +192,7 @@ export default class searchScreen extends Component {
                                     resultsCharity: false,
                                 });
                                 this.SearchListCelebs('CELEBRITY');
+                                this.SearchListCelebs('Drake');
                             }}
                         />
                     </Card>
@@ -204,6 +211,7 @@ export default class searchScreen extends Component {
                                     resultsCharity: false,
                                 });
                                 this.SearchListCelebs('CELEBRITY');
+                                this.SearchListCelebs('Serena Williams');
                             }}
                         />
                     </Card>
@@ -222,6 +230,7 @@ export default class searchScreen extends Component {
                                     resultsCharity: false,
                                 });
                                 this.SearchListCelebs('CELEBRITY');
+                                this.SearchListCelebs('Andrew Yang');
                             }}
                         />
                     </Card>
@@ -240,6 +249,7 @@ export default class searchScreen extends Component {
                                     resultsCharity: false,
                                 });
                                 this.SearchListCelebs('CELEBRITY');
+                                this.SearchListCelebs('Michael B. Jordan');
                             }}
                         />
                     </Card>
@@ -258,6 +268,7 @@ export default class searchScreen extends Component {
                                     resultsCharity: false,
                                 });
                                 this.SearchListCelebs('CELEBRITY');
+                                this.SearchListCelebs('Taylor Swift');
                             }}
                         />
                     </Card>
@@ -265,13 +276,15 @@ export default class searchScreen extends Component {
             );
         }
     };
-
     render() {
-
-
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.container}>
+                    {/* <Header
+                // leftComponent={{ icon: 'menu', color: '#fff' }}
+                centerComponent={{ text: 'bWoke', style: { color: '#fff' } }}
+                // rightComponent={{ icon: 'home', color: '#fff' }}
+            /> */}
                     {/* <SearchBar
                         fontColor="#c6c6c6"
                         iconColor="#c6c6c6"
@@ -322,7 +335,7 @@ export default class searchScreen extends Component {
                         {/* should we focus these on charities? */}
                         <Trending
                             // transparent
-                            title="Feeding America"
+                            title="Alzheimers Association"
                             onClick={() => {
                                 this.setState({
                                     results: true,
@@ -330,12 +343,12 @@ export default class searchScreen extends Component {
                                     resultsSearch: false,
                                     resultsCharity: true,
                                 });
-                                this.SearchTrendingCharities('Feeding America');
+                                this.SearchTrendingCharities('Alzheimers Association');
                             }}
                         />
                         <Trending
                             // transparent
-                            title="Boys and Girl's Club"
+                            title="City of Hope"
                             onClick={() => {
                                 this.setState({
                                     results: true,
@@ -343,7 +356,7 @@ export default class searchScreen extends Component {
                                     resultsSearch: false,
                                     resultsCharity: true,
                                 });
-                                this.SearchTrendingCharities("Boys and Girl's Club");
+                                this.SearchTrendingCharities("City of Hope");
                             }}
                         />
                         <Trending
@@ -434,13 +447,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: color.black,
-        // paddingVertical: 12,
+        paddingVertical: 32,
         borderRadius: 4,
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: color.green,
         // marginBottom: 250,
         // marginTop: 30,
     },
+    card: {
+        width: '120%'
+    }
 });
 const StyledButton = styled.TouchableOpacity`
    background-color:${props => (props.transparent ? 'transparent' : '#f3f8ff')};
