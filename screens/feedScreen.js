@@ -1,28 +1,12 @@
 import React, { PureComponent, Component, Fragment } from 'react';
-import { Platform, StyleSheet, Dimensions, ViewScroll, Text, Navigator, ScrollView, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { Platform, StyleSheet, Dimensions, ViewScroll, Text, Navigator, ScrollView, TouchableWithoutFeedback, Keyboard, View } from 'react-native';
 import { ListItem, Icon, Header } from 'react-native-elements'
 import AddEventModal from '../components/addEventModal'
 import { Ionicons } from '@expo/vector-icons';
 import color from '../constants/Colors'
 window.navigator.userAgent = 'ReactNative';
 import styled from "styled-components/native";
-
-import {
-    Card,
-    Caption,
-    ImageBackground,
-    Image,
-    ListView,
-    Columns,
-    Tile,
-    Title,
-    Subtitle,
-    Overlay,
-    Screen,
-    TouchableOpacity,
-    GridRow,
-    View,
-} from '@shoutem/ui';
+import EventCard from "../components/eventCard"
 
 export default class EventFeed extends Component {
     state = {
@@ -39,148 +23,14 @@ export default class EventFeed extends Component {
 
     getEvents = () => {
         return (
-            <Fragment>
-                <View styleName="sm-gutter">
-                    <ImageBackground
-                        styleName="featured placeholder"
-                        source={require('../assets/images/fakeCardImages/dunes.jpg')}                 
-                        >
-                        <Tile>
-                            <Title>Sample</Title>
-                            <View styleName="horizontal md-gutter-top" virtual>
-                                <Caption
-                                    styleName="collapsible"
-                                    numberOfLines={1}>
-                                    Simple address
-                            </Caption>
-                            </View>
-                        </Tile>
-                    </ImageBackground>
-                </View>
 
-
-
-                <GridRow columns={2}>
-                    <TouchableOpacity styleName="flexible">
-                        <Card styleName="flexible">
-                            <Image
-                                styleName="medium-wide"
-                                source={require('../assets/images/fakeCardImages/snowy.jpg')}
-                            />
-                            <View styleName="content">
-                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
-                                <View styleName="horizontal">
-                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
-                                </View>
-                            </View>
-                        </Card>
-                    </TouchableOpacity>
-                    <TouchableOpacity styleName="flexible">
-                        <Card styleName="flexible">
-                            <Image
-                                styleName="medium-wide"
-                                source={require('../assets/images/fakeCardImages/dunes.jpg')}
-                            />
-                            <View styleName="content">
-                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
-                                <View styleName="horizontal">
-                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
-                                </View>
-                            </View>
-                        </Card>
-                    </TouchableOpacity>
-                </GridRow>
-                <GridRow columns={2}>
-                    <TouchableOpacity styleName="flexible">
-                        <Card styleName="flexible">
-                            <Image
-                                styleName="medium-wide"
-                                source={require('../assets/images/fakeCardImages/blackandwhite.jpg')}
-                            />
-                            <View styleName="content">
-                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
-                                <View styleName="horizontal">
-                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
-                                </View>
-                            </View>
-                        </Card>
-                    </TouchableOpacity>
-                    <TouchableOpacity styleName="flexible">
-                        <Card styleName="flexible">
-                            <Image
-                                styleName="medium-wide"
-                                source={require('../assets/images/fakeCardImages/swim.jpg')}
-                            />
-                            <View styleName="content">
-                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
-                                <View styleName="horizontal">
-                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
-                                </View>
-                            </View>
-                        </Card>
-                    </TouchableOpacity>
-                </GridRow>
-                <GridRow columns={2}>
-                    <TouchableOpacity styleName="flexible">
-                        <Card styleName="flexible">
-                            <Image
-                                styleName="medium-wide"
-                                source={require('../assets/images/fakeCardImages/station.jpg')}
-                            />
-                            <View styleName="content">
-                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
-                                <View styleName="horizontal">
-                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
-                                </View>
-                            </View>
-                        </Card>
-                    </TouchableOpacity>
-                    <TouchableOpacity styleName="flexible">
-                        <Card styleName="flexible">
-                            <Image
-                                styleName="medium-wide"
-                                source={require('../assets/images/fakeCardImages/dunes.jpg')}
-                            />
-                            <View styleName="content">
-                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
-                                <View styleName="horizontal">
-                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
-                                </View>
-                            </View>
-                        </Card>
-                    </TouchableOpacity>
-                </GridRow>
-                <GridRow columns={2}>
-                    <TouchableOpacity styleName="flexible">
-                        <Card styleName="flexible">
-                            <Image
-                                styleName="medium-wide"
-                                source={require('../assets/images/fakeCardImages/snowy.jpg')}
-                            />
-                            <View styleName="content">
-                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
-                                <View styleName="horizontal">
-                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
-                                </View>
-                            </View>
-                        </Card>
-                    </TouchableOpacity>
-                    <TouchableOpacity styleName="flexible">
-                        <Card styleName="flexible">
-                            <Image
-                                styleName="medium-wide"
-                                source={require('../assets/images/fakeCardImages/station.jpg')}
-                            />
-                            <View styleName="content">
-                                <Subtitle numberOfLines={3}>Some Words</Subtitle>
-                                <View styleName="horizontal">
-                                    <Caption styleName="collapsible" numberOfLines={2}>An Address Here</Caption>
-                                </View>
-                            </View>
-                        </Card>
-                    </TouchableOpacity>
-                </GridRow>
-            </Fragment>
+            <EventCard 
+            title="title"
+            name="name"
+            date="date"
+            description="decription"
+            />
+            
         )
 
 
@@ -211,7 +61,6 @@ export default class EventFeed extends Component {
         //     .catch(err => console.warn(err))
     }
 
-    // </ViewScroll>
     render() {
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
@@ -222,7 +71,7 @@ export default class EventFeed extends Component {
                         {this.getEvents()}
                         <AddEventModal
                             onPressOut={() => {
-                                this.setModalVisible(!this.state.modalVisible);
+                                this.setModalVisible(false);
                             }}
                             visible={this.state.modalVisible}
                         />
@@ -245,7 +94,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         backgroundColor: color.black,
         // paddingVertical: 12,
-        borderRadius: 4,
+        paddingTop: 32,
+        // borderRadius: 4,
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: color.green,
         // marginBottom: 250,
@@ -261,36 +111,3 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     }
 });
-
-const StyledButton = styled.TouchableOpacity`
-   background-color:${props => (props.transparent ? "transparent" : "#f3f8ff")};
-   padding:15px;
-   border:${props => (props.transparent ? "1px solid #f3f8ff " : 0)}
-   justify-content:center;
-   margin-bottom:20px;
-   border-radius:24px
-  `;
-StyledTitle = styled.Text`
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: bold;
-    letter-spacing: 3;
-    color: ${props => (props.transparent ? "#f3f8ff " : "#666")};
-  `;
-
-StyledTitleTrend = styled.Text`
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: bold;
-    letter-spacing: 2;
-    height: 15px;
-    color: ${props => (props.transparent ? "#f3f8ff " : "#666")};
-  `;
-
-export const Button = ({ ...props }) => {
-    return (
-        <StyledButton {...props} onPress={props.onClick} >
-            <StyledTitle {...props}>{props.title}</StyledTitle>
-        </StyledButton>
-    );
-};
