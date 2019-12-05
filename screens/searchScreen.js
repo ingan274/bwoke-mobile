@@ -86,6 +86,134 @@ export default class searchScreen extends Component {
         })
         .catch(err => console.warn(err));
     }
+
+    // topCelebsList = () => {
+    //     if (!this.state.results) {
+    //         return (
+    //             <View>
+    //                 <Card
+    //                     image={require('../assets/images/fakeCardImages/rihanna.jpg')}
+    //                     featuredTitle='Rihanna'
+    //                     imageStyle={{ flex: 1 }}
+    //                 >
+    //                     <Text style={{ marginBottom: 10 }}>
+    //                         Believe Foundation
+    //     </Text>
+    //                     <Button
+    //                         title='VIEW NOW'
+    //                         onClick={() => {
+    //                             this.setState({ results: true, resultsCeleb: true })
+    //                             this.SearchListCelebs('CELEBRITY')
+    //                         }} />
+    //                 </Card>
+    //                 <Card
+    //                     image={require('../assets/images/fakeCardImages/justin.jpg')}
+    //                     featuredTitle='Justin Beiber'
+    //                     imageStyle={{ flex: 1 }}
+    //                 >
+    //                     <Text style={{ marginBottom: 10 }}>
+    //                         ACLU of Southern California. ALS Association.Alzheimer's Association. Autism Movement Therapy. Children's Miracle Network Hospitals. City of Hope. Comic Relief.
+    //     </Text>
+    //                     <Button
+    //                         title='VIEW NOW'
+    //                         onClick={() => {
+    //                             this.setState({ results: true, resultsCeleb: true })
+    //                             this.SearchListCelebs('CELEBRITY')
+    //                         }} />
+    //                 </Card>
+    //                 <Card
+    //                     image={require('../assets/images/fakeCardImages/lebron.jpg')}
+    //                     featuredTitle='Lebron James'
+    //                     imageStyle={{ flex: 1 }}
+    //                 >
+    //                     <Text style={{ marginBottom: 10 }}>
+    //                         After-School All-Stars. Muhammad Ali: A Force For Change. Boys and Girls Club of America. Children’s Defense Fund. ONEXONE.
+    //     </Text>
+    //                     <Button
+    //                         title='VIEW NOW'
+    //                         onClick={() => {
+    //                             this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+    //                             this.SearchListCelebs('CELEBRITY')
+    //                         }} />
+    //                 </Card>
+    //                 <Card
+    //                     image={require('../assets/images/fakeCardImages/drake.jpg')}
+    //                     featuredTitle='Drake'
+    //                     imageStyle={{ flex: 1 }}
+    //                 >
+    //                     <Text style={{ marginBottom: 10 }}>
+    //                         Jamaican Learning Center. Allan Slaight Award. Union Gospel Mission of Portland. Inaugural Houston Appreciation Weekend. Houston Appreciation Weekend Celebrity Softball Game. Hurricane Harvey Relief.
+    //     </Text>
+    //                     <Button
+    //                         title='VIEW NOW'
+    //                         onClick={() => {
+    //                             this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+    //                             this.SearchListCelebs('CELEBRITY')
+    //                         }} />
+    //                 </Card>
+    //                 <Card
+    //                     image={require('../assets/images/fakeCardImages/serena.jpg')}
+    //                     featuredTitle='Serena Williams'
+    //                     imageStyle={{ flex: 1 }}
+    //                 >
+    //                     <Text style={{ marginBottom: 10 }}>
+    //                         Build African Schools. Common Ground Foundation. Elton John AIDS Foundation. Eva Longoria Foundation. Global Goals. Great Ormond Street Hospital. Hearts of Gold.
+    //     </Text>
+    //                     <Button
+    //                         title='VIEW NOW'
+    //                         onClick={() => {
+    //                             this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+    //                             this.SearchListCelebs('CELEBRITY')
+    //                         }} />
+    //                 </Card>
+    //                 <Card
+    //                     image={require('../assets/images/fakeCardImages/andrew.jpeg')}
+    //                     featuredTitle='Andrew Yang'
+    //                     imageStyle={{ flex: 1 }}
+    //                 >
+    //                     <Text style={{ marginBottom: 10 }}>
+    //                         Venture for America
+    //     </Text>
+    //                     <Button
+    //                         title='VIEW NOW'
+    //                         onClick={() => {
+    //                             this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+    //                             this.SearchListCelebs('CELEBRITY')
+    //                         }} />
+    //                 </Card>
+    //                 <Card
+    //                     image={require('../assets/images/fakeCardImages/michael.jpg')}
+    //                     featuredTitle='Michael B. Jordan'
+    //                     imageStyle={{ flex: 1 }}
+    //                 >
+    //                     <Text style={{ marginBottom: 10 }}>
+    //                     Boys' and Girls' Clubs of America, UNCF/College Fund, Special Olympics
+    //     </Text>
+    //                     <Button
+    //                         title='VIEW NOW'
+    //                         onClick={() => {
+    //                             this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+    //                             this.SearchListCelebs('CELEBRITY')
+    //                         }} />
+    //                 </Card>
+    //                 <Card
+    //                     image={require('../assets/images/fakeCardImages/taylor.jpg')}
+    //                     featuredTitle='Taylor Swift'
+    //                     imageStyle={{ flex: 1 }}
+    //                 >
+    //                     <Text style={{ marginBottom: 10 }}>
+    //                     Tennessee Equality Project
+    //                     </Text>
+    //                     <Button
+    //                         title='VIEW NOW'
+    //                         onClick={() => {
+    //                             this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+    //                             this.SearchListCelebs('CELEBRITY')
+    //                         }} />
+    //                 </Card>
+    //             </View>
+    //         )
+    //     }
   };
   SearchListCelebs = celebrities => {
     if (this.state.resultsCeleb) {

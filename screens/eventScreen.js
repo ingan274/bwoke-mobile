@@ -1,17 +1,17 @@
 // import React, { Component } from 'react';
-// // import {
-// //     Platform,
-// //     StyleSheet,
-// //     Dimensions,
-// //     ScrollView,
-// //     // View,
-// //     Text,
-// //     Navigator,
-// //     PropTypes,
-// //     // Image,
-// //     // ImageBackground,
-// //     // TouchableOpacity,
-// //     ActivityIndicator,
+// import {
+//     Platform,
+//     StyleSheet,
+//     Dimensions,
+//     ScrollView,
+//     // View,
+//     Text,
+//     Navigator,
+//     PropTypes,
+//     // Image,
+//     // ImageBackground,
+//     // TouchableOpacity,
+//     ActivityIndicator,
 
 // // } from 'react-native';
 // // import addEventModal from '../components/addEventModal'
