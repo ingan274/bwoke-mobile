@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import io from 'socket.io-client';
 window.navigator.userAgent = 'ReactNative';
 
-const SOCKET_URL = "http://localhost:8000/talk"
+const SOCKET_URL = "https://bwoke.herokuapp.com/talk"
 
 class ChatRoom extends Component {
     constructor(props) {
