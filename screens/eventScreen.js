@@ -1,5 +1,4 @@
 // import React, { Component } from 'react';
-<<<<<<< HEAD
 // import {
 //     Platform,
 //     StyleSheet,
@@ -13,21 +12,6 @@
 //     // ImageBackground,
 //     // TouchableOpacity,
 //     ActivityIndicator,
-=======
-// // import {
-// //     Platform,
-// //     StyleSheet,
-// //     Dimensions,
-// //     ScrollView,
-// //     // View,
-// //     Text,
-// //     Navigator,
-// //     PropTypes,
-// //     // Image,
-// //     // ImageBackground,
-// //     // TouchableOpacity,
-// //     ActivityIndicator,
->>>>>>> 471d459e8a51a4c3228e30f51e6fd18dd0f498b3
 
 // // } from 'react-native';
 // // import addEventModal from '../components/addEventModal'

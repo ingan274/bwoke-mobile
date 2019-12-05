@@ -127,6 +127,7 @@ export default class searchScreen extends Component {
                 .catch(err => console.warn(err))
         }
     }
+
     topCelebsList = () => {
         if (!this.state.results) {
             return (
@@ -137,7 +138,7 @@ export default class searchScreen extends Component {
                         imageStyle={{ flex: 1 }}
                     >
                         <Text style={{ marginBottom: 10 }}>
-                            The idea with React Native Elements is more about component structure than actual design.
+                            Believe Foundation
         </Text>
                         <Button
                             title='VIEW NOW'
@@ -152,7 +153,7 @@ export default class searchScreen extends Component {
                         imageStyle={{ flex: 1 }}
                     >
                         <Text style={{ marginBottom: 10 }}>
-                            The idea with React Native Elements is more about component structure than actual design.
+                            ACLU of Southern California. ALS Association.Alzheimer's Association. Autism Movement Therapy. Children's Miracle Network Hospitals. City of Hope. Comic Relief.
         </Text>
                         <Button
                             title='VIEW NOW'
@@ -167,7 +168,7 @@ export default class searchScreen extends Component {
                         imageStyle={{ flex: 1 }}
                     >
                         <Text style={{ marginBottom: 10 }}>
-                            The idea with React Native Elements is more about component structure than actual design.
+                            After-School All-Stars. Muhammad Ali: A Force For Change. Boys and Girls Club of America. Children’s Defense Fund. ONEXONE.
         </Text>
                         <Button
                             title='VIEW NOW'
@@ -182,7 +183,7 @@ export default class searchScreen extends Component {
                         imageStyle={{ flex: 1 }}
                     >
                         <Text style={{ marginBottom: 10 }}>
-                            The idea with React Native Elements is more about component structure than actual design.
+                            Jamaican Learning Center. Allan Slaight Award. Union Gospel Mission of Portland. Inaugural Houston Appreciation Weekend. Houston Appreciation Weekend Celebrity Softball Game. Hurricane Harvey Relief.
         </Text>
                         <Button
                             title='VIEW NOW'
@@ -197,7 +198,7 @@ export default class searchScreen extends Component {
                         imageStyle={{ flex: 1 }}
                     >
                         <Text style={{ marginBottom: 10 }}>
-                            The idea with React Native Elements is more about component structure than actual design.
+                            Build African Schools. Common Ground Foundation. Elton John AIDS Foundation. Eva Longoria Foundation. Global Goals. Great Ormond Street Hospital. Hearts of Gold.
         </Text>
                         <Button
                             title='VIEW NOW'
@@ -212,7 +213,7 @@ export default class searchScreen extends Component {
                         imageStyle={{ flex: 1 }}
                     >
                         <Text style={{ marginBottom: 10 }}>
-                            The idea with React Native Elements is more about component structure than actual design.
+                            Venture for America
         </Text>
                         <Button
                             title='VIEW NOW'
@@ -227,7 +228,7 @@ export default class searchScreen extends Component {
                         imageStyle={{ flex: 1 }}
                     >
                         <Text style={{ marginBottom: 10 }}>
-                            The idea with React Native Elements is more about component structure than actual design.
+                        Boys' and Girls' Clubs of America, UNCF/College Fund, Special Olympics
         </Text>
                         <Button
                             title='VIEW NOW'
@@ -242,7 +243,7 @@ export default class searchScreen extends Component {
                         imageStyle={{ flex: 1 }}
                     >
                         <Text style={{ marginBottom: 10 }}>
-                            The idea with React Native Elements is more about component structure than actual design.
+                        Tennessee Equality Project
                         </Text>
                         <Button
                             title='VIEW NOW'
@@ -295,7 +296,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="Feeding America"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
                                 this.SearchTrendingCharities('Feeding America')
                             }}
                         />
@@ -303,7 +304,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="Boys and Girl's Club"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
                                 this.SearchTrendingCharities("Boys and Girl's Club")
                             }}
                         />
@@ -311,7 +312,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="American Red Cross"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true})
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
                                 this.SearchTrendingCharities("American Red Cross")
                             }}
                         />
@@ -319,7 +320,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="Americares"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
                                 this.SearchTrendingCharities("Americares")
                             }}
                         />
@@ -327,7 +328,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="UNICEF USA"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true})
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
                                 this.SearchTrendingCharities("UNICEF USA")
                             }}
                         />
@@ -335,7 +336,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="Make-A-Wish Foundation"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
                                 this.SearchTrendingCharities("Make-A-Wish Foundation")
                             }}
                         />
@@ -343,7 +344,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="United Way Worldwide"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
                                 this.SearchTrendingCharities("United Way Worldwide")
                             }}
                         />

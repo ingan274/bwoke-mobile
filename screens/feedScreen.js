@@ -68,11 +68,13 @@ export default class EventFeed extends Component {
             this.setState({ error: true })
         }
     }
+
     showError = () => {
         if (this.state.error) {
             return <Text style={styles.error}>Looks like your missing something. Please make sure you have a title, your charity/non-profit name, date, and description.</Text>
         }
     };
+
     getEvents = () => {
         fetch(`https://bwoke.herokuapp.com/events`, {
             method: 'GET',
@@ -87,7 +89,7 @@ export default class EventFeed extends Component {
                     let description = event.description;
                     let name = event.name;
                     let date = event.date;
-                    console.log(date)
+                    console.log(description)
                     return (
                         <EventCard
                             title={title}
@@ -106,7 +108,6 @@ export default class EventFeed extends Component {
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                 {/* <View style={styles.container}> */}
                 {/* should we focus these on celebrities? */}
-<<<<<<< HEAD
                 <Fragment>
                     <ScrollView style={styles.container}>
                         {this.getEvents()}
@@ -124,26 +125,6 @@ export default class EventFeed extends Component {
                                     small
                                     icon="plus"
                                     onPress={() => console.log('Pressed')}
-=======
-                <ScrollView style = {styles.container}>
-                    {this.getEvents()}
-                    <Modal
-                    animationType="slide"
-                    transparent={false}
-                    visible={this.state.modalVisible}
-                    onRequestClose={() => {
-                        Alert.alert('Modal has been closed.');                  
-                    }}
-                >
-                    <View style={{ marginTop: 30, backgroundColor: color.black, flex: 1 }}>
-                        <View style={styles.modal}>
-                            <TouchableHighlight onPress={this.props.onPressOut}>
-                                <Ionicons
-                                    name={Platform.OS === 'ios' ? 'ios-close' : 'md-close'}
-                                    size={40}
-                                    color='white'
-                                    style={styles.exit}
->>>>>>> 471d459e8a51a4c3228e30f51e6fd18dd0f498b3
                                 />
                             </View>
                             <View style={{ marginTop: 30, backgroundColor: color.black, flex: 1 }}>
@@ -218,11 +199,7 @@ const styles = StyleSheet.create({
     },
     error: {
         color: color.red
-<<<<<<< HEAD
     },
-=======
-      },
->>>>>>> 471d459e8a51a4c3228e30f51e6fd18dd0f498b3
     modal: {
         paddingHorizontal: 30,
         backgroundColor: 'black'
@@ -231,13 +208,10 @@ const styles = StyleSheet.create({
         marginTop: 10,
         color: 'white'
     },
-<<<<<<< HEAD
     fab: {
         position: 'absolute',
         margin: 16,
         right: 0,
         bottom: 0,
     },
-=======
->>>>>>> 471d459e8a51a4c3228e30f51e6fd18dd0f498b3
 });
