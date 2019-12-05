@@ -1,14 +1,24 @@
 import React, { PureComponent, Component } from 'react';
-import { Platform, StyleSheet, Dimensions, AsyncStorage, View, Text, Navigator, PropTypes } from 'react-native';
-import { Bubble, GiftedChat } from 'react-native-gifted-chat'
+import {
+    Platform,
+    StyleSheet,
+    Dimensions,
+    AsyncStorage,
+    View,
+    Text,
+    Navigator,
+    PropTypes,
+} from 'react-native';
+import { Bubble, GiftedChat } from 'react-native-gifted-chat';
 import color from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import io from 'socket.io-client';
 window.navigator.userAgent = 'ReactNative';
+import defaultmessages from './message';
 
-const SOCKET_URL = "http://localhost:8000/talk"
+const SOCKET_URL = 'https://bwoke.herokuapp.com/talk';
 
-class ChatRoom extends Component {
+class Chat extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,58 +30,66 @@ class ChatRoom extends Component {
     }
 
     componentDidMount() {
-        this.handleUser()
+        this.handleUser();
     }
+
+    
 
     handleUser = async () => {
         try {
             let username = await AsyncStorage.getItem('username');
-            let room = await AsyncStorage.getItem('room');
+            let room = await AsyncStorage.getItem('room' || 'none');
 
-            this.setState({ userId: username })
-            this.setMySocket(room)
-
+            if (room === 'null') {
+                this.handleBackPress();
+                this.setState({ messages: defaultmessages });
+            } else {
+                this.setState({ userId: username });
+                this.setMySocket(room);
+            }
         } catch (error) {
             // Error retrieving data
             console.log(error.message);
         }
-    }
+    };
 
-    setMySocket = async (room) => {
+    setMySocket = async room => {
         // GET SOCKET ID AND SET THE STATE in local storage
         try {
-            this.setState({ room: room })
-            this.getMessages()
-            this.socketEvents()
+            this.setState({ room: room });
+            this.getMessages();
+            this.socketEvents();
         } catch (error) {
             // Error retrieving data
             console.log(error.message);
         }
-    }
+    };
 
     socketEvents = () => {
-        console.log("------ CONNECT EVENTS ------")
+        console.log('------ CONNECT EVENTS ------');
 
-        this.socket = io.connect(SOCKET_URL, {
-            jsonp: false,
-            secure: true,
-            reconnection: true,
-            reconnectionDelay: 500,
-            reconnectionAttempts: Infinity,
-            transports: ["websocket"]
-        });
+        this.socket = io.connect(SOCKET_URL);
 
-        console.log("Connection is being established")
+        // {
+        //     jsonp: false,
+        //     secure: true,
+        //     reconnection: true,
+        //     reconnectionDelay: 500,
+        //     reconnectionAttempts: Infinity,
+        //     transports: ['websocket', 'polling'],
+        // }
+
+        console.log('Room', this.state.room);
 
         this.socket.on('connected_success', () => {
             this.setState({ isConnected: true });
-            this.socket.emit('room', this.state.room)
-            console.log("connected? yes! and connecting to room")
+            this.socket.emit('room', this.state.room);
+            console.log('connected? yes! and connecting to room');
         });
 
         this.socket.on('disconnection', () => {
             this.chatEnded();
-            console.log("Connection is disconnected")
+            console.log('Connection is disconnected');
         });
 
         // recieve message
@@ -79,7 +97,7 @@ class ChatRoom extends Component {
             this._storeMessages(messages);
             console.log('received', messages);
         });
-    }
+    };
 
     getMessages = () => {
         fetch(`https://bwoke.herokuapp.com/chat/${this.state.room}`, {
@@ -87,15 +105,16 @@ class ChatRoom extends Component {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-            }
-        }).then(res => res.json())
-            .then((response) => {
+            },
+        })
+            .then(res => res.json())
+            .then(response => {
                 for (let message of response) {
-                    this._storeMessages(message)
+                    this._storeMessages(message);
                 }
             })
-            .catch(err => console.warn(err))
-    }
+            .catch(err => console.warn(err));
+    };
 
     componentWillUnmount() { }
 
@@ -108,12 +127,13 @@ class ChatRoom extends Component {
      * and store it in this component's state.
      */
     onSend = (messages = []) => {
-        let message = messages[0]
-        let user = this.state.userId
-        let room = this.state.room
+        let message = messages[0].text;
+        let date = messages[0].createdAt;
+        let user = this.state.userId;
+        let room = this.state.room;
         this.socket.emit('chat message', {
             message: message,
-            room: room
+            room: room,
         });
         this._storeMessages(messages);
         console.log(this.state.messages);
@@ -127,24 +147,24 @@ class ChatRoom extends Component {
             body: JSON.stringify({
                 message: message,
                 user: user,
-                room: room
+                room: room,
+            }),
+        })
+            .then(res => res.json())
+            .then(response => {
+                console.log('message posted');
             })
-        }).then(res => res.json())
-            .then((response) => {
-                console.log("message posted")
-            })
-            .catch(err => console.warn(err))
-    }
+            .catch(err => console.warn(err));
+    };
 
     // Helper functions
-    _storeMessages = (messages) => {
-        this.setState((previousState) => {
+    _storeMessages = messages => {
+        this.setState(previousState => {
             return {
                 messages: GiftedChat.append(previousState.messages, messages),
             };
         });
-
-    }
+    };
 
     render() {
         return (
@@ -169,25 +189,16 @@ class ChatRoom extends Component {
                     }}
                     shouldUpdateMessage={() => true}
                 />
-            </View >
+            </View>
         );
     }
 
     handleBackPress = () => {
-        // console.log ('volunteer', this.state.volunteer)
-        // console.log ('user', this.state.user)
-        if (this.state.volunteer === "true") {
-            const {
-                navigation: { navigate },
-            } = this.props;
-            navigate('Account');
-        } else if (this.state.user === "true") {
-            const {
-                navigation: { navigate },
-            } = this.props;
-            navigate('Jobs');
-        }
-    }
+        const {
+            navigation: { navigate },
+        } = this.props;
+        navigate('Room');
+    };
 
 }
 
@@ -198,11 +209,7 @@ const styles = StyleSheet.create({
         // alignItems: "center"
         backgroundColor: color.white,
     },
-    textContainer: {
-        backgroundColor: color.white,
-        // justifyContent: "center",
-        alignItems: "center"
-    },
+
     header: {
         flexDirection: 'row',
         paddingHorizontal: 25,
@@ -214,11 +221,10 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         paddingVertical: 0,
     },
-    unavail: {
-        textAlign: 'center',
-        paddingVertical: 30,
-        paddingHorizontal: 30,
-    },
 });
 
-module.exports = ChatRoom;
+Chat.navigationOptions = {
+    header: null,
+};
+
+export default Chat;
