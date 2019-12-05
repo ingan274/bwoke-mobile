@@ -1,4 +1,5 @@
 import React, { PureComponent, Component } from 'react';
+import * as WebBrowser from 'expo-web-browser';
 import {
     Platform,
     StyleSheet,
@@ -21,109 +22,66 @@ import Background from '../assets/images/bWokeLogoFavicon.png';
 
 export default class searchScreen extends Component {
     state = {
-        results: false,
-        resultsSearch: false,
-        resultsCeleb: false,
-        resultsCharity: false,
         search: '',
+        charity: [],
+        results: false
     };
     handleSearch = text => {
         this.setState({ search: text });
+        console.log(text)
     };
     SearchBar = () => {
         let search = this.state.search;
-        if (this.state.resultsSearch) {
-            // search charities
-            fetch(`https://bwoke.herokuapp.com/search/${search}`, {
-                method: 'GET',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-            })
-                .then(res => res.json())
-                .then(response => {
-                    response.map(result => {
-                        return (
-                            // THIS DESIGN SHOULD CHANGE
-                            <Card>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {result.organization.charityName}
-                                </Text>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {result.cause.causeName}
-                                </Text>
-                                <Text style={{ marginBottom: 10 }}>{result.mission}</Text>
-                            </Card>
-                        );
-                    });
-                });
-        }
+        // search charities
+        fetch(`https://bwoke.herokuapp.com/search/${search}`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(res => res.json())
+            .then(response => {
+                this.setState({ charity: response })
+                console.log(response)
+                this.setState({ results: true })
+            });
     };
 
     SearchTrendingCharities = charity => {
-        if (this.state.resultsCharity) {
-            fetch(`https://bwoke.herokuapp.com/search/charity/${charity}`, {
-                method: 'GET',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-            }).then(res => res.json())
-                .then(response => {
-                    console.log(response)
-                    return (
-                        // THIS DESIGN SHOULD CHANGE
-                        <Card>
-                            <Text style={{ marginBottom: 10 }}>
-                                {response.name}
-                            </Text>
-                            <Text style={{ marginBottom: 10 }}>
-                                {response.tagline}
-                            </Text>
-                            <Text style={{ marginBottom: 10 }}>
-                                {response.cause}
-                            </Text>
-                            <Text style={{ marginBottom: 10 }}>
-                                {response.url}
-                            </Text>
-                            <Text style={{ marginBottom: 10 }}>{response.mission}</Text>
-                        </Card>
-                    );
-                })
-                .catch(err => console.warn(err));
-        }
+        fetch(`https://bwoke.herokuapp.com/search/charity/${charity}`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+        }).then(res => res.json())
+            .then(response => {
+                this.setState({ charity: [response] })
+                console.log("charity", this.state.charity)
+                this.setState({ results: true })
+            })
+            .catch(err => console.warn(err));
 
     };
-    
+
     SearchListCelebs = celebrities => {
-        if (this.state.resultsCeleb) {
-            fetch(`https://bwoke.herokuapp.com/search/celeb/${celebrities}`, {
-                method: 'GET',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
+
+        fetch(`https://bwoke.herokuapp.com/search/celeb/${celebrities}`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(res => res.json())
+            .then(response => {
+                this.setState({ charity: response })
+                console.log("celebrity Response", response)
+                console.log("charity", this.state.charity)
+                this.setState({ results: true })
             })
-                .then(res => res.json())
-                .then(response => {
-                    console.log(response)
-                    //   response.map(result => {
-                    //     return (
-                    //       // THIS DESIGN SHOULD CHANGE
-                    //       <Card
-                    //         image={result.imageURL} // check response
-                    //       >
-                    //         <Text style={{ marginBottom: 10 }}>
-                    //           {/* this is where the response text goes */}
-                    //           {result.text}
-                    //         </Text>
-                    //       </Card>
-                    //     );
-                    //   });
-                })
-                .catch(err => console.warn(err));
-        }
+            .catch(err => console.warn(err));
     };
 
     topCelebsList = () => {
@@ -135,13 +93,12 @@ export default class searchScreen extends Component {
                         featuredTitle="Rihanna"
                         imageStyle={{ flex: 1 }}
                     >
-                        <Text style={{ marginBottom: 10, width: '110%' }}>
+                        <Text style={{ marginBottom: 10 }}>
+                            Alzheimer's Association. Bear Necessities Pediatric Cancer Foundation. Believe Foundation. BID 2 BEAT AIDS. City of Hope. Clara Lionel Foundation. Designers Against AIDS. DKMS. DoSomething.org. Entertainment Industry Foundation. Feeding America
                         </Text>
                         <Button
                             title="VIEW NOW"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: true });
-                                this.SearchListCelebs('CELEBRITY');
                                 this.SearchListCelebs('Rihanna');
                             }}
                         />
@@ -150,12 +107,10 @@ export default class searchScreen extends Component {
                         image={require('../assets/images/fakeCardImages/justin.jpg')}
                         featuredTitle="Justin Beiber"
                         imageStyle={{ flex: 1 }}>
-                        <Text>ACLU of Southern California. ALS Association.Alzheimer's Association. Autism Movement Therapy. Children's Miracle Network Hospitals. City of Hope. Comic Relief.</Text>
+                        <Text style={{ marginBottom: 10 }}>ACLU of Southern California. ALS Association. Alzheimer's Association. Autism Movement Therapy. Children's Miracle Network Hospitals. City of Hope. Comic Relief.</Text>
                         <Button
                             title="VIEW NOW"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: true });
-                                this.SearchListCelebs('CELEBRITY');
                                 this.SearchListCelebs('Justin Beiber');
                             }}
                         />
@@ -164,17 +119,10 @@ export default class searchScreen extends Component {
                         image={require('../assets/images/fakeCardImages/lebron.jpg')}
                         featuredTitle="Lebron James"
                         imageStyle={{ flex: 1 }}>
-                        <Text>After-School All-Stars. Muhammad Ali: A Force For Change. Boys and Girls Club of America. Children’s Defense Fund. ONEXONE.</Text>
+                        <Text style={{ marginBottom: 10 }}>After-School All-Stars. Muhammad Ali: A Force For Change. Boys and Girls Club of America. Children’s Defense Fund. ONEXONE.</Text>
                         <Button
                             title="VIEW NOW"
                             onClick={() => {
-                                this.setState({
-                                    results: true,
-                                    resultsCeleb: true,
-                                    resultsSearch: false,
-                                    resultsCharity: false,
-                                });
-                                this.SearchListCelebs('CELEBRITY');
                                 this.SearchListCelebs('Lebron James');
                             }}
                         />
@@ -183,17 +131,10 @@ export default class searchScreen extends Component {
                         image={require('../assets/images/fakeCardImages/drake.jpg')}
                         featuredTitle="Drake"
                         imageStyle={{ flex: 1 }}>
-                        <Text>Jamaican Learning Center. Allan Slaight Award. Union Gospel Mission of Portland. Inaugural Houston Appreciation Weekend. Houston Appreciation Weekend Celebrity Softball Game. Hurricane Harvey Relief.</Text>
+                        <Text style={{ marginBottom: 10 }}>Jamaican Learning Center. Allan Slaight Award. Union Gospel Mission of Portland. Inaugural Houston Appreciation Weekend. Houston Appreciation Weekend Celebrity Softball Game. Hurricane Harvey Relief.</Text>
                         <Button
                             title="VIEW NOW"
                             onClick={() => {
-                                this.setState({
-                                    results: true,
-                                    resultsCeleb: true,
-                                    resultsSearch: false,
-                                    resultsCharity: false,
-                                });
-                                this.SearchListCelebs('CELEBRITY');
                                 this.SearchListCelebs('Drake');
                             }}
                         />
@@ -202,17 +143,10 @@ export default class searchScreen extends Component {
                         image={require('../assets/images/fakeCardImages/serena.jpg')}
                         featuredTitle="Serena Williams"
                         imageStyle={{ flex: 1 }}>
-                        <Text>Build African Schools. Common Ground Foundation. Elton John AIDS Foundation. Eva Longoria Foundation. Global Goals. Great Ormond Street Hospital. Hearts of Gold.</Text>
+                        <Text style={{ marginBottom: 10 }}>Build African Schools. Common Ground Foundation. Elton John AIDS Foundation. Eva Longoria Foundation. Global Goals. Great Ormond Street Hospital. Hearts of Gold.</Text>
                         <Button
                             title="VIEW NOW"
                             onClick={() => {
-                                this.setState({
-                                    results: true,
-                                    resultsCeleb: true,
-                                    resultsSearch: false,
-                                    resultsCharity: false,
-                                });
-                                this.SearchListCelebs('CELEBRITY');
                                 this.SearchListCelebs('Serena Williams');
                             }}
                         />
@@ -221,17 +155,10 @@ export default class searchScreen extends Component {
                         image={require('../assets/images/fakeCardImages/andrew.jpeg')}
                         featuredTitle="Andrew Yang"
                         imageStyle={{ flex: 1 }}>
-                        <Text>Venture for America</Text>
+                        <Text style={{ marginBottom: 10 }}>Venture for America</Text>
                         <Button
                             title="VIEW NOW"
                             onClick={() => {
-                                this.setState({
-                                    results: true,
-                                    resultsCeleb: true,
-                                    resultsSearch: false,
-                                    resultsCharity: false,
-                                });
-                                this.SearchListCelebs('CELEBRITY');
                                 this.SearchListCelebs('Andrew Yang');
                             }}
                         />
@@ -240,17 +167,10 @@ export default class searchScreen extends Component {
                         image={require('../assets/images/fakeCardImages/michael.jpg')}
                         featuredTitle="Michael B. Jordan"
                         imageStyle={{ flex: 1 }}>
-                        <Text>Boys' and Girls' Clubs of America, UNCF/College Fund, Special Olympics</Text>
+                        <Text style={{ marginBottom: 10 }}>Boys' and Girls' Clubs of America, UNCF/College Fund, Special Olympics</Text>
                         <Button
                             title="VIEW NOW"
                             onClick={() => {
-                                this.setState({
-                                    results: true,
-                                    resultsCeleb: true,
-                                    resultsSearch: false,
-                                    resultsCharity: false,
-                                });
-                                this.SearchListCelebs('CELEBRITY');
                                 this.SearchListCelebs('Michael B. Jordan');
                             }}
                         />
@@ -259,17 +179,10 @@ export default class searchScreen extends Component {
                         image={require('../assets/images/fakeCardImages/taylor.jpg')}
                         featuredTitle="Taylor Swift"
                         imageStyle={{ flex: 1 }}>
-                        <Text>Tennessee Equality Project</Text>
+                        <Text style={{ marginBottom: 10 }}>Tennessee Equality Project</Text>
                         <Button
                             title="VIEW NOW"
                             onClick={() => {
-                                this.setState({
-                                    results: true,
-                                    resultsCeleb: true,
-                                    resultsSearch: false,
-                                    resultsCharity: false,
-                                });
-                                this.SearchListCelebs('CELEBRITY');
                                 this.SearchListCelebs('Taylor Swift');
                             }}
                         />
@@ -278,15 +191,12 @@ export default class searchScreen extends Component {
             );
         }
     };
-    render() {
+    render = () => {
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View>
-                    {/* <Header
-                // leftComponent={{ icon: 'menu', color: '#fff' }}
-                centerComponent={{ text: 'bWoke', style: { color: '#fff' } }}
-                // rightComponent={{ icon: 'home', color: '#fff' }}
-            /> */}
+                <View
+                    style={styles.container}
+                >
                     {/* <SearchBar
                         fontColor="#c6c6c6"
                         iconColor="#c6c6c6"
@@ -298,28 +208,40 @@ export default class searchScreen extends Component {
                             this.handleSearch(text);
                         }}
                         onPressCancel={() => {
-                            this.handleSearch("");
+                           
                         }}
                         onPress={() => {
                             this.setState({ results: true, resultsCeleb: false, resultsSearch: true , resultsCharity: false })
                             this.SearchBar()
                         }}
                     /> */}
-                    <SearchBar
-                        ref="searchBar"
-                        placeholder="Search for..."
-                        onChangeText={text => {
-                            this.handleSearch(text);
-                        }}
-                        onSearchButtonPress={() => {
-                            this.handleSearch("");
-                            this.refs.searchBar.unFocus;
-                        }}
-                        onCancelButtonPress={() => {
-                            this.setState({ results: true, resultsCeleb: false, resultsSearch: true, resultsCharity: false })
-                            this.searchBar();
-                        }}
-                    />
+                    <View style={styles.search}>
+                        <SearchBar
+                            ref="searchBar"
+                            placeholder="Search for..."
+                            value={this.state.search}
+                            containerStyle={{ width: '90%' }}
+                            onChangeText={text => {
+                                this.handleSearch(text);
+                            }}
+                            onSearchButtonPress={() => {
+                                this.SearchBar();
+                            }}
+                            onCancelButtonPress={() => {
+                                this.handleSearch("");
+                            }}
+                        />
+                        <Ionicons
+                            name={
+                                Platform.OS === 'ios' ? 'ios-send' : 'md-send'
+                            }
+                            size={40}
+                            style={styles.searchbtn}
+                            onPress={() => {
+                                this.SearchBar();
+                            }}
+                        />
+                    </View>
                     <ScrollView
                         horizontal={true}
                         snapToInterval={200} //your element width
@@ -333,12 +255,6 @@ export default class searchScreen extends Component {
                             // transparent
                             title="Alzheimers Association"
                             onClick={() => {
-                                this.setState({
-                                    results: true,
-                                    resultsCeleb: false,
-                                    resultsSearch: false,
-                                    resultsCharity: true,
-                                });
                                 this.SearchTrendingCharities('Alzheimers Association');
                             }}
                         />
@@ -346,12 +262,6 @@ export default class searchScreen extends Component {
                             // transparent
                             title="City of Hope"
                             onClick={() => {
-                                this.setState({
-                                    results: true,
-                                    resultsCeleb: false,
-                                    resultsSearch: false,
-                                    resultsCharity: true,
-                                });
                                 this.SearchTrendingCharities("City of Hope");
                             }}
                         />
@@ -359,12 +269,6 @@ export default class searchScreen extends Component {
                             // transparent
                             title="American Red Cross"
                             onClick={() => {
-                                this.setState({
-                                    results: true,
-                                    resultsCeleb: false,
-                                    resultsSearch: false,
-                                    resultsCharity: true,
-                                });
                                 this.SearchTrendingCharities('American Red Cross');
                             }}
                         />
@@ -372,12 +276,6 @@ export default class searchScreen extends Component {
                             // transparent
                             title="Americares"
                             onClick={() => {
-                                this.setState({
-                                    results: true,
-                                    resultsCeleb: false,
-                                    resultsSearch: false,
-                                    resultsCharity: true,
-                                });
                                 this.SearchTrendingCharities('Americares');
                             }}
                         />
@@ -385,12 +283,6 @@ export default class searchScreen extends Component {
                             // transparent
                             title="UNICEF USA"
                             onClick={() => {
-                                this.setState({
-                                    results: true,
-                                    resultsCeleb: false,
-                                    resultsSearch: false,
-                                    resultsCharity: true,
-                                });
                                 this.SearchTrendingCharities('UNICEF USA');
                             }}
                         />
@@ -398,12 +290,6 @@ export default class searchScreen extends Component {
                             // transparent
                             title="Make-A-Wish Foundation"
                             onClick={() => {
-                                this.setState({
-                                    results: true,
-                                    resultsCeleb: false,
-                                    resultsSearch: false,
-                                    resultsCharity: true,
-                                });
                                 this.SearchTrendingCharities('Make-A-Wish Foundation');
                             }}
                         />
@@ -411,47 +297,83 @@ export default class searchScreen extends Component {
                             // transparent
                             title="United Way Worldwide"
                             onClick={() => {
-                                this.setState({
-                                    results: true,
-                                    resultsCeleb: false,
-                                    resultsSearch: false,
-                                    resultsCharity: true,
-                                });
                                 this.SearchTrendingCharities('United Way Worldwide');
                             }}
                         />
                     </ScrollView>
-                    {/* should we focus these on celebrities? */}
-                    <ScrollView>
+                    <ScrollView >
                         {this.topCelebsList()}
-                        {this.SearchTrendingCharities()}
-                        {this.SearchListCelebs()}
-                        {this.SearchBar()}
+                        {this.state.charity.map((results, i) => {
+                            console.log("results", results)
+
+                            let url = results.url;
+                            let mission = results.mission;
+                            let name = results.name;
+                            let tagline = results.tagline;
+                            let cause = results.cause;
+
+                            return (
+                                <View style={styles.resultsCard} key={i}>
+                                    <Card
+                                        featuredTitle={name}
+                                        imageStyle={{ flex: 1 }}
+                                        image={require('../assets/images/fakeCardImages/987-700x500.jpg')}
+                                    >
+                                        <Text style={{ marginBottom: 20 }}>
+                                            {tagline}
+                                        </Text>
+                                        <Text style={{ marginBottom: 20 }}>
+                                            {cause}
+                                        </Text>
+                                        <Text style={{ marginBottom: 30 }}>
+                                            {mission}
+                                        </Text>
+                                        <Button
+                                            title='Go to Website'
+                                            onClick={() => this.website(url)} />
+                                    </Card>
+                                </View>
+                            )
+                        })}
                     </ScrollView>
                 </View>
-            </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback >
+        );
+    }
+
+    website = (url) => {
+        WebBrowser.openBrowserAsync(
+            `${url}`
         );
     }
 }
+
 searchScreen.navigationOptions = {
     header: null,
 };
+
+
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
         backgroundColor: color.black,
-        paddingVertical: 32,
-        borderRadius: 4,
-        borderWidth: StyleSheet.hairlineWidth,
-        borderColor: color.green,
-        // marginBottom: 250,
-        // marginTop: 30,
+        paddingTop: 32,
     },
     card: {
         width: '120%'
+    },
+    resultsCard: {
+        marginVertical: 40,
+    },
+    search: {
+        flexDirection: 'row',
+        alignItems: "center",
+    },
+    searchbtn: {
+        color: color.text,
+        paddingHorizontal: 10,
+    },
+    resultLow: {
+        marginBottom: 80,
     }
 });
 const StyledButton = styled.TouchableOpacity`
@@ -484,6 +406,7 @@ const StyledTitleTrend = styled.Text`
     text-align: center;
     font-weight: bold;
     letter-spacing: 2;
+    height: 15;
     color: ${props => (props.transparent ? '#f3f8ff ' : '#666')};
   `;
 export const Trending = ({ onPress, color, ...props }) => {
