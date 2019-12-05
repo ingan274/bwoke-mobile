@@ -22,7 +22,7 @@ import {
     Keyboard,
     Alert,
 } from 'react-native';
-import { Card, ListItem, Header, } from 'react-native-elements'
+import { Card, ListItem, Header, } from 'react-native-elements';
 import { FAB } from 'react-native-paper';
 
 
@@ -139,10 +139,18 @@ const styles = StyleSheet.create({
         borderRadius: 24,
         marginLeft: 5,
     },
-    fab: {
-        position: 'absolute',
-        margin: 16,
-        right: 0,
-        bottom: 0,
-      },
+    TouchableOpacityStyle: {
+        position: "absolute",
+        width: 50,
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        right: 30,
+        top: 30,
+    },
+    FloatingButtonStyle: {
+        resizeMode: 'contain',
+        width: 50,
+        height: 50,
+    }
 });
