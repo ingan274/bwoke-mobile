@@ -1,6 +1,5 @@
 import React, { PureComponent, Component, Fragment } from 'react';
 import AddEventModal from '../components/addEventModal'
-import { Ionicons } from '@expo/vector-icons';
 import color from '../constants/Colors'
 window.navigator.userAgent = 'ReactNative';
 import styled from "styled-components/native";
@@ -21,16 +20,21 @@ import {
     ActivityIndicator,
     TouchableWithoutFeedback,
     Keyboard,
-
+    Alert,
 } from 'react-native';
-import { Card, ListItem, Icon, Header, } from 'react-native-elements'
-import CelebCard from "../components/celebrityCard"
+import { Card, ListItem, Header, } from 'react-native-elements'
+import { FAB } from 'react-native-paper';
 
 
 export default class EventFeed extends Component {
+
     state = {
         modalVisible: false,
     };
+
+    FloatingButtonEvent = () => {
+        Alert.alert("Button Works");
+    }
 
     componentDidMount = () => {
         this.getEvents()
@@ -43,13 +47,13 @@ export default class EventFeed extends Component {
     getEvents = () => {
         return (
 
-            <EventCard 
-            title="title"
-            name="name"
-            date="date"
-            description="decription"
+            <EventCard
+                title="title"
+                name="name"
+                date="date"
+                description="decription"
             />
-            
+
         )
 
 
@@ -83,7 +87,7 @@ export default class EventFeed extends Component {
     render() {
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
-                {/* <View style={styles.container}> */}
+                <View>
 
                     {/* should we focus these on celebrities? */}
                     <ScrollView>
@@ -94,8 +98,14 @@ export default class EventFeed extends Component {
                             }}
                             visible={this.state.modalVisible}
                         />
+                        <FAB
+                            style={styles.fab}
+                            small
+                            icon="plus"
+                            onPress={() => console.log('Pressed')}
+                        />
                     </ScrollView>
-                {/* </View> */}
+                </View>
             </TouchableWithoutFeedback>
         );
     }
@@ -128,5 +138,11 @@ const styles = StyleSheet.create({
     trendingButton: {
         borderRadius: 24,
         marginLeft: 5,
-    }
+    },
+    fab: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0,
+      },
 });
