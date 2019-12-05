@@ -47,14 +47,14 @@ export default class eventAddModal extends Component {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(event)
-            }).then( (data) => {
-                    console.log("Posted")
-                })
+            }).then((data) => {
+                console.log("Posted")
+            })
                 .catch(err => console.warn(err))
         } else {
-            this.setState({error: true})
+            this.setState({ error: true })
         }
-        
+
     }
 
     showError = () => {
@@ -85,7 +85,7 @@ export default class eventAddModal extends Component {
                                 />
                             </TouchableHighlight>
 
-                            
+
                             {this.showError()}
 
                             <Forminput

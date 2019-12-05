@@ -1,9 +1,9 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 16376,
-  "expoServerNgrokUrl": "https://nd-5gw.anonymous.bwoke-mobile.exp.direct",
-  "packagerNgrokUrl": "https://packager.nd-5gw.anonymous.bwoke-mobile.exp.direct",
-  "ngrokPid": 13708,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": "https://c6-4e4.anonymous.bwoke-mobile.exp.direct",
+  "packagerNgrokUrl": "https://packager.c6-4e4.anonymous.bwoke-mobile.exp.direct",
+  "ngrokPid": 7942,
   "devToolsPort": 19002
 }
