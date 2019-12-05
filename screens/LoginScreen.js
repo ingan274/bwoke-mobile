@@ -32,6 +32,20 @@ export default class LoginScreen extends Component {
         this.setState({ password: text })
     }
 
+    componentDidMount () {
+        this.deleteDB()
+      }
+
+    deleteDB = async () => {
+        try {
+          await AsyncStorage.removeItem('username');
+          await AsyncStorage.removeItem('room');
+        } catch (error) {
+          // Error retrieving data
+          console.log(error.message);
+        }
+      }
+
     enterApp = () => {
       console.log("pressed")
         const login = {

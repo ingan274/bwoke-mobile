@@ -1,13 +1,25 @@
-import { createSwitchNavigator, createAppContainer } from 'react-navigation';
-import Rooms from '../screens/chatSelectScreen';
+import { createSwitchNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
+import Rooms from '../screens/chatRoom';
 import Chat from '../screens/chatScreen';
 
-const ChatStack = createSwitchNavigator({
-  Rooms: {screen: Rooms},
-  Chat: {screen: Chat}
-},
-{
-  initialRouteName: 'Rooms',
-});
+// import Chat from '../screens/chatRoom';
+// import Rooms from '../screens/chatScreen';
 
-export default createAppContainer(ChatStack);
+export default createAppContainer(
+  createSwitchNavigator(
+    {
+      Chat: { screen: Chat },
+      Room: { screen: Rooms },
+      
+    },
+    {
+      initialRouteName: 'Room',
+    },
+    {
+      headerMode: 'none',
+      navigationOptions: {
+        headerVisible: false,
+      }
+    }
+  )
+);
