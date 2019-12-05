@@ -9,7 +9,7 @@
 
 ##### Live app here: https://snack.expo.io/@ingan/bwoke-app
 
-##### Server Code: https://github.com/Avpaige/OyaServer
+##### Server Code: https://github.com/Avpaige/bWoke_Server
 
 <br>
 
