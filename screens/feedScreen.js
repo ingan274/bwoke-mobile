@@ -24,7 +24,6 @@ import {
     Keyboard,
 } from 'react-native';
 import { FAB } from 'react-native-paper';
-
 export default class EventFeed extends Component {
     state = {
         modalVisible: false,
@@ -33,6 +32,7 @@ export default class EventFeed extends Component {
         name: '',
         description: '',
         error: false,
+        events: []
     };
     componentDidMount = () => {
         this.getEvents()
@@ -68,13 +68,11 @@ export default class EventFeed extends Component {
             this.setState({ error: true })
         }
     }
-
     showError = () => {
         if (this.state.error) {
             return <Text style={styles.error}>Looks like your missing something. Please make sure you have a title, your charity/non-profit name, date, and description.</Text>
         }
     };
-
     getEvents = () => {
         fetch(`https://bwoke.herokuapp.com/events`, {
             method: 'GET',
@@ -84,25 +82,10 @@ export default class EventFeed extends Component {
             },
         }).then(res => res.json())
             .then((data) => {
-                data.map((event) => {
-                    let title = event.title;
-                    let description = event.description;
-                    let name = event.name;
-                    let date = event.date;
-                    console.log(description)
-                    return (
-                        <EventCard
-                            title={title}
-                            name={name}
-                            date={date}
-                            description={description}
-                        />
-                    )
-                })
+               this.setState({events: data})
             })
             .catch(err => console.warn(err))
     }
-    
     render() {
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
@@ -110,7 +93,22 @@ export default class EventFeed extends Component {
                 {/* should we focus these on celebrities? */}
                 <Fragment>
                     <ScrollView style={styles.container}>
-                        {this.getEvents()}
+                        {this.state.events.map((event, i) => {
+                            let title = event.title;
+                            let description = event.description;
+                            let name = event.name;
+                            let date = event.date;
+                            console.log(description)
+                            return (
+                                <EventCard
+                                    key={i}
+                                    title={title}
+                                    name={name}
+                                    date={date}
+                                    description={description}
+                                />
+                            )
+                        })}
                         <Modal
                             animationType="slide"
                             transparent={false}
