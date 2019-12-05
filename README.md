@@ -33,6 +33,6 @@ Many people in today’s world have a hard time knowing what a good first step t
 
 ## Future Developements
 * Expand on current celebrity database
-* Expand features into document review and phone calls
-* Allow customization of Volunteer accounts
-* Be able to support multiple languages
+* Allow for mot complex searches
+* Allow for users to refresh events feed through a simple pull down of the screen
+* Be able to support 1-1 chats
