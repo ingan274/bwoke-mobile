@@ -8,6 +8,7 @@ import mapScreen from '../screens/mapScreen';
 import chatScreen from './ChatNavigator';
 // import chatScreen from '../screens/chatSelectScreen';
 import searchScreen from '../screens/searchScreen';
+import eventScreen from '../screens/eventScreen';
 
 // import Icon from '../assets/images/bWokeLogoFavicon';
 

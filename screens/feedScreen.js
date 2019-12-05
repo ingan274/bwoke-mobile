@@ -1,12 +1,31 @@
 import React, { PureComponent, Component, Fragment } from 'react';
-import { Platform, StyleSheet, Dimensions, ViewScroll, Text, Navigator, ScrollView, TouchableWithoutFeedback, Keyboard, View } from 'react-native';
-import { ListItem, Icon, Header } from 'react-native-elements'
 import AddEventModal from '../components/addEventModal'
 import { Ionicons } from '@expo/vector-icons';
 import color from '../constants/Colors'
 window.navigator.userAgent = 'ReactNative';
 import styled from "styled-components/native";
 import EventCard from "../components/eventCard"
+// import EventCard from "../components/myEventCard"
+import {
+    Platform,
+    StyleSheet,
+    Dimensions,
+    ScrollView,
+    View,
+    Text,
+    Navigator,
+    PropTypes,
+    Image,
+    ImageBackground,
+    TouchableOpacity,
+    ActivityIndicator,
+    TouchableWithoutFeedback,
+    Keyboard,
+
+} from 'react-native';
+import { Card, ListItem, Icon, Header, } from 'react-native-elements'
+import CelebCard from "../components/celebrityCard"
+
 
 export default class EventFeed extends Component {
     state = {
@@ -64,7 +83,7 @@ export default class EventFeed extends Component {
     render() {
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
-                <View style={styles.container}>
+                {/* <View style={styles.container}> */}
 
                     {/* should we focus these on celebrities? */}
                     <ScrollView>
@@ -76,7 +95,7 @@ export default class EventFeed extends Component {
                             visible={this.state.modalVisible}
                         />
                     </ScrollView>
-                </View>
+                {/* </View> */}
             </TouchableWithoutFeedback>
         );
     }
