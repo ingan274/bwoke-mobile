@@ -70,7 +70,7 @@ export default class EventFeed extends Component {
             name={name}
             date={date}
             description={description}
-            />
+            />)
 
                 })
             })
