@@ -18,6 +18,10 @@
   <img src="./assets/bwoke.gif" width="300">
 </p>
 
+<p align="center">
+  <img src="./assets/bwoke1.gif" width="300">
+</p>
+
 
 #### WHAT IS bWOKE?
 Influencer culture has not only helped promote brands but larger social issues and charities that celebrities are passionate about. Historically, donations from individuals account for over two-thirds of all donations. If you add in gifts from bequests, then the category accounts for nearly 80% of all giving. In other words, the donating public, not big foundations or corporations, is responsible for the vast majority of annual donations. 
