@@ -22,10 +22,7 @@ import {
     Alert,
     TouchableWithoutFeedback,
     Keyboard,
-
 } from 'react-native';
-
-
 export default class EventFeed extends Component {
     state = {
         modalVisible: false,
@@ -35,28 +32,23 @@ export default class EventFeed extends Component {
         description: '',
         error: false,
     };
-
     componentDidMount = () => {
         this.getEvents()
     }
-
     setModalVisible = (visible) => {
         this.setState({ modalVisible: visible });
     }
-
     handleSubmit = () => {
         let title = this.state.title;
         let date = this.state.date;
         let name = this.state.name;
         let description = this.state.description;
-
         let event = {
             title: title,
             date: date,
             name: name,
             description: description
         }
-
         if (title && date && name && description) {
             fetch(`https://bwoke.herokuapp.com/events`, {
                 method: 'POST',
@@ -72,28 +64,21 @@ export default class EventFeed extends Component {
         } else {
             this.setState({ error: true })
         }
-
     }
-
     showError = () => {
         if (this.state.error) {
             return <Text style={styles.error}>Looks like your missing something. Please make sure you have a title, your charity/non-profit name, date, and description.</Text>
         }
     };
-
     getEvents = () => {
         // return (
-
         //     <EventCard 
         //     title="title"
         //     name="name"
         //     date="date"
         //     description="decription"
         //     />
-
         // )
-
-
         fetch(`https://bwoke.herokuapp.com/events`, {
             method: 'GET',
             headers: {
@@ -102,13 +87,11 @@ export default class EventFeed extends Component {
             },
         }).then(res => res.json())
             .then((data) => {
-
                 data.map((event) => {
                     let title = event.title;
                     let description = event.description;
                     let name = event.title;
                     let date = event.date;
-
                     return (
                         <EventCard
                             title={title}
@@ -121,12 +104,10 @@ export default class EventFeed extends Component {
             })
             .catch(err => console.warn(err))
     }
-
     render() {
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                 {/* <View style={styles.container}> */}
-
                 {/* should we focus these on celebrities? */}
                 <ScrollView style = {styles.container}>
                     {this.getEvents()}
@@ -148,10 +129,7 @@ export default class EventFeed extends Component {
                                     style={styles.exit}
                                 />
                             </TouchableHighlight>
-
-
                             {this.showError()}
-
                             <Forminput
                                 value={this.state.title}
                                 onChangeText={(event) => this.setState({ title: event })}
@@ -160,7 +138,6 @@ export default class EventFeed extends Component {
                                 autoCorrect={true}
                                 returnKeyType="next"
                             />
-
                             <Forminput
                                 value={this.state.name}
                                 onChangeText={(event) => this.setState({ name: event })}
@@ -169,7 +146,6 @@ export default class EventFeed extends Component {
                                 autoCorrect={true}
                                 returnKeyType="next"
                             />
-
                             <Forminput
                                 value={this.state.date}
                                 onChangeText={(event) => this.setState({ date: event })}
@@ -178,7 +154,6 @@ export default class EventFeed extends Component {
                                 autoCorrect={true}
                                 returnKeyType="next"
                             />
-
                             <ForminputLong
                                 value={this.state.title}
                                 onChangeText={(event) => this.setState({ description: event })}
@@ -187,9 +162,7 @@ export default class EventFeed extends Component {
                                 autoCorrect={true}
                                 returnKeyType="done"
                             />
-
                             <FormButton label="Post Event" onPress={this.handleSubmit} />
-
                         </View>
                     </View>
                 </Modal>
@@ -199,11 +172,9 @@ export default class EventFeed extends Component {
         );
     }
 }
-
 EventFeed.navigationOptions = {
     header: null,
 };
-
 const styles = StyleSheet.create({
     container: {
         width: "100%",
