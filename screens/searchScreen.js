@@ -66,32 +66,35 @@ export default class searchScreen extends Component {
                             </Card>
                         )
                     } else {
-                        let orgName = response.name
-                        let tagline = response.tagLine
-                        let cause = response.cause
-                        let mission = response.mission
-                        let url = response.url
 
-                        return (
-                            // THIS DESIGN SHOULD CHANGE
-                            <Card>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {orgName}
-                                </Text>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {tagline}
-                                </Text>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {cause}
-                                </Text>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {mission}
-                                </Text>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {url}
-                                </Text>
-                            </Card>
-                        )
+                        response.map((result) => {
+                            let orgName = result.name
+                            let tagline = result.tagLine
+                            let cause = result.cause
+                            let mission = result.mission
+                            let url = result.url
+                            return (
+                                // THIS DESIGN SHOULD CHANGE
+                                <Card>
+                                    <Text style={{ marginBottom: 10 }}>
+                                        {orgName}
+                                    </Text>
+                                    <Text style={{ marginBottom: 10 }}>
+                                        {tagline}
+                                    </Text>
+                                    <Text style={{ marginBottom: 10 }}>
+                                        {cause}
+                                    </Text>
+                                    <Text style={{ marginBottom: 10 }}>
+                                        {mission}
+                                    </Text>
+                                    <Text style={{ marginBottom: 10 }}>
+                                        {url}
+                                    </Text>
+                                </Card>
+                            )
+
+                        })
                     }
 
                 })
