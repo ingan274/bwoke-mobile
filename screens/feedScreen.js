@@ -36,7 +36,6 @@ export default class EventFeed extends Component {
     };
     componentDidMount = () => {
         this.getEvents()
-        console.log('this works')
     }
     setModalVisible = (visible) => {
         this.setState({ modalVisible: visible });
@@ -82,7 +81,7 @@ export default class EventFeed extends Component {
             },
         }).then(res => res.json())
             .then((data) => {
-               this.setState({events: data})
+                this.setState({ events: data })
             })
             .catch(err => console.warn(err))
     }
@@ -92,13 +91,21 @@ export default class EventFeed extends Component {
                 {/* <View style={styles.container}> */}
                 {/* should we focus these on celebrities? */}
                 <Fragment>
+                    <FAB
+                        // label='modalButton'
+                        style={styles.fab}
+                        // small
+                        icon="plus"
+                        color="#fff"
+                        onPress={() => console.log('Button Press')}
+                    />
                     <ScrollView style={styles.container}>
                         {this.state.events.map((event, i) => {
                             let title = event.title;
                             let description = event.description;
                             let name = event.name;
                             let date = event.date;
-                            console.log(description)
+                            // console.log(description)
                             return (
                                 <EventCard
                                     key={i}
@@ -118,12 +125,7 @@ export default class EventFeed extends Component {
                             }}
                         >
                             <View>
-                                <FAB
-                                    style={styles.fab}
-                                    small
-                                    icon="plus"
-                                    onPress={() => console.log('Pressed')}
-                                />
+
                             </View>
                             <View style={{ marginTop: 30, backgroundColor: color.black, flex: 1 }}>
                                 <View style={styles.modal}>
@@ -207,9 +209,10 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     fab: {
+        backgroundColor: '#000',
         position: 'absolute',
-        margin: 16,
-        right: 0,
-        bottom: 0,
+        // margin: 30,
+        right: 30,
+        bottom: 50,
     },
 });
