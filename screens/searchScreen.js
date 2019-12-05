@@ -15,7 +15,12 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
 } from 'react-native';
-import { Card, ListItem, Icon, Header, } from 'react-native-elements'
+import {
+    Card,
+    ListItem,
+    Icon,
+    Header,
+} from 'react-native-elements'
 import styled from "styled-components/native";
 import { Ionicons } from '@expo/vector-icons';
 import color from '../constants/Colors'
