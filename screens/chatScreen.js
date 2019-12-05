@@ -15,6 +15,11 @@ import { Ionicons } from '@expo/vector-icons';
 import io from 'socket.io-client';
 window.navigator.userAgent = 'ReactNative';
 import defaultmessages from './message';
+import { YellowBox } from 'react-native'
+
+YellowBox.ignoreWarnings([
+  'Unrecognized WebSocket connection option(s) `agent`, `perMessageDeflate`, `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`. Did you mean to put these under `headers`?'
+])
 
 const SOCKET_URL = 'https://bwoke.herokuapp.com/talk';
 
