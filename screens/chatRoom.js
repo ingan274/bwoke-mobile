@@ -154,7 +154,7 @@ export default class ChatRoom extends Component {
                 <ScrollView>
                     <View style={styles.container}>
                         {this.avatar.map((l, i) => (
-                            <TouchableOpacity onPress={() => this.goToRoom(l.name)} key={i}>
+                            <TouchableOpacity onPress={() => this.goToRoom(l.name)} key={i} style = {styles.list}>
                                 <ListItem
                                     key={i}
                                     leftAvatar={{ source: { uri: l.avatar_url } }}
@@ -198,4 +198,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         width: '100%'
     },
+    list: {
+        width: '100%'
+    }
 });

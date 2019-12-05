@@ -9,18 +9,8 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-<<<<<<< HEAD
 import { Card, ListItem, Icon, Header } from 'react-native-elements';
 import styled from 'styled-components/native';
-=======
-import {
-    Card,
-    ListItem,
-    Icon,
-    Header,
-} from 'react-native-elements'
-import styled from "styled-components/native";
->>>>>>> bce780502fc66e333b5ba1e3074629cf329382ee
 import { Ionicons } from '@expo/vector-icons';
 import color from '../constants/Colors';
 import Forminput from '../components/formInput';
