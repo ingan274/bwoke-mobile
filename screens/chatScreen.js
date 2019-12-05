@@ -68,14 +68,16 @@ class Chat extends PureComponent {
     socketEvents = () => {
         console.log('------ CONNECT EVENTS ------');
 
-        this.socket = io.connect(SOCKET_URL, {
-            jsonp: false,
-            secure: true,
-            reconnection: true,
-            reconnectionDelay: 500,
-            reconnectionAttempts: Infinity,
-            transports: ['websocket', 'polling'],
-        });
+        this.socket = io.connect(SOCKET_URL);
+
+        // {
+        //     jsonp: false,
+        //     secure: true,
+        //     reconnection: true,
+        //     reconnectionDelay: 500,
+        //     reconnectionAttempts: Infinity,
+        //     transports: ['websocket', 'polling'],
+        // }
 
         console.log('Room', this.state.room);
 
