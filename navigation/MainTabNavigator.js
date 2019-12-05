@@ -8,6 +8,7 @@ import mapScreen from '../screens/mapScreen';
 import chatScreen from './ChatNavigator';
 // import chatScreen from '../screens/chatSelectScreen';
 import searchScreen from '../screens/searchScreen';
+import eventScreen from '../screens/eventScreen';
 
 // import Icon from '../assets/images/bWokeLogoFavicon';
 
@@ -57,7 +58,7 @@ MapStack.path = '';
 
 const FeedStack = createStackNavigator(
   {
-    Feed: feedScreen, // CHANGE THIS TO FEED SCREEN 
+    Feed: eventScreen, // CHANGE THIS TO FEED SCREEN 
   },
   config
 );

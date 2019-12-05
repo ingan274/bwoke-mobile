@@ -24,7 +24,13 @@ export default class eventAddModal extends Component {
         name: '',
         description: '',
         error: false,
+
+        modalVisible: false,
     }
+
+    setModalVisible(visible) {
+        this.setState({modalVisible: visible});
+      }
 
     handleSubmit = () => {
         let title = this.state.title;
@@ -69,9 +75,9 @@ export default class eventAddModal extends Component {
                 <Modal
                     animationType="slide"
                     transparent={false}
-                    visible={this.props.visible}
+                    visible={this.state.modalVisible}
                     onRequestClose={() => {
-                        Alert.alert('Modal has been closed.');
+                        Alert.alert('Modal has been closed.');                  
                     }}
                 >
                     <View style={{ marginTop: 30, backgroundColor: Colors.blue4, flex: 1 }}>
