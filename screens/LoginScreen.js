@@ -7,6 +7,7 @@ import {
     StyleSheet,
     View,
     TouchableWithoutFeedback,
+    AsyncStorage,
     Keyboard,
 } from 'react-native';
 
@@ -84,11 +85,7 @@ export default class LoginScreen extends Component {
                     <ImageBackground source={Background} style={{ width: '100%', height: '100%' }}>
                         <View style={styles.welcomeContainer}>
                             <Image
-                                source={
-                                    __DEV__
-                                        ? require('../assets/images/bWokeLogoFavicon.png')
-                                        : require('../assets/images/robot-prod.png')
-                                }
+                                source={require('../assets/images/bWokeLogoFavicon.png')}
                                 style={styles.welcomeImage}
                             />
                         </View>
