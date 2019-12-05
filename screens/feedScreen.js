@@ -2,7 +2,7 @@ import React, { PureComponent, Component, Fragment } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import color from '../constants/Colors'
 window.navigator.userAgent = 'ReactNative';
-import styled from "styled-components/native";
+// import styled from "styled-components/native";
 import EventCard from "../components/eventCard"
 import FormButton from "../components/formButton"
 import Forminput from "../components/formInput"
@@ -16,7 +16,7 @@ import {
     Text,
     Navigator,
     PropTypes,
-    Image,
+    TouchableOpacity,
     Modal,
     TouchableHighlight,
     Alert,
@@ -24,9 +24,6 @@ import {
     Keyboard,
 } from 'react-native';
 import { FAB } from 'react-native-paper';
-
-
-
 export default class EventFeed extends Component {
     state = {
         modalVisible: false,
@@ -39,7 +36,6 @@ export default class EventFeed extends Component {
     };
     componentDidMount = () => {
         this.getEvents()
-        console.log('this works')
     }
     setModalVisible = (visible) => {
         this.setState({ modalVisible: visible });
@@ -71,13 +67,11 @@ export default class EventFeed extends Component {
             this.setState({ error: true })
         }
     }
-
     showError = () => {
         if (this.state.error) {
             return <Text style={styles.error}>Looks like your missing something. Please make sure you have a title, your charity/non-profit name, date, and description.</Text>
         }
     };
-
     getEvents = () => {
         fetch(`https://bwoke.herokuapp.com/events`, {
             method: 'GET',
@@ -87,34 +81,47 @@ export default class EventFeed extends Component {
             },
         }).then(res => res.json())
             .then((data) => {
-               this.setState({events: data})
+                this.setState({ events: data })
             })
             .catch(err => console.warn(err))
     }
-
     render() {
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                 {/* <View style={styles.container}> */}
                 {/* should we focus these on celebrities? */}
-                <Fragment>
-                    <ScrollView style={styles.container}>
-                        {this.state.events.map((event, i) => {
-                            let title = event.title;
-                            let description = event.description;
-                            let name = event.name;
-                            let date = event.date;
-                            console.log(description)
-                            return (
-                                <EventCard
-                                    key={i}
-                                    title={title}
-                                    name={name}
-                                    date={date}
-                                    description={description}
-                                />
-                            )
-                        })}
+                <View style={styles.container}>
+                    <Fragment>
+                        <TouchableOpacity style={styles.adding} onPress={()=> this.setModalVisible(true)}>
+                            <Ionicons
+                                name={
+                                    Platform.OS === 'ios' ? 'ios-add-circle' : 'md-add-circle'
+                                }
+                                size={40}
+                                style={styles.add}
+                                onPress={this.handleBackPress}
+                            />
+                            <Text style={styles.btntext}>Add Event</Text>
+                        </TouchableOpacity>
+
+                        <ScrollView >
+                            {this.state.events.map((event, i) => {
+                                let title = event.title;
+                                let description = event.description;
+                                let name = event.name;
+                                let date = event.date;
+                                // console.log(description)
+                                return (
+                                    <EventCard
+                                        key={i}
+                                        title={title}
+                                        name={name}
+                                        date={date}
+                                        description={description}
+                                    />
+                                )
+                            })}
+                        </ScrollView>
                         <Modal
                             animationType="slide"
                             transparent={false}
@@ -122,18 +129,14 @@ export default class EventFeed extends Component {
                             onRequestClose={() => {
                                 Alert.alert('Modal has been closed.');
                             }}
+                            style={styles.modal}
                         >
                             <View>
-                                <FAB
-                                    style={styles.fab}
-                                    small
-                                    icon="plus"
-                                    onPress={() => console.log('Pressed')}
-                                />
+
                             </View>
                             <View style={{ marginTop: 30, backgroundColor: color.black, flex: 1 }}>
-                                <View style={styles.modal}>
-                                    <TouchableHighlight onPress={this.props.onPressOut}>
+                                <View >
+                                    <TouchableHighlight onPress={()=> this.setModalVisible(false)}>
                                         <Ionicons
                                             name={Platform.OS === 'ios' ? 'ios-close' : 'md-close'}
                                             size={40}
@@ -178,9 +181,8 @@ export default class EventFeed extends Component {
                                 </View>
                             </View>
                         </Modal>
-                    </ScrollView>
-                </Fragment>
-                {/* </View> */}
+                    </Fragment>
+                </View>
             </TouchableWithoutFeedback>
         );
     }
@@ -201,6 +203,18 @@ const styles = StyleSheet.create({
         // marginBottom: 250,
         // marginTop: 30,
     },
+    btntext: {
+        color: color.text,
+    },
+    add: {
+        color: color.green,
+        paddingHorizontal: 30
+    },
+    adding: {
+        paddingTop: 32,
+        flexDirection: 'row',
+        alignItems: "center",
+    },
     error: {
         color: color.red
     },
@@ -213,9 +227,10 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     fab: {
+        backgroundColor: '#000',
         position: 'absolute',
-        margin: 16,
-        right: 0,
-        bottom: 0,
+        // margin: 30,
+        right: 30,
+        bottom: 50,
     },
 });
