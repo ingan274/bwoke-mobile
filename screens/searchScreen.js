@@ -9,7 +9,7 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
 } from 'react-native';
-import { Card, ListItem, Icon, Header } from 'react-native-elements';
+import { Card, ListItem, Icon, Header, SearchBar } from 'react-native-elements';
 import styled from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
 import color from '../constants/Colors';
@@ -17,7 +17,7 @@ import Forminput from '../components/formInput';
 window.navigator.userAgent = 'ReactNative';
 import Background from '../assets/images/bWokeLogoFavicon.png';
 // import SearchBar from 'react-native-dynamic-search-bar';
-import SearchBar from 'react-native-search-bar';
+// import SearchBar from 'react-native-search-bar';
 
 export default class searchScreen extends Component {
     state = {
@@ -30,6 +30,9 @@ export default class searchScreen extends Component {
     handleSearch = text => {
         this.setState({ search: text });
     };
+    // componentDidMount() {
+    //     this.refs.searchBar.focus();
+    // };
     SearchBar = () => {
         let search = this.state.search;
         if (this.state.resultsSearch) {
@@ -265,18 +268,10 @@ export default class searchScreen extends Component {
 
     render() {
 
-        componentDidMount() {
-            this.refs.searchBar.focus();
-        }
 
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.container}>
-                    {/* <Header
-                // leftComponent={{ icon: 'menu', color: '#fff' }}
-                centerComponent={{ text: 'bWoke', style: { color: '#fff' } }}
-                // rightComponent={{ icon: 'home', color: '#fff' }}
-            /> */}
                     {/* <SearchBar
                         fontColor="#c6c6c6"
                         iconColor="#c6c6c6"
@@ -295,20 +290,27 @@ export default class searchScreen extends Component {
                             this.SearchBar()
                         }}
                     /> */}
-                    <SearchBar
+                    {/* <SearchBar
                         ref="searchBar"
-                        placeholder="Search"
+                        placeholder="Search for..."
                         onChangeText={text => {
                             this.handleSearch(text);
                         }}
                         onSearchButtonPress={() => {
                             this.handleSearch("");
+                            this.refs.searchBar.unFocus;
                         }}
                         onCancelButtonPress={() => {
                             this.setState({ results: true, resultsCeleb: false, resultsSearch: true, resultsCharity: false })
                             this.searchBar();
                         }}
-                    />
+                    /> */}
+                    <SearchBar
+                        round
+                        onChangeText={text => {
+                            this.handleSearch(text);
+                        }}
+                        placeholder='Type Here...' />
                     <ScrollView
                         horizontal={true}
                         snapToInterval={200} //your element width
