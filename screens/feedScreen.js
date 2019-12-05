@@ -23,6 +23,8 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
 } from 'react-native';
+import { FAB } from 'react-native-paper';
+
 export default class EventFeed extends Component {
     state = {
         modalVisible: false,
@@ -34,6 +36,7 @@ export default class EventFeed extends Component {
     };
     componentDidMount = () => {
         this.getEvents()
+        console.log('this works')
     }
     setModalVisible = (visible) => {
         this.setState({ modalVisible: visible });
@@ -71,14 +74,6 @@ export default class EventFeed extends Component {
         }
     };
     getEvents = () => {
-        // return (
-        //     <EventCard 
-        //     title="title"
-        //     name="name"
-        //     date="date"
-        //     description="decription"
-        //     />
-        // )
         fetch(`https://bwoke.herokuapp.com/events`, {
             method: 'GET',
             headers: {
@@ -90,8 +85,9 @@ export default class EventFeed extends Component {
                 data.map((event) => {
                     let title = event.title;
                     let description = event.description;
-                    let name = event.title;
+                    let name = event.name;
                     let date = event.date;
+                    console.log(date)
                     return (
                         <EventCard
                             title={title}
@@ -104,69 +100,80 @@ export default class EventFeed extends Component {
             })
             .catch(err => console.warn(err))
     }
+    
     render() {
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                 {/* <View style={styles.container}> */}
                 {/* should we focus these on celebrities? */}
-                <ScrollView style = {styles.container}>
-                    {this.getEvents()}
-                    <Modal
-                    animationType="slide"
-                    transparent={false}
-                    visible={this.state.modalVisible}
-                    onRequestClose={() => {
-                        Alert.alert('Modal has been closed.');                  
-                    }}
-                >
-                    <View style={{ marginTop: 30, backgroundColor: color.black, flex: 1 }}>
-                        <View style={styles.modal}>
-                            <TouchableHighlight onPress={this.props.onPressOut}>
-                                <Ionicons
-                                    name={Platform.OS === 'ios' ? 'ios-close' : 'md-close'}
-                                    size={40}
-                                    color='white'
-                                    style={styles.exit}
+                <Fragment>
+                    <ScrollView style={styles.container}>
+                        {this.getEvents()}
+                        <Modal
+                            animationType="slide"
+                            transparent={false}
+                            visible={this.state.modalVisible}
+                            onRequestClose={() => {
+                                Alert.alert('Modal has been closed.');
+                            }}
+                        >
+                            <View>
+                                <FAB
+                                    style={styles.fab}
+                                    small
+                                    icon="plus"
+                                    onPress={() => console.log('Pressed')}
                                 />
-                            </TouchableHighlight>
-                            {this.showError()}
-                            <Forminput
-                                value={this.state.title}
-                                onChangeText={(event) => this.setState({ title: event })}
-                                placeholder="Event Title"
-                                name="eventTitle"
-                                autoCorrect={true}
-                                returnKeyType="next"
-                            />
-                            <Forminput
-                                value={this.state.name}
-                                onChangeText={(event) => this.setState({ name: event })}
-                                placeholder="Name of Non-profit/Charity"
-                                name="charityname"
-                                autoCorrect={true}
-                                returnKeyType="next"
-                            />
-                            <Forminput
-                                value={this.state.date}
-                                onChangeText={(event) => this.setState({ date: event })}
-                                placeholder="Date of Event"
-                                name="eventDate"
-                                autoCorrect={true}
-                                returnKeyType="next"
-                            />
-                            <ForminputLong
-                                value={this.state.title}
-                                onChangeText={(event) => this.setState({ description: event })}
-                                placeholder="Event Description"
-                                name="eventDescription"
-                                autoCorrect={true}
-                                returnKeyType="done"
-                            />
-                            <FormButton label="Post Event" onPress={this.handleSubmit} />
-                        </View>
-                    </View>
-                </Modal>
-                </ScrollView>
+                            </View>
+                            <View style={{ marginTop: 30, backgroundColor: color.black, flex: 1 }}>
+                                <View style={styles.modal}>
+                                    <TouchableHighlight onPress={this.props.onPressOut}>
+                                        <Ionicons
+                                            name={Platform.OS === 'ios' ? 'ios-close' : 'md-close'}
+                                            size={40}
+                                            color='white'
+                                            style={styles.exit}
+                                        />
+                                    </TouchableHighlight>
+                                    {this.showError()}
+                                    <Forminput
+                                        value={this.state.title}
+                                        onChangeText={(event) => this.setState({ title: event })}
+                                        placeholder="Event Title"
+                                        name="eventTitle"
+                                        autoCorrect={true}
+                                        returnKeyType="next"
+                                    />
+                                    <Forminput
+                                        value={this.state.name}
+                                        onChangeText={(event) => this.setState({ name: event })}
+                                        placeholder="Name of Non-profit/Charity"
+                                        name="charityname"
+                                        autoCorrect={true}
+                                        returnKeyType="next"
+                                    />
+                                    <Forminput
+                                        value={this.state.date}
+                                        onChangeText={(event) => this.setState({ date: event })}
+                                        placeholder="Date of Event"
+                                        name="eventDate"
+                                        autoCorrect={true}
+                                        returnKeyType="next"
+                                    />
+                                    <ForminputLong
+                                        value={this.state.title}
+                                        onChangeText={(event) => this.setState({ description: event })}
+                                        placeholder="Event Description"
+                                        name="eventDescription"
+                                        autoCorrect={true}
+                                        returnKeyType="done"
+                                    />
+                                    <FormButton label="Post Event" onPress={this.handleSubmit} />
+                                </View>
+                            </View>
+                        </Modal>
+                    </ScrollView>
+                </Fragment>
                 {/* </View> */}
             </TouchableWithoutFeedback>
         );
@@ -190,7 +197,7 @@ const styles = StyleSheet.create({
     },
     error: {
         color: color.red
-      },
+    },
     modal: {
         paddingHorizontal: 30,
         backgroundColor: 'black'
@@ -198,5 +205,11 @@ const styles = StyleSheet.create({
     exit: {
         marginTop: 10,
         color: 'white'
+    },
+    fab: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0,
     },
 });
