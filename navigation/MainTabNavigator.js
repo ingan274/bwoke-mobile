@@ -5,7 +5,8 @@ import { createStackNavigator, createBottomTabNavigator, BottomTabBar, Styleshee
 import TabBarIcon from '../components/TabBarIcon';
 import feedScreen from '../screens/feedScreen';
 import mapScreen from '../screens/mapScreen';
-import chatScreen from './ChatNavigator';
+import Rooms from '../screens/chatRoom';
+import Chat from '../screens/chatScreen';
 // import chatScreen from '../screens/chatSelectScreen';
 import searchScreen from '../screens/searchScreen';
 
@@ -73,7 +74,12 @@ FeedStack.path = '';
 
 const ChatStack = createStackNavigator(
   {
-    Chat: chatScreen,
+    Chat: { screen: Chat },
+    Room: { screen: Rooms },
+
+  },
+  {
+    initialRouteName: 'Room',
   },
   config
 );
