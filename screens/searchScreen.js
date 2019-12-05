@@ -25,34 +25,25 @@ import styled from "styled-components/native";
 import { Ionicons } from '@expo/vector-icons';
 import color from '../constants/Colors'
 import Forminput from "../components/formInput";
-// import SearchBar from "../components/SearchBar.js";
 window.navigator.userAgent = 'ReactNative';
-import CelebCard from "../components/celebrityCard"
-import SearchBar from 'react-native-dynamic-search-bar';
-import { FA5Style } from '@expo/vector-icons/build/FontAwesome5';
-
+import Background from "../assets/images/bWokeLogoFavicon.png";
+// import SearchBar from 'react-native-dynamic-search-bar';
 export default class searchScreen extends Component {
-
     state = {
         results: false,
         resultsSearch: false,
         resultsCeleb: false,
         resultsCharity: false,
-
         search: '',
     }
-
     handleSearch = (text) => {
         this.setState({ search: text })
     }
-
     SearchBar = () => {
         let search = this.state.search
-
         if (this.state.resultsSearch) {
-
             // search charities
-            fetch(`https://bwoke.herokuapp.com/search/${search}`, {
+            fetch(`URL/${search}`, {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json',
@@ -60,109 +51,28 @@ export default class searchScreen extends Component {
                 },
             }).then(res => res.json())
                 .then((response) => {
-                    if (response.data === "none") {
-                        return (
-                            // THIS DESIGN SHOULD CHANGE FOR NO RESULTS
-                            <Card>
-                                <Text style={{ marginBottom: 10 }}>
-                                    Sorry There are No Results. Please try another search.
-                                </Text>
-                            </Card>
-                        )
-                    } else {
-
-                        response.map((result) => {
-                            let orgName = result.name
-                            let tagline = result.tagLine
-                            let cause = result.cause
-                            let mission = result.mission
-                            let url = result.url
-                            return (
-                                // THIS DESIGN SHOULD CHANGE
-                                <Card>
-                                    <Text style={{ marginBottom: 10 }}>
-                                        {orgName}
-                                    </Text>
-                                    <Text style={{ marginBottom: 10 }}>
-                                        {tagline}
-                                    </Text>
-                                    <Text style={{ marginBottom: 10 }}>
-                                        {cause}
-                                    </Text>
-                                    <Text style={{ marginBottom: 10 }}>
-                                        {mission}
-                                    </Text>
-                                    <Text style={{ marginBottom: 10 }}>
-                                        {url}
-                                    </Text>
-                                </Card>
-                            )
-
-                        })
-                    }
-
-                })
-        }
-    }
-
-    SearchTrendingCharities = (charity) => {
-
-        if (this.state.resultsCharity) {
-
-            fetch(`https://bwoke.herokuapp.com/search/charity/${charity}`, {
-                method: 'GET',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-            }).then(res => res.json())
-                .then((response) => {
-                    if (response.data === "none") {
-                        return (
-                            // THIS DESIGN SHOULD CHANGE FOR NO RESULTS
-                            <Card>
-                                <Text style={{ marginBottom: 10 }}>
-                                    Sorry There are No Results. Please try another search.
-                                </Text>
-                            </Card>
-                        )
-                    } else {
-                        let orgName = response.name
-                        let tagline = response.tagLine
-                        let cause = response.cause
-                        let mission = response.mission
-                        let url = response.url
-
+                    response.map((result) => {
                         return (
                             // THIS DESIGN SHOULD CHANGE
                             <Card>
                                 <Text style={{ marginBottom: 10 }}>
-                                    {orgName}
+                                    {result.organization.charityName}
                                 </Text>
                                 <Text style={{ marginBottom: 10 }}>
-                                    {tagline}
+                                    {result.cause.causeName}
                                 </Text>
                                 <Text style={{ marginBottom: 10 }}>
-                                    {cause}
-                                </Text>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {mission}
-                                </Text>
-                                <Text style={{ marginBottom: 10 }}>
-                                    {url}
+                                    {result.mission}
                                 </Text>
                             </Card>
                         )
-                    }
+                    })
                 })
-                .catch(err => console.warn(err))
         }
     }
-
-    SearchListCelebs = (celebrities) => {
-        if (this.state.resultsCeleb) {
-
-            fetch(`https://bwoke.herokuapp.com/search/celeb/${celebrities}`, {
+    SearchTrendingCharities = (charity) => {
+        if (this.state.resultsCharity) {
+            fetch(`URL/charity/${charity}`, {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json',
@@ -170,116 +80,181 @@ export default class searchScreen extends Component {
                 },
             }).then(res => res.json())
                 .then((response) => {
-                    if (response.data === "none") {
+                    response.map((result) => {
                         return (
-                            // THIS DESIGN SHOULD CHANGE FOR NO RESULTS
+                            // THIS DESIGN SHOULD CHANGE
                             <Card>
                                 <Text style={{ marginBottom: 10 }}>
-                                    Sorry There are No Results. Please try another search.
-                            </Text>
+                                    {result.organization.charityName}
+                                </Text>
+                                <Text style={{ marginBottom: 10 }}>
+                                    {result.cause.causeName}
+                                </Text>
+                                <Text style={{ marginBottom: 10 }}>
+                                    {result.mission}
+                                </Text>
                             </Card>
                         )
-                    } else {
-                        response.map((result) => {
-                            let orgName = result.name
-                            let tagline = result.tagLine
-                            let cause = result.cause
-                            let mission = result.mission
-                            let url = result.url
-                            return (
-                                // THIS DESIGN SHOULD CHANGE
-                                <Card>
-                                    <Text style={{ marginBottom: 10 }}>
-                                        {orgName}
-                                    </Text>
-                                    <Text style={{ marginBottom: 10 }}>
-                                        {tagline}
-                                    </Text>
-                                    <Text style={{ marginBottom: 10 }}>
-                                        {cause}
-                                    </Text>
-                                    <Text style={{ marginBottom: 10 }}>
-                                        {mission}
-                                    </Text>
-                                    <Text style={{ marginBottom: 10 }}>
-                                        {url}
-                                    </Text>
-                                </Card>
-                            )
-
-                        })
-                    }
+                    })
                 })
                 .catch(err => console.warn(err))
         }
     }
-
+    SearchListCelebs = (celebrities) => {
+        if (this.state.resultsCeleb) {
+            fetch(`URLLINKHEREFROM-OUR-DATABASE/celeb/${celebrities}`, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+            }).then(res => res.json())
+                .then((response) => {
+                    response.map((result) => {
+                        return (
+                            // THIS DESIGN SHOULD CHANGE
+                            <Card
+                                image={result.imageURL} // check response
+                            >
+                                <Text style={{ marginBottom: 10 }}>
+                                    {/* this is where the response text goes */}
+                                    {result.text}
+                                </Text>
+                            </Card>
+                        )
+                    })
+                })
+                .catch(err => console.warn(err))
+        }
+    }
     topCelebsList = () => {
         if (!this.state.results) {
             return (
-                <ScrollView>
-                    <CelebCard
-                        image={require(`../assets/images/fakeCardImages/rihanna.jpg`)}
-                        celeb="Rihanna"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
-                            this.SearchListCelebs('Rihanna')
-                        }} />
-                    <CelebCard
-                        image={require(`../assets/images/fakeCardImages/justin.jpg`)}
-                        celeb="Justin Beiber"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
-                            this.SearchListCelebs('Justin Beiber')
-                        }} />
-                    <CelebCard
-                        image={require(`../assets/images/fakeCardImages/lebron.jpg`)}
-                        celeb="Lebron James"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
-                            this.SearchListCelebs('Lebron James')
-                        }} />
-                    <CelebCard
-                        image={require(`../assets/images/fakeCardImages/drake.jpg`)}
-                        celeb="Drake"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
-                            this.SearchListCelebs('Drake')
-                        }} />
-                    <CelebCard
-                        image={require(`../assets/images/fakeCardImages/serena.jpg`)}
-                        celeb="Serena Williams"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
-                            this.SearchListCelebs('Serena Williams')
-                        }} />
-                    <CelebCard
-                        image={require(`../assets/images/fakeCardImages/andrew.jpeg`)}
-                        celeb="Andrew Yang"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
-                            this.SearchListCelebs('Andrew Yang')
-                        }} />
-                    <CelebCard
-                        image={require(`../assets/images/fakeCardImages/michael.jpg`)}
-                        celeb="Michael B. Jordan"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
-                            this.SearchListCelebs('Michael B. Jordan')
-                        }} />
-                    <CelebCard
-                        image={require(`../assets/images/fakeCardImages/taylor.jpg`)}
-                        celeb="Taylor Swift"
-                        onClick={() => {
-                            this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
-                            this.SearchListCelebs('Taylor Swift')
-                        }} />
-                </ScrollView>
-
+                <View>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/rihanna.jpg')}
+                        featuredTitle='Rihanna'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/justin.jpg')}
+                        featuredTitle='Justin Beiber'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/lebron.jpg')}
+                        featuredTitle='Lebron James'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/drake.jpg')}
+                        featuredTitle='Drake'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/serena.jpg')}
+                        featuredTitle='Serena Williams'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/andrew.jpeg')}
+                        featuredTitle='Andrew Yang'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/michael.jpg')}
+                        featuredTitle='Michael B. Jordan'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                    <Card
+                        image={require('../assets/images/fakeCardImages/taylor.jpg')}
+                        featuredTitle='Taylor Swift'
+                        imageStyle={{ flex: 1 }}
+                    >
+                        <Text style={{ marginBottom: 10 }}>
+                            The idea with React Native Elements is more about component structure than actual design.
+                        </Text>
+                        <Button
+                            title='VIEW NOW'
+                            onClick={() => {
+                                this.setState({ results: true, resultsCeleb: true, resultsSearch: false, resultsCharity: false })
+                                this.SearchListCelebs('CELEBRITY')
+                            }} />
+                    </Card>
+                </View>
             )
         }
     }
-
     render() {
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
@@ -289,7 +264,7 @@ export default class searchScreen extends Component {
                 centerComponent={{ text: 'bWoke', style: { color: '#fff' } }}
                 // rightComponent={{ icon: 'home', color: '#fff' }}
             /> */}
-                    <SearchBar
+                    {/* <SearchBar
                         fontColor="#c6c6c6"
                         iconColor="#c6c6c6"
                         shadowColor="#282828"
@@ -303,10 +278,10 @@ export default class searchScreen extends Component {
                             this.handleSearch("");
                         }}
                         onPress={() => {
-                            this.setState({ results: true, resultsCeleb: false, resultsSearch: true, resultsCharity: false })
+                            this.setState({ results: true, resultsCeleb: false, resultsSearch: true , resultsCharity: false })
                             this.SearchBar()
                         }}
-                    />
+                    /> */}
                     <ScrollView
                         horizontal={true}
                         snapToInterval={200} //your element width
@@ -316,12 +291,11 @@ export default class searchScreen extends Component {
                     // snapToAlignment={"center"}
                     >
                         {/* should we focus these on charities? */}
-
                         <Trending
                             // transparent
                             title="Feeding America"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
                                 this.SearchTrendingCharities('Feeding America')
                             }}
                         />
@@ -329,7 +303,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="Boys and Girl's Club"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
                                 this.SearchTrendingCharities("Boys and Girl's Club")
                             }}
                         />
@@ -337,7 +311,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="American Red Cross"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true})
                                 this.SearchTrendingCharities("American Red Cross")
                             }}
                         />
@@ -345,7 +319,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="Americares"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
                                 this.SearchTrendingCharities("Americares")
                             }}
                         />
@@ -353,7 +327,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="UNICEF USA"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true})
                                 this.SearchTrendingCharities("UNICEF USA")
                             }}
                         />
@@ -361,7 +335,7 @@ export default class searchScreen extends Component {
                             // transparent
                             title="Make-A-Wish Foundation"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
                                 this.SearchTrendingCharities("Make-A-Wish Foundation")
                             }}
                         />
@@ -369,14 +343,14 @@ export default class searchScreen extends Component {
                             // transparent
                             title="United Way Worldwide"
                             onClick={() => {
-                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false, resultsCharity: true })
+                                this.setState({ results: true, resultsCeleb: false, resultsSearch: false , resultsCharity: true })
                                 this.SearchTrendingCharities("United Way Worldwide")
                             }}
                         />
                     </ScrollView>
-
-                    {this.topCelebsList()}
+                    {/* should we focus these on celebrities? */}
                     <ScrollView>
+                        {this.topCelebsList()}
                         {this.SearchTrendingCharities()}
                         {this.SearchListCelebs()}
                         {this.SearchBar()}
@@ -386,11 +360,9 @@ export default class searchScreen extends Component {
         );
     }
 }
-
 searchScreen.navigationOptions = {
     header: null,
 };
-
 const styles = StyleSheet.create({
     container: {
         width: "100%",
@@ -415,7 +387,6 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     }
 });
-
 const StyledButton = styled.TouchableOpacity`
    background-color:${props => (props.transparent ? "transparent" : "#f3f8ff")};
    padding:15px;
@@ -441,16 +412,13 @@ StyledTitle = styled.Text`
     letter-spacing: 3;
     color: ${props => (props.transparent ? "#f3f8ff " : "#666")};
   `;
-
 StyledTitleTrend = styled.Text`
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
     letter-spacing: 2;
-    height: 15px;
     color: ${props => (props.transparent ? "#f3f8ff " : "#666")};
   `;
-
 export const Trending = ({ onPress, color, ...props }) => {
     return (
         <TrendingButton {...props} onPress={props.onClick}>
