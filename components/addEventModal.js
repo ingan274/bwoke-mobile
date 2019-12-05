@@ -25,7 +25,7 @@ export default class eventAddModal extends Component {
         description: '',
         error: false,
 
-        modalVisible: false,
+        // modalVisible: false,
     }
 
     setModalVisible(visible) {

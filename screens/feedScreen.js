@@ -5,7 +5,6 @@ import color from '../constants/Colors'
 window.navigator.userAgent = 'ReactNative';
 import styled from "styled-components/native";
 import EventCard from "../components/eventCard"
-// import EventCard from "../components/myEventCard"
 import {
     Platform,
     StyleSheet,
@@ -23,8 +22,6 @@ import {
     Keyboard,
 
 } from 'react-native';
-import { Card, ListItem, Icon, Header, } from 'react-native-elements'
-import CelebCard from "../components/celebrityCard"
 
 
 export default class EventFeed extends Component {
@@ -41,43 +38,43 @@ export default class EventFeed extends Component {
     }
 
     getEvents = () => {
-        return (
+        // return (
 
-            <EventCard 
-            title="title"
-            name="name"
-            date="date"
-            description="decription"
-            />
+        //     <EventCard 
+        //     title="title"
+        //     name="name"
+        //     date="date"
+        //     description="decription"
+        //     />
             
-        )
+        // )
 
 
-        // fetch(`https://bwoke.herokuapp.com/events`, {
-        //     method: 'GET',
-        //     headers: {
-        //         Accept: 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        // }).then(res => res.json())
-        //     .then((data) => {
+        fetch(`https://bwoke.herokuapp.com/events`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+        }).then(res => res.json())
+            .then((data) => {
 
-        //         data.map((event) => {
-        //             let title = event.title;
-        //             let description = event.description;
-        //             let name = event.title;
-        //             let date = event.date;
+                data.map((event) => {
+                    let title = event.title;
+                    let description = event.description;
+                    let name = event.title;
+                    let date = event.date;
 
-        // return (<View style={styles.eventscontainer}>
-        //     <Text style={styles.eventTitle}>{title}</Text>
-        //     <Text style={styles.eventNmae}>{name}</Text>
-        //     <Text style={styles.eventDate}>{date}</Text>
-        //     <Text style={styles.eventDescription}>{description}</Text>
-        // </View>
+        return ( <EventCard 
+            title={title}
+            name={name}
+            date={date}
+            description={description}
+            />
 
-        //         })
-        //     })
-        //     .catch(err => console.warn(err))
+                })
+            })
+            .catch(err => console.warn(err))
     }
 
     render() {
