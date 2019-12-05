@@ -60,6 +60,7 @@ export default class searchScreen extends Component {
                 });
         }
     };
+
     SearchTrendingCharities = charity => {
         if (this.state.resultsCharity) {
             fetch(`https://bwoke.herokuapp.com/search/charity/${charity}`, {
@@ -94,6 +95,7 @@ export default class searchScreen extends Component {
         }
 
     };
+    
     SearchListCelebs = celebrities => {
         if (this.state.resultsCeleb) {
             fetch(`https://bwoke.herokuapp.com/search/celeb/${celebrities}`, {
@@ -131,7 +133,7 @@ export default class searchScreen extends Component {
                     <Card
                         image={require('../assets/images/fakeCardImages/rihanna.jpg')}
                         featuredTitle="Rihanna"
-                        imageStyle={{ flex: 1, width: 350 }}
+                        imageStyle={{ flex: 1 }}
                     >
                         <Text style={{ marginBottom: 10, width: '110%' }}>
                         </Text>
@@ -279,7 +281,7 @@ export default class searchScreen extends Component {
     render() {
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View style={styles.container}>
+                <View>
                     {/* <Header
                 // leftComponent={{ icon: 'menu', color: '#fff' }}
                 centerComponent={{ text: 'bWoke', style: { color: '#fff' } }}
@@ -303,7 +305,7 @@ export default class searchScreen extends Component {
                             this.SearchBar()
                         }}
                     /> */}
-                    {/* <SearchBar
+                    <SearchBar
                         ref="searchBar"
                         placeholder="Search for..."
                         onChangeText={text => {
@@ -317,13 +319,7 @@ export default class searchScreen extends Component {
                             this.setState({ results: true, resultsCeleb: false, resultsSearch: true, resultsCharity: false })
                             this.searchBar();
                         }}
-                    /> */}
-                    <SearchBar
-                        round
-                        onChangeText={text => {
-                            this.handleSearch(text);
-                        }}
-                        placeholder='Type Here...' />
+                    />
                     <ScrollView
                         horizontal={true}
                         snapToInterval={200} //your element width
