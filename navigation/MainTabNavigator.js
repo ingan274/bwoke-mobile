@@ -58,7 +58,7 @@ MapStack.path = '';
 
 const FeedStack = createStackNavigator(
   {
-    Feed: eventScreen, // CHANGE THIS TO FEED SCREEN 
+    Feed: feedScreen, // CHANGE THIS TO FEED SCREEN 
   },
   config
 );

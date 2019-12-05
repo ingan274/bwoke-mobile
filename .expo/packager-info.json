@@ -1,18 +1,9 @@
 {
-<<<<<<< HEAD
+  "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 16820,
-  "expoServerNgrokUrl": "https://nd-5gw.anonymous.bwoke-mobile.exp.direct",
-  "packagerNgrokUrl": "https://packager.nd-5gw.anonymous.bwoke-mobile.exp.direct",
-  "ngrokPid": 19812
-=======
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
+  "packagerPid": 24984,
   "expoServerNgrokUrl": "https://c6-4e4.anonymous.bwoke-mobile.exp.direct",
   "packagerNgrokUrl": "https://packager.c6-4e4.anonymous.bwoke-mobile.exp.direct",
-  "ngrokPid": 7942,
-  "devToolsPort": 19002
->>>>>>> 3fea7b9613cffd2eb4d31172a555dcab565b3a3d
+  "ngrokPid": 21632
 }

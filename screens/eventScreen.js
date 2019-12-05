@@ -18,7 +18,7 @@ import React, { Component } from 'react';
 // import { ListItem, Icon, Header, } from 'react-native-elements'
 // import styled from "styled-components/native";
 // import { Ionicons } from '@expo/vector-icons';
-// import color from '../constants/Colors'
+// import color from '../constants/Colors';
 // import Forminput from "../components/formInput";
 // // import SearchBar from "../components/SearchBar.js";
 // import Background from "../assets/images/bWokeLogoFavicon.png";
@@ -44,7 +44,7 @@ import {
     View,
 } from '@shoutem/ui';
 
-import ModalButton from '../components/modalButton'
+import ModalButton from '../components/modalButton';
 
 export default class EventFeed extends Component {
     constructor(props) {
