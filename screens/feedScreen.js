@@ -4,6 +4,9 @@ import color from '../constants/Colors'
 window.navigator.userAgent = 'ReactNative';
 import styled from "styled-components/native";
 import EventCard from "../components/eventCard"
+import FormButton from "../components/formButton"
+import Forminput from "../components/formInput"
+import ForminputLong from "../components/formLongInput"
 import {
     Platform,
     StyleSheet,
@@ -74,7 +77,7 @@ export default class EventFeed extends Component {
 
     showError = () => {
         if (this.state.error) {
-            return <Text style={style.error}>Looks like your missing something. Please make sure you have a title, your charity/non-profit name, date, and description.</Text>
+            return <Text style={styles.error}>Looks like your missing something. Please make sure you have a title, your charity/non-profit name, date, and description.</Text>
         }
     };
 
@@ -125,7 +128,7 @@ export default class EventFeed extends Component {
                 {/* <View style={styles.container}> */}
 
                 {/* should we focus these on celebrities? */}
-                <ScrollView>
+                <ScrollView style = {styles.container}>
                     {this.getEvents()}
                     <Modal
                     animationType="slide"
@@ -135,13 +138,13 @@ export default class EventFeed extends Component {
                         Alert.alert('Modal has been closed.');                  
                     }}
                 >
-                    <View style={{ marginTop: 30, backgroundColor: Colors.blue4, flex: 1 }}>
+                    <View style={{ marginTop: 30, backgroundColor: color.black, flex: 1 }}>
                         <View style={styles.modal}>
                             <TouchableHighlight onPress={this.props.onPressOut}>
                                 <Ionicons
                                     name={Platform.OS === 'ios' ? 'ios-close' : 'md-close'}
                                     size={40}
-                                    color={Colors.white}
+                                    color='white'
                                     style={styles.exit}
                                 />
                             </TouchableHighlight>
@@ -205,22 +208,18 @@ const styles = StyleSheet.create({
     container: {
         width: "100%",
         height: "100%",
-        alignItems: "center",
-        justifyContent: "center",
+        // alignItems: "center",
+        // justifyContent: "center",
         backgroundColor: color.black,
         // paddingVertical: 12,
         paddingTop: 32,
         // borderRadius: 4,
-        borderWidth: StyleSheet.hairlineWidth,
-        borderColor: color.green,
         // marginBottom: 250,
         // marginTop: 30,
     },
-    text: {
-        color: 'white',
-        textAlign: "center",
-        height: 20
-    },
+    error: {
+        color: color.red
+      },
     modal: {
         paddingHorizontal: 30,
         backgroundColor: 'black'
@@ -229,8 +228,4 @@ const styles = StyleSheet.create({
         marginTop: 10,
         color: 'white'
     },
-    trendingButton: {
-        borderRadius: 24,
-        marginLeft: 5,
-    }
 });
