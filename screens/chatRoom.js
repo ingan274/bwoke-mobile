@@ -56,7 +56,7 @@ export default class ChatRoom extends Component {
         },
         {
             name: 'UNICEF USA',
-            avatar_url: 'https://tinyurl.com/rrlod33',
+            avatar_url: 'https://bit.ly/2Lp9X8W',
             // subtitle: 'Vice Chairman'
         },
         {
@@ -66,7 +66,7 @@ export default class ChatRoom extends Component {
         },
         {
             name: 'United Way Worldwide',
-            avatar_url: 'https://tinyurl.com/rtzhyz8',
+            avatar_url: 'https://bit.ly/2rijtUd',
             // subtitle: 'Vice Chairman'
         },
         {
@@ -86,7 +86,7 @@ export default class ChatRoom extends Component {
         },
         {
             name: 'Direct Relief',
-            avatar_url: 'https://bit.ly/33OlRPT',
+            avatar_url: 'https://bit.ly/2OTiCma',
             // subtitle: 'Vice Chairman'
         },
         {
@@ -96,12 +96,12 @@ export default class ChatRoom extends Component {
         },
         {
             name: 'YMCA',
-            avatar_url: 'https://bit.ly/35SZsT0',
+            avatar_url: 'https://bit.ly/33PtQMK',
             // subtitle: 'Vice Chairman'
         },
         {
             name: 'Goodwill',
-            avatar_url: 'https://tinyurl.com/wfkzjb3',
+            avatar_url: 'https://bit.ly/34RCXgV',
             // subtitle: 'Vice Chairman'
         },
         {
