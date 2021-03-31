@@ -6618,8 +6618,9 @@ react-native-lightbox@^0.7.0:
   dependencies:
     prop-types "^15.5.10"
 
-"react-native-lightbox@github:shoutem/react-native-lightbox#v0.7.2":
+react-native-lightbox@shoutem/react-native-lightbox#v0.7.2:
   version "0.7.2"
+  uid "91f3f58759e9901d9c006b01ce32d074606eda0e"
   resolved "https://codeload.github.com/shoutem/react-native-lightbox/tar.gz/91f3f58759e9901d9c006b01ce32d074606eda0e"
   dependencies:
     create-react-class "^15.6.2"
@@ -6642,8 +6643,9 @@ react-native-maps@~0.25.0:
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.25.0.tgz#81bc51eb50e33811a9e1c345cc48869413ead67d"
   integrity sha512-PFJuW1pt+HnnnN0m0OGk29RSvICFVkK/DScX6cUk0SuCSN2DAHx0y6y57lZyYXcYqU4J4usNpfxgp/ccjASDiw==
 
-"react-native-navigation-experimental-compat@github:goshakkk/react-native-navigation-experimental-compat#fe6de3323fd13b1a93ed93d688b258fef1052408":
+react-native-navigation-experimental-compat@goshakkk/react-native-navigation-experimental-compat#fe6de3323fd13b1a93ed93d688b258fef1052408:
   version "1.1.0"
+  uid fe6de3323fd13b1a93ed93d688b258fef1052408
   resolved "https://codeload.github.com/goshakkk/react-native-navigation-experimental-compat/tar.gz/fe6de3323fd13b1a93ed93d688b258fef1052408"
   dependencies:
     fbjs "~0.8.9"
@@ -6663,8 +6665,9 @@ react-native-paper@^3.2.1:
   dependencies:
     prop-types "^15.5.10"
 
-"react-native-photo-view@github:shoutem/react-native-photo-view#cfc3f50a2a3a83a3848a570ad86a1f732001ad57":
+react-native-photo-view@shoutem/react-native-photo-view#cfc3f50a2a3a83a3848a570ad86a1f732001ad57:
   version "1.5.2"
+  uid cfc3f50a2a3a83a3848a570ad86a1f732001ad57
   resolved "https://codeload.github.com/shoutem/react-native-photo-view/tar.gz/cfc3f50a2a3a83a3848a570ad86a1f732001ad57"
   dependencies:
     prop-types "^15.5.10"
@@ -6752,8 +6755,9 @@ react-native-touchable-scale@^2.1.0:
   dependencies:
     prop-types "^15.6.0"
 
-"react-native-transformable-image@github:shoutem/react-native-transformable-image#v0.0.20":
+react-native-transformable-image@shoutem/react-native-transformable-image#v0.0.20:
   version "0.0.20"
+  uid ef2e93fa9425bbb479bccec64d165ec85e76e949
   resolved "https://codeload.github.com/shoutem/react-native-transformable-image/tar.gz/ef2e93fa9425bbb479bccec64d165ec85e76e949"
   dependencies:
     prop-types "^15.5.10"
@@ -8602,9 +8606,9 @@ xtend@~4.0.1:
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
 y18n@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.1.tgz#6d15fba884c08679c0d77e88e7759e811e07fa41"
-  integrity sha1-bRX7qITAhnnA136I53WegR4H+kE=
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.2.tgz#85c901bd6470ce71fc4bb723ad209b70f7f28696"
+  integrity sha512-uGZHXkHnhF0XeeAPgnKfPv1bgKAYyVvmNL1xlKsPYZPaIHxGti2hHqvOCQv71XMsLxu1QjergkqogUnms5D3YQ==
 
 y18n@^4.0.0:
   version "4.0.0"
