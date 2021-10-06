@@ -6434,9 +6434,9 @@ query-string@^6.2.0, query-string@^6.4.2:
     strict-uri-encode "^2.0.0"
 
 querystringify@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
-  integrity sha512-w7fLxIRCRT7U8Qu53jQnJyPkYZIaR4n5151KMfcJlO/A9397Wxb1amJvROTK6TOnp7PfoAmg/qXiNHI+08jRfA==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
+  integrity sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==
 
 randomatic@^3.0.0:
   version "3.1.1"
@@ -6618,8 +6618,9 @@ react-native-lightbox@^0.7.0:
   dependencies:
     prop-types "^15.5.10"
 
-"react-native-lightbox@github:shoutem/react-native-lightbox#v0.7.2":
+react-native-lightbox@shoutem/react-native-lightbox#v0.7.2:
   version "0.7.2"
+  uid "91f3f58759e9901d9c006b01ce32d074606eda0e"
   resolved "https://codeload.github.com/shoutem/react-native-lightbox/tar.gz/91f3f58759e9901d9c006b01ce32d074606eda0e"
   dependencies:
     create-react-class "^15.6.2"
@@ -6642,8 +6643,9 @@ react-native-maps@~0.25.0:
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.25.0.tgz#81bc51eb50e33811a9e1c345cc48869413ead67d"
   integrity sha512-PFJuW1pt+HnnnN0m0OGk29RSvICFVkK/DScX6cUk0SuCSN2DAHx0y6y57lZyYXcYqU4J4usNpfxgp/ccjASDiw==
 
-"react-native-navigation-experimental-compat@github:goshakkk/react-native-navigation-experimental-compat#fe6de3323fd13b1a93ed93d688b258fef1052408":
+react-native-navigation-experimental-compat@goshakkk/react-native-navigation-experimental-compat#fe6de3323fd13b1a93ed93d688b258fef1052408:
   version "1.1.0"
+  uid fe6de3323fd13b1a93ed93d688b258fef1052408
   resolved "https://codeload.github.com/goshakkk/react-native-navigation-experimental-compat/tar.gz/fe6de3323fd13b1a93ed93d688b258fef1052408"
   dependencies:
     fbjs "~0.8.9"
@@ -6663,8 +6665,9 @@ react-native-paper@^3.2.1:
   dependencies:
     prop-types "^15.5.10"
 
-"react-native-photo-view@github:shoutem/react-native-photo-view#cfc3f50a2a3a83a3848a570ad86a1f732001ad57":
+react-native-photo-view@shoutem/react-native-photo-view#cfc3f50a2a3a83a3848a570ad86a1f732001ad57:
   version "1.5.2"
+  uid cfc3f50a2a3a83a3848a570ad86a1f732001ad57
   resolved "https://codeload.github.com/shoutem/react-native-photo-view/tar.gz/cfc3f50a2a3a83a3848a570ad86a1f732001ad57"
   dependencies:
     prop-types "^15.5.10"
@@ -6752,8 +6755,9 @@ react-native-touchable-scale@^2.1.0:
   dependencies:
     prop-types "^15.6.0"
 
-"react-native-transformable-image@github:shoutem/react-native-transformable-image#v0.0.20":
+react-native-transformable-image@shoutem/react-native-transformable-image#v0.0.20:
   version "0.0.20"
+  uid ef2e93fa9425bbb479bccec64d165ec85e76e949
   resolved "https://codeload.github.com/shoutem/react-native-transformable-image/tar.gz/ef2e93fa9425bbb479bccec64d165ec85e76e949"
   dependencies:
     prop-types "^15.5.10"
@@ -8294,9 +8298,9 @@ url-parse-lax@^1.0.0:
     prepend-http "^1.0.1"
 
 url-parse@^1.4.4:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.7.tgz#a8a83535e8c00a316e403a5db4ac1b9b853ae278"
-  integrity sha512-d3uaVyzDB9tQoSXFvuSUNFibTd9zxd2bkVrDRvF5TmvWWQwqE4lgYJ5m+x1DbecWkw+LK4RNl2CU1hHuOKPVlg==
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.3.tgz#71c1303d38fb6639ade183c2992c8cc0686df862"
+  integrity sha512-IIORyIQD9rvj0A4CLWsHkBBJuNqWpFQe224b6j9t/ABmquIS0qDU2pY6kl6AuOrL5OkCXHMCFNe1jBcuAggjvQ==
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
